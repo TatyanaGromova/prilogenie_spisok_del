@@ -46,7 +46,7 @@
       background-color: var(--paper);
       background-image: url("./images/pearl-fabric-background.png");
       background-size: cover;
-      background-position: center;
+      background-position: center top;
       background-attachment: fixed;
       background-repeat: no-repeat;
       transition: color 0.45s ease, background-color 0.45s ease;
@@ -89,11 +89,12 @@
       inset: 0;
       z-index: 1;
       pointer-events: none;
-      opacity: 0.14;
+      user-select: none;
+      opacity: 0.28;
       background-image: url("./images/decor-vein-line-01.png");
       background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
+      background-position: 92% 8%;
+      background-size: min(120%, 1400px);
       animation: veinSlowDrift 36s ease-in-out infinite alternate;
     }
     body.dark-theme .flowing-veins-layer {
@@ -105,7 +106,8 @@
       inset: 0;
       z-index: 2;
       pointer-events: none;
-      opacity: 0.26;
+      user-select: none;
+      opacity: 0.18;
       filter: blur(0.4px);
       background-image: url("./images/pearl-overlay.png");
       background-size: cover;
@@ -116,223 +118,215 @@
       opacity: 0.14;
     }
 
-    .flower-left {
+    .decor-haze-layer {
       position: fixed;
-      left: -120px;
-      top: 18%;
-      width: min(26vw, 320px);
-      aspect-ratio: 1;
-      z-index: 2;
+      left: -15%;
+      top: -8%;
+      width: min(92vw, 720px);
+      height: min(52vh, 520px);
+      z-index: 4;
       pointer-events: none;
-      opacity: 0.58;
-      filter: drop-shadow(0 28px 60px rgba(120, 110, 102, 0.12));
-      background-image: url("./images/flower-left.png");
-      background-size: contain;
-      background-position: left center;
-      background-repeat: no-repeat;
-    }
-    body.dark-theme .flower-left {
-      opacity: 0.36;
-    }
-
-    .flower-right {
-      position: fixed;
-      right: -60px;
-      top: 24%;
-      width: 240px;
-      aspect-ratio: 1;
-      z-index: 7;
-      pointer-events: none;
-      opacity: 0.74;
-      filter: drop-shadow(-12px 24px 48px rgba(110, 100, 94, 0.14));
-      background-image: url("./images/flower-right.png");
-      background-size: contain;
-      background-position: right center;
-      background-repeat: no-repeat;
-    }
-    body.dark-theme .flower-right {
+      user-select: none;
       opacity: 0.42;
+      background: url("./images/decor-haze-01.png") left top / contain no-repeat;
+      filter: blur(1px);
     }
-
-    .bottom-flower-layer {
-      position: fixed;
-      bottom: -40px;
-      left: 0;
-      width: 100%;
-      height: min(38vh, 480px);
-      z-index: 2;
-      pointer-events: none;
-      opacity: 0.52;
-      filter: drop-shadow(0 -8px 40px rgba(100, 92, 86, 0.08));
-      background-image: url("./images/flower-bottom.png");
-      background-size: contain;
-      background-position: bottom center;
-      background-repeat: no-repeat;
-    }
-    body.dark-theme .bottom-flower-layer {
-      opacity: 0.32;
+    body.dark-theme .decor-haze-layer {
+      opacity: 0.22;
     }
 
     .decor-light-reflection {
       position: fixed;
-      right: -12%;
-      top: 8%;
-      width: min(48vw, 420px);
-      height: min(55vh, 520px);
-      z-index: 2;
+      left: -18%;
+      top: -6%;
+      width: min(72vw, 560px);
+      height: min(65vh, 620px);
+      z-index: 3;
       pointer-events: none;
-      opacity: 0.28;
+      user-select: none;
+      opacity: 0.22;
+      transform: rotate(-18deg);
       background-image: url("./images/decor-light-reflection-01.png");
       background-size: contain;
-      background-position: top right;
+      background-position: left top;
       background-repeat: no-repeat;
     }
     body.dark-theme .decor-light-reflection {
-      opacity: 0.14;
+      opacity: 0.12;
     }
-    .decor-pearl {
-      position: fixed;
-      left: 6%;
-      top: 24%;
-      width: 34px;
-      height: 34px;
-      z-index: 7;
+
+    .today-page-bottom-floral {
+      position: relative;
+      height: min(28vh, 220px);
+      margin-top: 8px;
+      margin-bottom: clamp(24px, 6vw, 48px);
       pointer-events: none;
-      opacity: 0.78;
-      background-image: url("./images/decor-pearl-01.png");
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      filter: drop-shadow(0 10px 22px rgba(255, 248, 238, 0.45));
-      animation: pearlFloat 12s ease-in-out infinite alternate;
+      user-select: none;
+      z-index: 5;
     }
-    .decor-petal-right {
-      position: fixed;
-      right: 10%;
-      top: 42%;
-      width: 72px;
-      height: 72px;
-      z-index: 7;
-      pointer-events: none;
-      opacity: 0.64;
-      transform: rotate(-18deg);
-      background-image: url("./images/decor-petal-large-01.png");
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      filter: drop-shadow(4px 12px 24px rgba(72, 58, 52, 0.07));
+    .today-page-bottom-floral img {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: min(96vw, 720px);
+      height: auto;
+      opacity: 0.5;
+      display: block;
     }
-    .decor-petal-left {
-      position: fixed;
-      left: 8%;
-      bottom: 28%;
-      width: 56px;
-      height: 56px;
-      z-index: 7;
-      pointer-events: none;
-      opacity: 0.56;
-      transform: rotate(24deg);
-      background-image: url("./images/decor-petal-small-01.png");
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      filter: drop-shadow(-4px 10px 20px rgba(72, 58, 52, 0.07));
-    }
-    .decor-crystal {
-      position: fixed;
-      right: 7%;
-      top: 16%;
-      width: 28px;
-      height: 28px;
-      z-index: 7;
-      pointer-events: none;
-      opacity: 0.72;
-      background-image: url("./images/decor-crystal-drop-01.png");
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      animation: pearlFloat 14s ease-in-out infinite alternate-reverse;
-    }
-    .decor-sprig-long {
-      position: fixed;
-      right: 9%;
-      bottom: 12%;
-      width: 110px;
-      height: 72px;
-      z-index: 7;
-      pointer-events: none;
-      opacity: 0.42;
-      transform: rotate(-6deg);
-      background-image: url("./images/decor-sprig-long-01.png");
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      animation: pearlFloat 22s ease-in-out infinite alternate;
-      filter: drop-shadow(2px 8px 20px rgba(68, 56, 50, 0.07));
-    }
-    .decor-petal-curved {
-      position: fixed;
-      left: 14%;
-      top: 38%;
-      width: 84px;
-      height: 84px;
-      z-index: 7;
-      pointer-events: none;
-      opacity: 0.52;
-      transform: rotate(11deg);
-      background-image: url("./images/decor-petal-curved-01.png");
-      background-size: contain;
-      background-repeat: no-repeat;
-      animation: pearlFloat 18s ease-in-out infinite alternate-reverse;
-      filter: drop-shadow(0 14px 28px rgba(82, 66, 58, 0.08));
-    }
-    .decor-flower-small {
-      position: fixed;
-      right: 22%;
-      bottom: 22%;
-      width: 54px;
-      height: 54px;
-      z-index: 7;
-      pointer-events: none;
-      opacity: 0.58;
-      background-image: url("./images/decor-flower-small-01.png");
-      background-size: contain;
-      background-repeat: no-repeat;
-      animation: pearlFloat 15s ease-in-out infinite alternate;
-      filter: drop-shadow(0 10px 22px rgba(74, 58, 52, 0.09));
-    }
-    .decor-flower-open-accent {
-      position: fixed;
-      left: 18%;
-      top: 58%;
-      width: 58px;
-      height: 58px;
-      z-index: 7;
-      pointer-events: none;
-      opacity: 0.62;
-      background-image: url("./images/decor-flower-open-01.png");
-      background-size: contain;
-      background-repeat: no-repeat;
-      animation: pearlFloat 17s ease-in-out infinite alternate-reverse;
-      filter: drop-shadow(0 12px 26px rgba(74, 58, 52, 0.1));
-    }
-    body.dark-theme .decor-pearl {
-      opacity: 0.42;
-    }
-    body.dark-theme .decor-petal-right,
-    body.dark-theme .decor-petal-left {
-      opacity: 0.36;
-    }
-    body.dark-theme .decor-crystal {
+    body.dark-theme .today-page-bottom-floral img {
       opacity: 0.38;
     }
-    body.dark-theme .decor-sprig-long {
-      opacity: 0.26;
+    .decor-layer {
+      position: fixed;
+      inset: 0;
+      overflow-x: hidden;
+      overflow-y: visible;
+      pointer-events: none;
+      user-select: none;
+      z-index: 6;
+      max-width: 100vw;
     }
-    body.dark-theme .decor-petal-curved,
-    body.dark-theme .decor-flower-small,
-    body.dark-theme .decor-flower-open-accent {
-      opacity: 0.32;
+    .decor-layer img {
+      display: block;
+      pointer-events: none;
+      user-select: none;
+      object-fit: contain;
+    }
+    .decor-pearl-left {
+      position: absolute;
+      left: max(12px, 3vw);
+      top: 14vh;
+      width: 44px;
+      height: auto;
+      opacity: 0.82;
+      filter: drop-shadow(0 6px 16px rgba(255, 248, 238, 0.45));
+      animation: pearlFloat 14s ease-in-out infinite alternate;
+    }
+    .decor-sprig-left {
+      position: absolute;
+      left: max(-8px, -1vw);
+      top: 22vh;
+      width: 200px;
+      height: auto;
+      opacity: 0.76;
+      transform: rotate(-6deg);
+      filter: drop-shadow(4px 12px 22px rgba(72, 62, 56, 0.1));
+      animation: pearlFloat 22s ease-in-out infinite alternate-reverse;
+    }
+    .decor-petal-left {
+      position: absolute;
+      left: max(8px, 2.5vw);
+      top: 58vh;
+      width: 96px;
+      height: auto;
+      opacity: 0.78;
+      transform: rotate(-14deg);
+      filter: drop-shadow(2px 8px 18px rgba(62, 52, 46, 0.09));
+      animation: pearlFloat 18s ease-in-out infinite alternate;
+    }
+    .decor-flower-left-small {
+      position: absolute;
+      left: max(16px, 4vw);
+      bottom: 22vh;
+      width: 52px;
+      height: auto;
+      opacity: 0.84;
+      filter: drop-shadow(0 6px 14px rgba(74, 58, 52, 0.1));
+      animation: pearlFloat 16s ease-in-out infinite alternate-reverse;
+    }
+    .decor-crystal-right {
+      position: absolute;
+      right: max(18px, 5vw);
+      top: 16vh;
+      width: 44px;
+      height: auto;
+      opacity: 0.85;
+      filter: drop-shadow(-2px 8px 18px rgba(120, 140, 145, 0.16));
+      animation: pearlFloat 15s ease-in-out infinite alternate;
+    }
+    .decor-petal-right-large {
+      position: absolute;
+      right: max(24px, 5vw);
+      top: 42vh;
+      width: 148px;
+      height: auto;
+      opacity: 0.82;
+      transform: rotate(10deg);
+      filter: drop-shadow(-4px 12px 22px rgba(62, 52, 46, 0.1));
+      animation: pearlFloat 20s ease-in-out infinite alternate-reverse;
+    }
+    .decor-flower-right-open {
+      position: absolute;
+      right: max(52px, 11vw);
+      top: 13vh;
+      width: 48px;
+      height: auto;
+      opacity: 0.72;
+      filter: drop-shadow(0 8px 18px rgba(74, 58, 52, 0.1));
+      animation: pearlFloat 17s ease-in-out infinite alternate;
+    }
+    .decor-sprig-right-bottom {
+      position: absolute;
+      right: max(10px, 2vw);
+      bottom: max(100px, 14vh);
+      width: 140px;
+      height: auto;
+      opacity: 0.72;
+      filter: drop-shadow(-2px 8px 18px rgba(58, 50, 46, 0.1));
+      animation: pearlFloat 24s ease-in-out infinite alternate;
+    }
+    .decor-petal-under-quote {
+      position: absolute;
+      left: max(8px, 3vw);
+      top: 72vh;
+      width: 56px;
+      opacity: 0.68;
+      transform: rotate(12deg);
+      pointer-events: none;
+      user-select: none;
+    }
+    .decor-petal-near-mood {
+      position: absolute;
+      right: max(12px, 4vw);
+      top: 68vh;
+      width: 48px;
+      opacity: 0.62;
+      transform: rotate(-20deg);
+      pointer-events: none;
+      user-select: none;
+    }
+    body.dark-theme .decor-pearl-left { opacity: 0.62; }
+    body.dark-theme .decor-sprig-left { opacity: 0.56; }
+    body.dark-theme .decor-petal-left { opacity: 0.58; }
+    body.dark-theme .decor-flower-left-small { opacity: 0.62; }
+    body.dark-theme .decor-crystal-right { opacity: 0.58; }
+    body.dark-theme .decor-petal-right-large { opacity: 0.6; }
+    body.dark-theme .decor-flower-right-open { opacity: 0.56; }
+    body.dark-theme .decor-sprig-right-bottom { opacity: 0.52; }
+    body.dark-theme .decor-petal-under-quote,
+    body.dark-theme .decor-petal-near-mood { opacity: 0.48; }
+
+    .decor-particle {
+      position: absolute;
+      width: 14px;
+      height: auto;
+      opacity: 0.38;
+      pointer-events: none;
+      user-select: none;
+    }
+    .decor-particle--title-left {
+      left: -4px;
+      top: 96px;
+      transform: rotate(-12deg);
+    }
+    .hero-section .decor-particle--quote {
+      right: min(8%, 48px);
+      top: 38%;
+      width: 15px;
+      opacity: 0.3;
+      transform: rotate(8deg);
+      z-index: 11;
     }
     body.modal-open { overflow: hidden; }
     button, input, textarea, select { font: inherit; color: inherit; }
@@ -347,7 +341,7 @@
       margin-left: max(16px, calc(50% - min(380px, 50vw - 20px)));
       margin-right: auto;
       padding: clamp(28px, 5vw, 48px) clamp(20px, 4vw, 28px) clamp(140px, 22vh, 168px) clamp(24px, 5vw, 40px);
-      color: #6A5B56;
+      color: #4a403c;
     }
     body.dark-theme main.app {
       color: var(--text);
@@ -368,60 +362,56 @@
       position: relative;
       z-index: 10;
       margin-top: 0;
-      margin-bottom: 8px;
-      padding-right: min(6vw, 52px);
-      min-height: min(52vw, 340px);
+      margin-bottom: 0;
+      padding-right: min(5vw, 44px);
+      padding-bottom: clamp(48px, 12vw, 100px);
+      min-height: 0;
       overflow: visible;
     }
     .hero-section__content {
       position: relative;
-      z-index: 4;
+      z-index: 12;
       max-width: 620px;
     }
     .hero-flower-overlay {
       position: absolute;
-      right: 7%;
-      top: 11%;
-      width: 124px;
-      height: 124px;
+      right: 8%;
+      bottom: 12%;
+      width: 108px;
+      height: 108px;
       z-index: 5;
       pointer-events: none;
-      opacity: 0.74;
+      opacity: 0.42;
       background-image: url("./images/flower-overlay.png");
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
-      filter: drop-shadow(12px 28px 48px rgba(120, 142, 138, 0.22));
-      -webkit-mask-image: radial-gradient(circle at 72% 24%, #000 0%, #000 42%, transparent 74%);
-      mask-image: radial-gradient(circle at 72% 24%, #000 0%, #000 42%, transparent 74%);
+      filter: drop-shadow(8px 18px 36px rgba(120, 142, 138, 0.18));
     }
     body.dark-theme .hero-flower-overlay {
-      opacity: 0.44;
-      filter: drop-shadow(8px 22px 40px rgba(0, 0, 0, 0.35));
-      -webkit-mask-image: radial-gradient(circle at 70% 22%, #000 0%, #000 38%, transparent 78%);
-      mask-image: radial-gradient(circle at 70% 22%, #000 0%, #000 38%, transparent 78%);
+      opacity: 0.32;
+      filter: drop-shadow(6px 14px 28px rgba(0, 0, 0, 0.28));
     }
     .hero-flower {
       position: absolute;
-      right: -2%;
-      top: 52%;
-      width: min(34vw, 460px);
-      aspect-ratio: 1;
-      z-index: 14;
+      right: max(-100px, -12vw);
+      bottom: clamp(-100px, -14vw, -40px);
+      width: min(320px, 42vw);
+      height: auto;
+      z-index: 6;
       pointer-events: none;
-      opacity: 0.92;
-      background-image: url("./images/flower-hero.png");
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      filter: drop-shadow(0 45px 120px rgba(180, 220, 220, 0.28));
+      user-select: none;
+      opacity: 0.88;
+      display: block;
+      filter: drop-shadow(0 28px 72px rgba(110, 150, 145, 0.22));
       animation: heroBreath 14s ease-in-out infinite alternate;
     }
     body.dark-theme .hero-flower {
-      opacity: 0.58;
-      filter: drop-shadow(0 36px 90px rgba(30, 42, 44, 0.35));
+      opacity: 0.62;
+      filter: drop-shadow(0 26px 68px rgba(30, 46, 44, 0.38));
     }
     .editorial-head.hero {
+      position: relative;
       padding-top: 56px;
       padding-bottom: 36px;
       margin-bottom: 0;
@@ -476,12 +466,12 @@
     }
     .subtitle.hero-subtitle {
       margin: 0;
-      margin-bottom: 40px;
+      margin-bottom: 32px;
       max-width: min(34rem, 620px);
       font-family: "Manrope", sans-serif;
       font-size: 15px;
       line-height: 1.68;
-      color: #6A5B56;
+      color: #534840;
       font-weight: 400;
     }
     body.dark-theme .subtitle.hero-subtitle {
@@ -492,18 +482,20 @@
       display: inline-flex;
       align-items: center;
       gap: 18px;
-      padding: 16px 24px;
-      margin-top: 22px;
-      margin-bottom: 18px;
+      padding: 10px 24px 10px 16px;
+      margin-top: 18px;
+      margin-bottom: 14px;
       max-width: min(100%, 620px);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.76);
       backdrop-filter: blur(22px);
       -webkit-backdrop-filter: blur(22px);
       border: 1px solid rgba(255, 255, 255, 0.85);
-      box-shadow: 0 16px 48px rgba(185, 74, 72, 0.1);
+      box-shadow:
+        0 18px 50px rgba(185, 74, 72, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
     .daily-pulse::before {
       content: "";
@@ -512,6 +504,7 @@
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), transparent);
       pointer-events: none;
       border-radius: inherit;
+      z-index: 0;
     }
     body.dark-theme .daily-pulse {
       background: rgba(42, 37, 34, 0.78);
@@ -523,37 +516,47 @@
     body.dark-theme .daily-pulse::before {
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent);
     }
-    .daily-pulse__heart {
-      width: 42px;
-      height: 42px;
+    .daily-pulse img,
+    .daily-pulse .daily-pulse__heart,
+    .daily-pulse .heart-icon {
+      width: 64px !important;
+      height: 64px !important;
+      min-width: 64px !important;
       flex-shrink: 0;
       object-fit: contain;
-      opacity: 1;
+      opacity: 1 !important;
       transform-origin: center center;
       animation: pulseHeart 3s ease-in-out infinite;
       position: relative;
       z-index: 1;
       filter:
-        brightness(0) saturate(100%) invert(35%) sepia(42%) saturate(1800%) hue-rotate(328deg) brightness(0.94) contrast(96%)
-        drop-shadow(0 0 24px rgba(185, 74, 72, 0.28));
+        brightness(0) saturate(100%) invert(26%) sepia(52%) saturate(2400%) hue-rotate(325deg) brightness(0.88) contrast(1.14)
+        saturate(1.35) contrast(1.12)
+        drop-shadow(0 0 18px rgba(185, 74, 72, 0.45))
+        drop-shadow(0 10px 28px rgba(185, 74, 72, 0.22));
     }
-    body.dark-theme .daily-pulse__heart {
+    body.dark-theme .daily-pulse img,
+    body.dark-theme .daily-pulse .daily-pulse__heart {
       filter:
-        brightness(0) saturate(100%) invert(42%) sepia(35%) saturate(900%) hue-rotate(322deg) brightness(1.05) contrast(94%)
-        drop-shadow(0 0 22px rgba(185, 74, 72, 0.26));
+        brightness(0) saturate(100%) invert(30%) sepia(48%) saturate(2000%) hue-rotate(322deg) brightness(0.95) contrast(1.1)
+        saturate(1.3) contrast(1.1)
+        drop-shadow(0 0 20px rgba(185, 74, 72, 0.42))
+        drop-shadow(0 10px 26px rgba(185, 74, 72, 0.2));
     }
-    .daily-pulse__text {
+    .daily-pulse__text,
+    .daily-pulse-text {
       margin: 0;
       font-family: "Manrope", sans-serif;
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 500;
-      line-height: 1.45;
+      line-height: 1.35;
       letter-spacing: 0.01em;
-      color: #6A5B56;
+      color: #534840;
       position: relative;
       z-index: 1;
     }
-    body.dark-theme .daily-pulse__text {
+    body.dark-theme .daily-pulse__text,
+    body.dark-theme .daily-pulse-text {
       color: #d8cfc8;
     }
 
@@ -563,17 +566,17 @@
     .surface {
       position: relative;
       z-index: 6;
-      padding: clamp(26px, 5vw, 36px);
-      margin-top: 36px;
-      margin-bottom: 36px;
+      padding: clamp(22px, 4.5vw, 30px);
+      margin-top: 28px;
+      margin-bottom: 28px;
       border-radius: 34px;
-      border: 1px solid rgba(255, 255, 255, 0.82);
-      background: rgba(255, 255, 255, 0.68);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.61);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
       box-shadow:
-        0 24px 80px rgba(210, 210, 210, 0.16),
-        inset 0 1px 0 rgba(255, 255, 255, 0.82);
+        0 18px 56px rgba(186, 176, 160, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
       overflow: hidden;
       opacity: 0;
       transform: translateY(22px);
@@ -587,11 +590,11 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.14);
     }
     .surface--quiet {
-      background: rgba(255, 255, 255, 0.56);
-      border-color: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.58);
+      border-color: rgba(255, 255, 255, 0.65);
       box-shadow:
-        0 18px 56px rgba(210, 208, 204, 0.14),
-        inset 0 1px 0 rgba(255, 255, 255, 0.72);
+        0 16px 48px rgba(188, 178, 165, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.78);
     }
     body.dark-theme .surface--quiet {
       background: rgba(40, 36, 33, 0.62);
@@ -606,9 +609,9 @@
       inset: 0;
       border-radius: inherit;
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.22), transparent),
-        radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.45), transparent 48%);
-      opacity: 0.65;
+        linear-gradient(180deg, rgba(255, 255, 255, 0.16), transparent),
+        radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.32), transparent 48%);
+      opacity: 0.52;
       animation: cardFloatLight 14s ease-in-out infinite alternate;
       pointer-events: none;
       z-index: 0;
@@ -619,7 +622,7 @@
         radial-gradient(circle at 22% 14%, rgba(217, 194, 158, 0.09), transparent 52%);
       opacity: 0.55;
     }
-    .surface > * { position: relative; z-index: 1; }
+    .surface > *:not(.card-decor) { position: relative; z-index: 1; }
     .hero-section .surface--hero {
       animation-delay: 0.06s;
     }
@@ -639,18 +642,18 @@
       transform-origin: 0 50%;
       position: relative;
       isolation: isolate;
-      overflow: visible;
+      overflow: hidden;
       border-radius: 34px;
-      padding: clamp(32px, 6vw, 44px) clamp(28px, 5vw, 38px);
-      padding-bottom: clamp(36px, 6vw, 48px);
-      padding-right: clamp(40px, 11vw, 72px);
+      padding: clamp(18px, 4vw, 26px) clamp(22px, 4vw, 32px);
+      padding-bottom: clamp(22px, 4.5vw, 32px);
+      padding-right: clamp(88px, 18vw, 120px);
       max-width: 620px;
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      border: 1px solid rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.62);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1px solid rgba(255, 255, 255, 0.72);
       box-shadow:
-        0 26px 88px rgba(206, 198, 188, 0.22),
+        0 20px 64px rgba(188, 178, 165, 0.14),
         inset 0 1px 0 rgba(255, 255, 255, 0.88);
     }
     body.dark-theme .surface.surface--hero.phrase-card {
@@ -662,10 +665,10 @@
     }
     .surface.surface--hero.phrase-card::before {
       inset: 0;
-      opacity: 0.62;
+      opacity: 0.48;
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.26), transparent),
-        radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.72), transparent 48%);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent),
+        radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.38), transparent 46%);
     }
     body.dark-theme .surface.surface--hero.phrase-card::before {
       background:
@@ -700,7 +703,7 @@
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: #B08A58;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
     body.dark-theme .phrase-label {
       color: var(--gold-soft);
@@ -708,21 +711,121 @@
     .phrase {
       margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(24px, 5vw, 34px);
+      font-size: clamp(22px, 4.6vw, 30px);
       font-weight: 500;
-      line-height: 1.24;
+      line-height: 1.28;
       letter-spacing: -0.03em;
-      color: #3A302D;
+      color: #2e2623;
       max-width: 26rem;
     }
     body.dark-theme .phrase {
       color: color-mix(in srgb, var(--text) 92%, var(--gold) 8%);
     }
-    .phrase-line {
-      margin-top: 18px;
-      width: min(160px, 48%);
-      height: 1px;
-      background: linear-gradient(90deg, rgba(185, 154, 104, 0.55), transparent);
+    .card-decor {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+      z-index: 2;
+    }
+    .surface.surface--hero.phrase-card .phrase-label,
+    .surface.surface--hero.phrase-card .phrase {
+      position: relative;
+      z-index: 3;
+    }
+    .surface.surface--hero.phrase-card .card-decor.flower-small {
+      width: 54px;
+      height: auto;
+      right: 28px;
+      top: 24px;
+      opacity: 0.84;
+      filter: drop-shadow(0 8px 18px rgba(74, 58, 52, 0.1));
+    }
+    .surface.surface--hero.phrase-card .card-decor.gold-line {
+      position: relative;
+      width: min(280px, 88%);
+      height: auto;
+      margin: 14px 0 0 0;
+      opacity: 0.82;
+      z-index: 3;
+      display: block;
+    }
+    .surface.surface--quiet > .card-decor.sprig {
+      width: 78px;
+      height: auto;
+      right: 16px;
+      bottom: 18px;
+      opacity: 0.45;
+      z-index: 0;
+    }
+    body.dark-theme .surface.surface--quiet > .card-decor.sprig {
+      opacity: 0.36;
+    }
+    .section-title-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: clamp(16px, 3vw, 22px);
+      flex-wrap: wrap;
+    }
+    .section-title-row .section-title {
+      margin-bottom: 0;
+    }
+    .card-decor.gratitude-flower {
+      position: relative;
+      width: 32px;
+      height: auto;
+      flex-shrink: 0;
+      opacity: 0.82;
+      filter: drop-shadow(0 4px 12px rgba(74, 58, 52, 0.12));
+      z-index: 1;
+    }
+    body.dark-theme .card-decor.gratitude-flower {
+      opacity: 0.68;
+    }
+
+    .card-decor.victory-pearl {
+      position: absolute;
+      right: 22px;
+      top: 22px;
+      width: 22px;
+      height: auto;
+      opacity: 0.72;
+      z-index: 2;
+    }
+    body.dark-theme .card-decor.victory-pearl {
+      opacity: 0.52;
+    }
+
+    .task-card {
+      position: relative;
+    }
+    .task-card .task-row-petal {
+      position: absolute;
+      right: 4px;
+      bottom: 8px;
+      width: 30px;
+      height: auto;
+      opacity: 0.48;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+    }
+
+    .surface--history-accent {
+      position: relative;
+    }
+    .card-decor.history-leaf {
+      position: absolute;
+      right: 16px;
+      top: 20px;
+      width: 72px;
+      height: auto;
+      opacity: 0.42;
+      z-index: 0;
+      pointer-events: none;
+    }
+    body.dark-theme .card-decor.history-leaf {
+      opacity: 0.32;
     }
 
     .section-title {
@@ -731,7 +834,7 @@
       font-weight: 500;
       font-size: clamp(21px, 3.6vw, 27px);
       letter-spacing: -0.02em;
-      color: #3A302D;
+      color: #2c2421;
     }
     body.dark-theme .section-title {
       color: var(--text);
@@ -742,50 +845,74 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: clamp(12px, 2.5vw, 18px);
     }
-    .mood-btn {
+    .mood-btn,
+    .mood-button {
       position: relative;
+      overflow: hidden;
       text-align: left;
-      padding: 18px 16px 20px;
+      padding: 16px 14px 18px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.58);
       cursor: pointer;
-      transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.45s ease, background 0.45s ease;
+      transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.45s ease, background 0.45s ease, border-color 0.35s ease;
       box-shadow:
-        inset 0 2px 8px rgba(255, 255, 255, 0.5),
-        inset 0 -14px 32px rgba(222, 210, 198, 0.15),
-        0 8px 28px rgba(222, 210, 198, 0.12);
-      background: rgba(255, 252, 248, 0.38);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+        0 10px 28px rgba(180, 165, 145, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.52);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
-    body.dark-theme .mood-btn {
-      background: rgba(46, 41, 37, 0.58);
-      border-color: rgba(255, 255, 255, 0.14);
+    .mood-btn svg,
+    .mood-btn .mood-text {
+      position: relative;
+      z-index: 1;
+    }
+    body.dark-theme .mood-btn,
+    body.dark-theme .mood-button {
+      background: rgba(46, 41, 37, 0.62);
+      border-color: rgba(255, 255, 255, 0.18);
       box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        0 14px 32px rgba(0, 0, 0, 0.28);
+        inset 0 1px 0 rgba(255, 255, 255, 0.09),
+        0 14px 34px rgba(0, 0, 0, 0.32);
     }
     .mood-btn:hover {
       transform: translateY(-2px);
     }
     .mood-btn.active {
       transform: translateY(-2px);
-      background: rgba(255, 248, 240, 0.75);
-      border-color: rgba(255, 255, 255, 0.55);
+      background: rgba(255, 252, 248, 0.72);
+      border-color: rgba(185, 74, 72, 0.32);
       box-shadow:
-        0 8px 30px rgba(185, 154, 104, 0.18),
-        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+        0 12px 32px rgba(185, 74, 72, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.65),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
     }
     body.dark-theme .mood-btn.active {
-      background: rgba(58, 50, 44, 0.82);
-      box-shadow: 0 8px 28px rgba(217, 194, 158, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      background: rgba(54, 48, 44, 0.82);
+      border-color: rgba(217, 194, 158, 0.35);
+      box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
     }
-    .mood-icon { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.65; margin-bottom: 8px; }
+    .mood-icon {
+      width: 22px;
+      height: 22px;
+      color: #a88652;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.35;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      margin-bottom: 8px;
+    }
+    body.dark-theme .mood-icon {
+      color: var(--gold);
+    }
     .mood-text {
       font-family: "Manrope", sans-serif;
       font-size: 12px;
       letter-spacing: 0.02em;
-      color: #6A5B56;
+      color: #4a403c;
       font-weight: 500;
     }
     body.dark-theme .mood-text {
@@ -847,8 +974,8 @@
       margin-top: 4px;
       padding: 14px 18px;
       border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.32);
-      background: rgba(255, 255, 255, 0.24);
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      background: rgba(255, 255, 255, 0.46);
       box-shadow:
         inset 0 2px 14px rgba(255, 255, 255, 0.35),
         inset 0 -6px 20px rgba(222, 210, 198, 0.08);
@@ -866,7 +993,7 @@
     body:not(.dark-theme) textarea,
     body:not(.dark-theme) input[type="text"],
     body:not(.dark-theme) input[type="time"] {
-      color: #6A5B56;
+      color: #3d3532;
     }
     textarea { min-height: 112px; }
     textarea::placeholder, input::placeholder { color: var(--muted); opacity: 0.85; }
@@ -875,7 +1002,7 @@
       padding-bottom: 4px;
     }
 
-    .task-row { display: flex; gap: 12px; align-items: stretch; margin-bottom: 12px; flex-wrap: wrap; }
+    .task-row { position: relative; display: flex; gap: 12px; align-items: stretch; margin-bottom: 12px; flex-wrap: wrap; }
     .task-row .field-sheet { flex: 1; min-width: 180px; padding: 12px 14px; }
     .task-meta-row { width: 100%; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
     .task-date-label {
@@ -1546,25 +1673,49 @@
       .editorial-head.hero { grid-template-columns: 1fr 0.35fr; align-items: end; }
       .subtitle.hero-subtitle { grid-column: 1 / -1; }
     }
+    .decor-save-petal {
+      display: block;
+      width: 18px;
+      height: auto;
+      margin: 12px auto 0;
+      opacity: 0.32;
+      pointer-events: none;
+      user-select: none;
+    }
+
     @media (max-width: 580px) {
       .hero-flower {
-        width: min(48vw, 280px);
-        top: 50%;
-        opacity: 0.84;
+        right: -88px;
+        bottom: -72px;
+        width: 260px;
+        opacity: 0.78;
       }
       .hero-flower-overlay {
-        width: 92px;
-        height: 92px;
-        right: 4%;
-        top: 9%;
-        opacity: 0.64;
+        width: 84px;
+        height: 84px;
+        right: 6%;
+        bottom: 10%;
+        opacity: 0.38;
       }
       body.dark-theme .hero-flower-overlay {
-        opacity: 0.38;
+        opacity: 0.28;
       }
       .hero-section {
         padding-right: 0;
-        min-height: 0;
+        padding-bottom: clamp(36px, 14vw, 72px);
+      }
+      .decor-sprig-left {
+        width: 180px;
+        left: -36px;
+        opacity: 0.72;
+      }
+      .decor-sprig-right-bottom {
+        width: 190px;
+        opacity: 0.74;
+      }
+      .decor-petal-right-large {
+        width: 130px;
+        opacity: 0.85;
       }
       .mood-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .habit-row { grid-template-columns: 1fr; }
@@ -1582,29 +1733,32 @@
   </style>
 </head>
 <body>
+  <div class="decor-haze-layer" aria-hidden="true"></div>
   <div class="flowing-veins-layer" aria-hidden="true"></div>
   <div class="pearl-overlay-layer" aria-hidden="true"></div>
-  <div class="flower-left" aria-hidden="true"></div>
-  <div class="flower-right" aria-hidden="true"></div>
-  <div class="bottom-flower-layer" aria-hidden="true"></div>
   <div class="decor-light-reflection" aria-hidden="true"></div>
-  <div class="decor-pearl" aria-hidden="true"></div>
-  <div class="decor-petal-right" aria-hidden="true"></div>
-  <div class="decor-petal-left" aria-hidden="true"></div>
-  <div class="decor-crystal" aria-hidden="true"></div>
-  <div class="decor-sprig-long" aria-hidden="true"></div>
-  <div class="decor-petal-curved" aria-hidden="true"></div>
-  <div class="decor-flower-small" aria-hidden="true"></div>
-  <div class="decor-flower-open-accent" aria-hidden="true"></div>
+  <div class="decor-layer" aria-hidden="true">
+    <img class="decor-pearl-left" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" />
+    <img class="decor-sprig-left" src="./images/decor-sprig-long-01.png" alt="" decoding="async" loading="lazy" />
+    <img class="decor-petal-left" src="./images/decor-petal-curved-01.png" alt="" decoding="async" loading="lazy" />
+    <img class="decor-flower-left-small" src="./images/decor-flower-small-01.png" alt="" decoding="async" loading="lazy" />
+    <img class="decor-crystal-right" src="./images/decor-crystal-drop-01.png" alt="" decoding="async" loading="lazy" />
+    <img class="decor-petal-right-large" src="./images/decor-petal-large-01.png" alt="" decoding="async" loading="lazy" />
+    <img class="decor-flower-right-open" src="./images/decor-flower-open-01.png" alt="" decoding="async" loading="lazy" />
+    <img class="decor-sprig-right-bottom" src="./images/decor-sprig-small-01.png" alt="" decoding="async" loading="lazy" />
+    <img class="decor-petal-under-quote" src="./images/decor-petal-small-01.png" alt="" decoding="async" loading="lazy" />
+    <img class="decor-petal-near-mood" src="./images/decor-petal-small-01.png" alt="" decoding="async" loading="lazy" />
+  </div>
 
   <main class="app">
     <header class="editorial-head hero">
+      <img class="decor-particle decor-particle--title-left" src="./images/decor-petal-tiny-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
       <div>
         <div class="header-label">Личный дневник чувств</div>
         <h1 class="hero-title">Делай любя,<br />люби себя</h1>
         <div class="daily-pulse">
-          <img src="./images/icon-heart.png" alt="" class="daily-pulse__heart" width="42" height="42" decoding="async" />
-          <p id="emotionalPulseText" class="daily-pulse__text" aria-live="polite"></p>
+          <img src="./images/icon-heart.png" alt="" class="daily-pulse__heart" width="64" height="64" decoding="async" />
+          <p id="emotionalPulseText" class="daily-pulse__text daily-pulse-text" aria-live="polite"></p>
         </div>
       </div>
       <p class="subtitle hero-subtitle">Тихое пространство, где можно заметить себя: чувства, желания, благодарность и маленькие победы — без спешки и оценки.</p>
@@ -1614,13 +1768,15 @@
       <div class="hero-section">
         <div class="hero-section__content">
           <article class="surface surface--hero phrase-card">
+            <img class="card-decor flower-small" src="./images/decor-flower-small-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
             <div class="phrase-label">Фраза дня</div>
             <p id="dailyPhrase" class="phrase"></p>
-            <div class="phrase-line"></div>
+            <img class="card-decor gold-line" src="./images/decor-gold-line-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
           </article>
         </div>
+        <img class="decor-particle decor-particle--quote" src="./images/decor-petal-tiny-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
         <div class="hero-flower-overlay" aria-hidden="true"></div>
-        <div class="hero-flower" aria-hidden="true"></div>
+        <img class="hero-flower" src="./images/flower-hero.png" alt="" width="430" height="430" decoding="async" aria-hidden="true" />
       </div>
 
       <article class="surface surface--shift surface--quiet">
@@ -1629,6 +1785,7 @@
       </article>
 
       <article class="surface surface--quiet">
+        <img class="card-decor sprig" src="./images/decor-sprig-small-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
         <h2 class="section-title">Что сейчас у тебя внутри?</h2>
         <div class="field-sheet">
           <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4c4.2 0 7.6 3.2 7.6 7.2S16.2 19 12 19s-7.6-3.8-7.6-7.8S7.8 4 12 4Z"/><path d="M9.5 10.8c.7-.8 1.5-1.2 2.5-1.2s1.8.4 2.5 1.2"/></svg>
@@ -1639,7 +1796,7 @@
         </div>
       </article>
 
-      <article class="surface surface--shift surface--quiet">
+      <article class="surface surface--shift surface--quiet task-card">
         <h2 class="section-title">Что хочется сделать?</h2>
         <div class="task-meta-row">
           <span class="task-date-label">Дата дела</span>
@@ -1654,13 +1811,17 @@
             </div>
           </div>
           <button id="addTaskButton" class="mini-btn" type="button" aria-label="Добавить дело">+</button>
+          <img class="task-row-petal" src="./images/decor-petal-tiny-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
         </div>
         <p class="subtitle" style="margin-top:4px;font-size:12px;">Сегодняшний список ниже. Другую дату можно выбрать здесь или во вкладке «Календарь».</p>
         <ul class="tasks" id="tasksList"></ul>
       </article>
 
       <article class="surface surface--quiet">
-        <h2 class="section-title">За что сегодня благодарна?</h2>
+        <div class="section-title-row gratitude-title-row">
+          <img class="card-decor gratitude-flower" src="./images/decor-flower-small-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+          <h2 class="section-title">За что сегодня благодарна?</h2>
+        </div>
         <div class="field-sheet">
           <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-6.7-3.8-8.4-7.4C2.2 9.5 4 6.8 7 6.8c2 0 3 1.1 5 3 2-1.9 3-3 5-3 3 0 4.8 2.7 3.4 5.8C18.7 16.2 12 20 12 20Z"/></svg>
           <div>
@@ -1671,6 +1832,7 @@
       </article>
 
       <article class="surface surface--shift surface--quiet">
+        <img class="card-decor victory-pearl" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
         <h2 class="section-title">Моя маленькая победа дня</h2>
         <div class="field-sheet">
           <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.2 4.4L19 8l-3.6 3.3.8 4.7L12 13.8 7.8 16l.8-4.7L5 8l4.8-.6L12 3Z"/></svg>
@@ -1682,10 +1844,15 @@
       </article>
 
       <button id="saveTodayButton" class="primary-btn save-button" type="button"><span class="primary-btn__label">Сохранить день</span></button>
+      <img class="decor-save-petal" src="./images/decor-petal-tiny-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+      <div class="today-page-bottom-floral" aria-hidden="true">
+        <img src="./images/flower-bottom.png" alt="" decoding="async" loading="lazy" />
+      </div>
     </section>
 
     <section id="historyPage" class="page" aria-labelledby="historyTitle">
-      <article class="surface surface--quiet">
+      <article class="surface surface--quiet surface--history-accent">
+        <img class="card-decor history-leaf" src="./images/decor-leaf-branch-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
         <h2 id="historyTitle" class="section-title">История записей</h2>
         <div id="historyList"></div>
       </article>
@@ -1826,17 +1993,23 @@
       ];
 
       const moodIcons = {
-        sun: '<svg class="mood-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1l2.1-2.1M17 7l2.1-2.1"/></svg>',
-        branch: '<svg class="mood-icon" viewBox="0 0 24 24"><path d="M5 18c6-2 8-5 10-12"/><path d="M11 10c3 .2 4.4 1.3 6 3"/><path d="M7 14c2 .1 3 .7 4.2 2"/></svg>',
-        moon: '<svg class="mood-icon" viewBox="0 0 24 24"><path d="M18 15.8A8 8 0 1 1 8.2 6 6.5 6.5 0 0 0 18 15.8Z"/></svg>',
-        cloud: '<svg class="mood-icon" viewBox="0 0 24 24"><path d="M7 18h9a4 4 0 0 0 .7-7.9A5.5 5.5 0 0 0 6.2 9.4 3.8 3.8 0 0 0 7 18Z"/></svg>',
-        leaf: '<svg class="mood-icon" viewBox="0 0 24 24"><path d="M5 16c0-7 6-11 14-11 0 8-4 14-11 14-1.7 0-3-1.3-3-3Z"/><path d="M8 16c2-2.5 5-4.4 9-5.7"/></svg>',
-        star: '<svg class="mood-icon" viewBox="0 0 24 24"><path d="m12 3 2.5 5.2L20 9l-4 3.8.9 5.5L12 15.6 7.1 18.3 8 12.8 4 9l5.5-.8L12 3Z"/></svg>'
+        sun:
+          '<svg class="mood-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.25" fill="none" stroke="currentColor"/><path fill="none" stroke="currentColor" stroke-linecap="round" d="M12 4v2M12 18v2M4 12h2M18 12h2M6.35 6.35l1.4 1.4M16.25 16.25l1.4 1.4M6.35 17.65l1.4-1.4M16.25 7.75l1.4-1.4"/></svg>',
+        sparkle:
+          '<svg class="mood-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" d="M12 5v2.5M12 16.5V19M5.5 12H8M16 12h2.5"/><path fill="none" stroke="currentColor" stroke-linecap="round" d="M7.8 7.8l1.6 1.6M14.6 14.6l1.6 1.6M7.8 16.2l1.6-1.6M14.6 9.4l1.6-1.6"/><circle cx="12" cy="12" r="1.5" fill="none" stroke="currentColor"/></svg>',
+        moon:
+          '<svg class="mood-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" d="M18.5 15.2A7.5 7.5 0 0 1 8.8 5.5a6 6 0 1 0 9.7 9.7Z"/></svg>',
+        cloud:
+          '<svg class="mood-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" d="M8 17h8.5a3.5 3.5 0 0 0 .6-7 5 5 0 0 0-9.7-1.2A3.3 3.3 0 0 0 8 17Z"/></svg>',
+        leaf:
+          '<svg class="mood-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" d="M6 17c0-6 5.5-10 12-10 0 7-4.5 11-11 11a2.8 2.8 0 0 1-1-1"/><path fill="none" stroke="currentColor" d="M8 16c2.5-2 6-3.5 10-4"/></svg>',
+        star:
+          '<svg class="mood-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" d="M12 4l1.8 4.8L19 10l-4 3 .9 5.2L12 15.8 8.1 18.2 9 13 5 10l5.2-1.2L12 4z"/></svg>'
       };
 
       const moods = [
         { id: "joy", icon: moodIcons.sun, text: "Радость" },
-        { id: "calm", icon: moodIcons.branch, text: "Спокойствие" },
+        { id: "calm", icon: moodIcons.sparkle, text: "Спокойствие" },
         { id: "tired", icon: moodIcons.moon, text: "Усталость" },
         { id: "sad", icon: moodIcons.cloud, text: "Грусть" },
         { id: "anxiety", icon: moodIcons.leaf, text: "Тревога" },
