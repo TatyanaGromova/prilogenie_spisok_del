@@ -1,0 +1,36 @@
+name: Validate
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  html-sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure main HTML exists
+        run: test -f "loving_diary_app_improved.html"
+
+      - name: Basic structural checks
+        run: |
+          grep -q "<!DOCTYPE html>" loving_diary_app_improved.html
+          grep -q "<html" loving_diary_app_improved.html
+          grep -q "<head>" loving_diary_app_improved.html
+          grep -q "<body>" loving_diary_app_improved.html
+          grep -q "</html>" loving_diary_app_improved.html
+
+      - name: Validate required app functions
+        run: |
+          grep -q "function loadHabits(" loving_diary_app_improved.html
+          grep -q "function saveHabits(" loving_diary_app_improved.html
+          grep -q "function renderHabits(" loving_diary_app_improved.html
+          grep -q "function addHabit(" loving_diary_app_improved.html
+          grep -q "function deleteHabit(" loving_diary_app_improved.html
+          grep -q "function toggleHabit(" loving_diary_app_improved.html
+          grep -q "function getTodayWeekday(" loving_diary_app_improved.html
+          grep -q "function applyHabitsForToday(" loving_diary_app_improved.html
+          grep -q "function buildHabitTaskTitle(" loving_diary_app_improved.html
