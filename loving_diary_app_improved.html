@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fff8ef" />
+
+  <title>Делай любя, люби себя</title>
+
+  <style>
+    :root {
+      --milk: #fff8ef;
+      --cream: #fffdf8;
+      --peach: #f3b89f;
+      --peach-light: #ffe3d4;
+      --rose: #e9a9aa;
+      --sage: #8fac8b;
+      --sage-dark: #5f7c5d;
+      --gold: #d8a85f;
+      --sand: #e7c89b;
+      --text: #3b3029;
+      --muted: #8b7465;
+      --white: #ffffff;
+      --line: #f0ddc9;
+      --card-bg: rgba(255, 253, 248, 0.88);
+      --input-bg: rgba(255, 255, 255, 0.78);
+      --task-bg: rgba(255, 255, 255, 0.66);
+      --nav-bg: rgba(255, 253, 248, 0.96);
+      --modal-overlay: rgba(47, 39, 35, 0.38);
+      --shadow: 0 18px 45px rgba(137, 94, 65, 0.14);
+      --shadow-soft: 0 10px 28px rgba(137, 94, 65, 0.10);
+      --radius: 26px;
+    }
+
+    body.dark-theme {
+      --milk: #201b18;
+      --cream: #2b2420;
+      --peach: #f0aa91;
+      --peach-light: #5b4036;
+      --rose: #d98f95;
+      --sage: #9eb99a;
+      --sage-dark: #b8d0b2;
+      --gold: #dfb96f;
+      --sand: #7a6247;
+      --text: #f7eee6;
+      --muted: #c7b4a6;
+      --white: #2f2723;
+      --line: rgba(255, 238, 220, 0.14);
+      --card-bg: rgba(48, 40, 35, 0.88);
+      --input-bg: rgba(34, 28, 25, 0.78);
+      --task-bg: rgba(255, 255, 255, 0.06);
+      --nav-bg: rgba(48, 40, 35, 0.96);
+      --modal-overlay: rgba(0, 0, 0, 0.55);
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+      --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Inter", "Arial", sans-serif;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(243, 184, 159, 0.42), transparent 32%),
+        radial-gradient(circle at 90% 18%, rgba(143, 172, 139, 0.34), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(216, 168, 95, 0.22), transparent 40%),
+        linear-gradient(180deg, var(--milk), var(--cream));
+      color: var(--text);
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    body.dark-theme {
+      background:
+        radial-gradient(circle at 12% 8%, rgba(240, 170, 145, 0.18), transparent 32%),
+        radial-gradient(circle at 90% 18%, rgba(158, 185, 154, 0.18), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(223, 185, 111, 0.13), transparent 40%),
+        linear-gradient(180deg, var(--milk), var(--cream));
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 520px;
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 24px 16px 112px;
+    }
+
+    .header {
+      margin-bottom: 22px;
+    }
+
+    .label {
+      font-size: 12px;
+      color: var(--sage-dark);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 8px 0 10px;
+      font-size: 33px;
+      line-height: 1.07;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      padding: 18px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(12px);
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .phrase-card {
+      display: grid;
+      grid-template-columns: 1fr 98px;
+      gap: 16px;
+      align-items: center;
+      background:
+        linear-gradient(135deg, rgba(255, 253, 248, 0.96), rgba(255, 232, 213, 0.9)),
+        radial-gradient(circle at top right, rgba(243, 184, 159, 0.4), transparent 45%);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.dark-theme .phrase-card {
+      background:
+        linear-gradient(135deg, rgba(55, 45, 39, 0.96), rgba(74, 54, 45, 0.92)),
+        radial-gradient(circle at top right, rgba(240, 170, 145, 0.18), transparent 45%);
+    }
+
+    .phrase-card::before {
+      content: "";
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      right: -54px;
+      bottom: -54px;
+      border-radius: 50%;
+      background: rgba(216, 168, 95, 0.18);
+    }
+
+    .phrase {
+      position: relative;
+      z-index: 2;
+      font-size: 20px;
+      line-height: 1.35;
+      margin: 10px 0 0;
+      font-weight: 600;
+    }
+
+    .soft-symbol {
+      position: relative;
+      z-index: 2;
+      width: 98px;
+      height: 122px;
+      border-radius: 36px;
+      background:
+        radial-gradient(circle at 70% 20%, rgba(243, 184, 159, 0.48), transparent 34%),
+        linear-gradient(160deg, #fffdf8, #f6dfcd);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        inset 0 0 26px rgba(216, 168, 95, 0.18),
+        0 12px 24px rgba(137, 94, 65, 0.11);
+      transition: background 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    body.dark-theme .soft-symbol {
+      background:
+        radial-gradient(circle at 70% 20%, rgba(240, 170, 145, 0.35), transparent 34%),
+        linear-gradient(160deg, #3a302b, #4c3b33);
+      box-shadow:
+        inset 0 0 26px rgba(223, 185, 111, 0.13),
+        0 12px 24px rgba(0, 0, 0, 0.22);
+    }
+
+    .soft-symbol svg {
+      width: 88px;
+      height: 104px;
+    }
+
+    body.dark-theme .soft-symbol svg path[stroke="#3B3029"] {
+      stroke: #f7eee6;
+    }
+
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .mood-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .mood-btn {
+      border: 1px solid var(--line);
+      background: var(--input-bg);
+      border-radius: 20px;
+      padding: 13px 8px;
+      font-size: 14px;
+      color: var(--text);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      box-shadow: 0 6px 14px rgba(137, 94, 65, 0.05);
+    }
+
+    .mood-btn span {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .mood-btn.active {
+      background: linear-gradient(160deg, #fff5e8, #edf3e9);
+      border-color: var(--sage);
+      box-shadow: 0 10px 24px rgba(111, 127, 102, 0.18);
+      transform: translateY(-2px);
+      color: #5f7c5d;
+      font-weight: 700;
+    }
+
+    body.dark-theme .mood-btn.active {
+      background: linear-gradient(160deg, rgba(240, 170, 145, 0.24), rgba(158, 185, 154, 0.2));
+      color: var(--sage-dark);
+    }
+
+    textarea,
+    input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: var(--input-bg);
+      border-radius: 20px;
+      padding: 15px;
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      resize: vertical;
+      box-shadow: inset 0 2px 8px rgba(137, 94, 65, 0.04);
+      transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.2s ease;
+    }
+
+    textarea::placeholder,
+    input::placeholder {
+      color: var(--muted);
+    }
+
+    textarea:focus,
+    input[type="text"]:focus,
+    button:focus-visible {
+      outline: none;
+      border-color: var(--peach);
+      box-shadow: 0 0 0 4px rgba(243, 184, 159, 0.22);
+    }
+
+    textarea {
+      min-height: 118px;
+    }
+
+    .task-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .task-row input {
+      flex: 1;
+    }
+
+    .small-btn,
+    .main-btn,
+    .secondary-btn {
+      border: none;
+      border-radius: 18px;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .small-btn {
+      min-width: 50px;
+      background: linear-gradient(135deg, var(--peach), var(--gold));
+      color: white;
+      font-size: 24px;
+      font-weight: 600;
+      box-shadow: 0 10px 20px rgba(216, 168, 95, 0.25);
+    }
+
+    .main-btn {
+      width: 100%;
+      margin-top: 8px;
+      padding: 17px;
+      background: linear-gradient(135deg, var(--sage-dark), var(--sage));
+      color: white;
+      font-size: 16px;
+      font-weight: 750;
+      box-shadow: 0 14px 28px rgba(111, 127, 102, 0.28);
+    }
+
+    .secondary-btn {
+      padding: 13px 16px;
+      background: var(--input-bg);
+      color: var(--text);
+      border: 1px solid var(--line);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    body.dark-theme .main-btn {
+      color: #1f1a17;
+    }
+
+    .main-btn:hover,
+    .small-btn:hover,
+    .secondary-btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    .tasks {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .tasks li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--task-bg);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 11px;
+      margin-bottom: 8px;
+    }
+
+    .tasks input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--sage-dark);
+      cursor: pointer;
+    }
+
+    .tasks .done {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+
+    .delete-task {
+      margin-left: auto;
+      background: transparent;
+      border: none;
+      color: var(--rose);
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 10px;
+      padding: 4px 8px;
+    }
+
+    .history-item {
+      border-radius: 20px;
+      background: var(--task-bg);
+      border: 1px solid var(--line);
+      padding: 14px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(137, 94, 65, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .history-item:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .history-date {
+      font-weight: 750;
+      margin-bottom: 5px;
+    }
+
+    .history-preview {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .future-modules {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .module {
+      padding: 13px;
+      border-radius: 20px;
+      background:
+        linear-gradient(150deg, rgba(255, 227, 212, 0.75), rgba(237, 243, 233, 0.85));
+      color: #5f7c5d;
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 650;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    body.dark-theme .module {
+      background:
+        linear-gradient(150deg, rgba(240, 170, 145, 0.16), rgba(158, 185, 154, 0.14));
+      color: var(--sage-dark);
+      border-color: var(--line);
+    }
+
+    .bottom-nav {
+      position: fixed;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      width: calc(100% - 28px);
+      max-width: 500px;
+      background: var(--nav-bg);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 8px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      z-index: 20;
+    }
+
+    .nav-btn {
+      border: none;
+      background: transparent;
+      border-radius: 19px;
+      padding: 10px 6px;
+      color: var(--muted);
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .nav-btn.active {
+      background: linear-gradient(135deg, #ffe3d4, #edf3e9);
+      color: #5f7c5d;
+      font-weight: 750;
+    }
+
+    body.dark-theme .nav-btn.active {
+      background: linear-gradient(135deg, rgba(240, 170, 145, 0.22), rgba(158, 185, 154, 0.18));
+      color: var(--sage-dark);
+    }
+
+    .theme-toggle {
+      position: fixed;
+      right: 16px;
+      bottom: 88px;
+      width: 56px;
+      height: 56px;
+      border: none;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--peach), var(--gold));
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.35s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    .theme-toggle:active {
+      transform: scale(0.96);
+    }
+
+    body.dark-theme .theme-toggle {
+      background: linear-gradient(135deg, #3d332d, var(--sage));
+      color: #fff8ef;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 92px;
+      transform: translateX(-50%) translateY(10px);
+      background: var(--sage-dark);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 18px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      box-shadow: var(--shadow);
+      z-index: 40;
+    }
+
+    body.dark-theme .toast {
+      color: #201b18;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 18px;
+      background: var(--modal-overlay);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 500px;
+      max-height: 82vh;
+      overflow: auto;
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+      animation: modalUp 0.22s ease;
+    }
+
+    @keyframes modalUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .modal-title {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .modal-close {
+      width: 38px;
+      height: 38px;
+      border: none;
+      border-radius: 50%;
+      background: var(--input-bg);
+      color: var(--text);
+      font-size: 22px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .modal-content {
+      color: var(--text);
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+
+    .modal-content strong {
+      color: var(--sage-dark);
+    }
+
+    .modal-footer {
+      margin-top: 16px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    @media (min-width: 700px) {
+      .app {
+        padding-top: 36px;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      .modal-overlay {
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .phrase-card {
+        grid-template-columns: 1fr;
+      }
+
+      .soft-symbol {
+        width: 100%;
+        height: 110px;
+      }
+
+      .mood-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="label">Дневник чувств и дел дня</div>
+      <h1>Делай любя, люби себя</h1>
+      <p class="subtitle">
+        Мягкое пространство, где можно заметить себя, свои чувства, мысли,
+        заботы и маленькие победы.
+      </p>
+    </header>
+
+    <section id="todayPage" class="page active" aria-labelledby="todayTitle">
+      <div class="card phrase-card">
+        <div>
+          <div class="label">Фраза дня</div>
+          <p id="dailyPhrase" class="phrase"></p>
+        </div>
+
+        <div class="soft-symbol" aria-label="Женственный символ-проводник">
+          <svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="86" cy="28" r="16" fill="#F3B89F" opacity="0.9"/>
+            <path d="M68 20C44 25 30 47 33 72C35 92 48 109 66 119" stroke="#5F7C5D" stroke-width="4" stroke-linecap="round"/>
+            <path d="M66 36C78 42 82 55 78 69C74 84 62 92 49 91" stroke="#3B3029" stroke-width="3" stroke-linecap="round"/>
+            <path d="M63 77C78 76 94 84 101 101" stroke="#D8A85F" stroke-width="4" stroke-linecap="round"/>
+            <path d="M83 88C85 77 95 71 106 72C104 84 96 91 83 88Z" fill="#8FAC8B"/>
+            <path d="M44 116C57 108 74 111 86 123" stroke="#E9A9AA" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 id="todayTitle" class="section-title">Какое у тебя сегодня настроение?</h2>
+        <div class="mood-grid" id="moodGrid"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Мысли и чувства</h2>
+        <textarea id="thoughts" placeholder="Что сейчас внутри? Можно писать честно, без оценки и спешки."></textarea>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Дела дня</h2>
+        <div class="task-row">
+          <input id="taskInput" type="text" placeholder="Добавить дело..." autocomplete="off" />
+          <button id="addTaskButton" class="small-btn" type="button" aria-label="Добавить дело">+</button>
+        </div>
+        <ul class="tasks" id="tasksList"></ul>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Благодарность дня</h2>
+        <textarea id="gratitude" placeholder="За что я сегодня благодарна?"></textarea>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Маленькая победа дня</h2>
+        <textarea id="victory" placeholder="Что у меня сегодня получилось, даже если это совсем маленький шаг?"></textarea>
+      </div>
+
+      <button id="saveTodayButton" class="main-btn" type="button">Сохранить день</button>
+    </section>
+
+    <section id="historyPage" class="page" aria-labelledby="historyTitle">
+      <div class="card">
+        <h2 id="historyTitle" class="section-title">История записей</h2>
+        <div id="historyList"></div>
+      </div>
+    </section>
+
+    <section id="futurePage" class="page" aria-labelledby="futureTitle">
+      <div class="card">
+        <h2 id="futureTitle" class="section-title">Будущие возможности</h2>
+        <p class="subtitle">
+          Архитектура уже подготовлена для расширения приложения.
+        </p>
+
+        <div class="future-modules">
+          <div class="module">Метафорические карты</div>
+          <div class="module">AI-помощник</div>
+          <div class="module">График настроения</div>
+          <div class="module">Экспорт записей</div>
+          <div class="module">PWA-режим</div>
+          <div class="module">Напоминания</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button
+    id="themeToggle"
+    class="theme-toggle"
+    type="button"
+    aria-label="Переключить тему"
+  >
+    🌙
+  </button>
+
+  <nav class="bottom-nav" aria-label="Основная навигация">
+    <button class="nav-btn active" type="button" data-page="todayPage">Сегодня</button>
+    <button class="nav-btn" type="button" data-page="historyPage">История</button>
+    <button class="nav-btn" type="button" data-page="futurePage">Ещё</button>
+  </nav>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">Сохранено</div>
+
+  <div id="entryModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle" class="modal-title">Запись</h2>
+        <button id="modalCloseButton" class="modal-close" type="button" aria-label="Закрыть окно">×</button>
+      </div>
+      <div id="modalContent" class="modal-content"></div>
+      <div class="modal-footer">
+        <button id="modalOkButton" class="secondary-btn" type="button">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const APP_STORAGE_KEY = "lovingDiaryApp_v3";
+      const LEGACY_STORAGE_KEY = "lovingDiaryApp_v2";
+      const THEME_STORAGE_KEY = "lovingDiaryTheme";
+      const AUTOSAVE_DELAY = 500;
+
+      const phrases = [
+        "Сегодня можно быть к себе мягче, чем обычно.",
+        "Не обязательно успеть всё. Важно не потерять себя.",
+        "Ты имеешь право на паузу, тишину и заботу.",
+        "Маленький шаг, сделанный с любовью, тоже движение.",
+        "Твои чувства важны. Их не нужно заслуживать.",
+        "День может быть разным, а ты всё равно на своей стороне.",
+        "Сначала дыхание. Потом дела.",
+        "Ты не обязана быть удобной, чтобы быть ценной.",
+        "Внутри тебя уже есть опора.",
+        "Сегодня выбери себя хотя бы в одном маленьком решении.",
+        "Пусть этот день будет не идеальным, а живым.",
+        "Можно начинать заново столько раз, сколько нужно."
+      ];
+
+      const moods = [
+        { id: "joy", icon: "☀️", text: "Радость" },
+        { id: "calm", icon: "🌿", text: "Спокойствие" },
+        { id: "tired", icon: "🌙", text: "Усталость" },
+        { id: "sad", icon: "☁️", text: "Грусть" },
+        { id: "anxiety", icon: "🍂", text: "Тревога" },
+        { id: "inspiration", icon: "✨", text: "Вдохновение" }
+      ];
+
+      const state = {
+        selectedMood: "",
+        tasks: []
+      };
+
+      const elements = {};
+
+      function cacheElements() {
+        elements.body = document.body;
+        elements.themeToggle = document.getElementById("themeToggle");
+        elements.dailyPhrase = document.getElementById("dailyPhrase");
+        elements.moodGrid = document.getElementById("moodGrid");
+        elements.thoughts = document.getElementById("thoughts");
+        elements.taskInput = document.getElementById("taskInput");
+        elements.addTaskButton = document.getElementById("addTaskButton");
+        elements.tasksList = document.getElementById("tasksList");
+        elements.gratitude = document.getElementById("gratitude");
+        elements.victory = document.getElementById("victory");
+        elements.saveTodayButton = document.getElementById("saveTodayButton");
+        elements.historyList = document.getElementById("historyList");
+        elements.navButtons = document.querySelectorAll(".nav-btn");
+        elements.pages = document.querySelectorAll(".page");
+        elements.toast = document.getElementById("toast");
+        elements.entryModal = document.getElementById("entryModal");
+        elements.modalTitle = document.getElementById("modalTitle");
+        elements.modalContent = document.getElementById("modalContent");
+        elements.modalCloseButton = document.getElementById("modalCloseButton");
+        elements.modalOkButton = document.getElementById("modalOkButton");
+      }
+
+      function debounce(callback, delay) {
+        let timerId;
+
+        return (...args) => {
+          window.clearTimeout(timerId);
+          timerId = window.setTimeout(() => callback(...args), delay);
+        };
+      }
+
+      function safeParseJson(rawValue, fallbackValue = {}) {
+        try {
+          return rawValue ? JSON.parse(rawValue) : fallbackValue;
+        } catch (error) {
+          console.warn("Не удалось прочитать сохранённые данные:", error);
+          return fallbackValue;
+        }
+      }
+
+      function loadStorage() {
+        const currentRaw = localStorage.getItem(APP_STORAGE_KEY);
+
+        if (currentRaw) {
+          return safeParseJson(currentRaw, {});
+        }
+
+        const legacyRaw = localStorage.getItem(LEGACY_STORAGE_KEY);
+        const legacyData = safeParseJson(legacyRaw, {});
+
+        if (Object.keys(legacyData).length > 0) {
+          saveStorage(legacyData);
+        }
+
+        return legacyData;
+      }
+
+      function saveStorage(data) {
+        try {
+          localStorage.setItem(APP_STORAGE_KEY, JSON.stringify(data));
+          return true;
+        } catch (error) {
+          console.error("Не удалось сохранить данные:", error);
+          showToast("Не удалось сохранить данные");
+          return false;
+        }
+      }
+
+      function getTodayKey() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const day = String(now.getDate()).padStart(2, "0");
+
+        return `${year}-${month}-${day}`;
+      }
+
+      function getReadableDate(dateKey) {
+        const [year, month, day] = dateKey.split("-").map(Number);
+        const date = new Date(year, month - 1, day);
+
+        return date.toLocaleDateString("ru-RU", {
+          day: "numeric",
+          month: "long",
+          year: "numeric"
+        });
+      }
+
+      function getMoodById(moodId) {
+        return moods.find((mood) => mood.id === moodId);
+      }
+
+      function getSafeText(value, fallback = "Не заполнено") {
+        const normalizedValue = String(value || "").trim();
+        return normalizedValue || fallback;
+      }
+
+      function applyTheme(theme) {
+        const isDark = theme === "dark";
+
+        elements.body.classList.toggle("dark-theme", isDark);
+        elements.themeToggle.textContent = isDark ? "☀️" : "🌙";
+        elements.themeToggle.setAttribute(
+          "aria-label",
+          isDark ? "Включить светлую тему" : "Включить тёмную тему"
+        );
+
+        document.querySelector("meta[name='theme-color']")?.setAttribute(
+          "content",
+          isDark ? "#201b18" : "#fff8ef"
+        );
+      }
+
+      function toggleTheme() {
+        const isDarkNow = elements.body.classList.contains("dark-theme");
+        const newTheme = isDarkNow ? "light" : "dark";
+
+        localStorage.setItem(THEME_STORAGE_KEY, newTheme);
+        applyTheme(newTheme);
+      }
+
+      function loadTheme() {
+        const savedTheme = localStorage.getItem(THEME_STORAGE_KEY) || "light";
+        applyTheme(savedTheme);
+      }
+
+      function setDailyPhrase() {
+        const todayKey = getTodayKey();
+        const dayNumber = Number(todayKey.replaceAll("-", ""));
+        const phrase = phrases[dayNumber % phrases.length];
+
+        elements.dailyPhrase.textContent = phrase;
+      }
+
+      function renderMoods() {
+        elements.moodGrid.innerHTML = "";
+
+        moods.forEach((mood) => {
+          const button = document.createElement("button");
+          button.className = "mood-btn";
+          button.type = "button";
+          button.dataset.moodId = mood.id;
+          button.setAttribute("aria-pressed", String(state.selectedMood === mood.id));
+
+          if (state.selectedMood === mood.id) {
+            button.classList.add("active");
+          }
+
+          const icon = document.createElement("span");
+          icon.textContent = mood.icon;
+
+          button.appendChild(icon);
+          button.append(document.createTextNode(mood.text));
+
+          elements.moodGrid.appendChild(button);
+        });
+      }
+
+      function selectMood(moodId) {
+        state.selectedMood = moodId;
+        renderMoods();
+        debouncedAutoSave();
+      }
+
+      function addTask() {
+        const text = elements.taskInput.value.trim();
+
+        if (!text) {
+          showToast("Сначала напиши дело");
+          return;
+        }
+
+        state.tasks.push({
+          id: crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`,
+          text,
+          done: false
+        });
+
+        elements.taskInput.value = "";
+        renderTasks();
+        debouncedAutoSave();
+      }
+
+      function toggleTask(taskId, isDone) {
+        state.tasks = state.tasks.map((task) => {
+          if (task.id !== taskId) return task;
+          return { ...task, done: isDone };
+        });
+
+        renderTasks();
+        debouncedAutoSave();
+      }
+
+      function deleteTask(taskId) {
+        state.tasks = state.tasks.filter((task) => task.id !== taskId);
+        renderTasks();
+        debouncedAutoSave();
+      }
+
+      function renderTasks() {
+        elements.tasksList.innerHTML = "";
+
+        if (!state.tasks.length) {
+          const emptyItem = document.createElement("li");
+          emptyItem.innerHTML = `<span class="history-preview">Пока дел нет. Можно добавить первое маленькое дело.</span>`;
+          elements.tasksList.appendChild(emptyItem);
+          return;
+        }
+
+        state.tasks.forEach((task) => {
+          const li = document.createElement("li");
+
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.checked = Boolean(task.done);
+          checkbox.setAttribute("aria-label", `Отметить дело: ${task.text}`);
+          checkbox.addEventListener("change", (event) => {
+            toggleTask(task.id, event.target.checked);
+          });
+
+          const text = document.createElement("span");
+          text.textContent = task.text;
+          text.className = task.done ? "done" : "";
+
+          const deleteButton = document.createElement("button");
+          deleteButton.className = "delete-task";
+          deleteButton.type = "button";
+          deleteButton.textContent = "×";
+          deleteButton.setAttribute("aria-label", `Удалить дело: ${task.text}`);
+          deleteButton.addEventListener("click", () => deleteTask(task.id));
+
+          li.append(checkbox, text, deleteButton);
+          elements.tasksList.appendChild(li);
+        });
+      }
+
+      function collectTodayData() {
+        return {
+          date: getTodayKey(),
+          phrase: elements.dailyPhrase.textContent,
+          mood: state.selectedMood,
+          thoughts: elements.thoughts.value.trim(),
+          tasks: state.tasks.map((task) => ({ ...task })),
+          gratitude: elements.gratitude.value.trim(),
+          victory: elements.victory.value.trim(),
+          updatedAt: new Date().toISOString()
+        };
+      }
+
+      function saveToday(showMessage = true) {
+        const storage = loadStorage();
+        const todayKey = getTodayKey();
+
+        storage[todayKey] = collectTodayData();
+
+        const isSaved = saveStorage(storage);
+
+        if (isSaved) {
+          renderHistory();
+
+          if (showMessage) {
+            showToast("День сохранён");
+          }
+        }
+      }
+
+      function autoSave() {
+        saveToday(false);
+      }
+
+      const debouncedAutoSave = debounce(autoSave, AUTOSAVE_DELAY);
+
+      function loadToday() {
+        const storage = loadStorage();
+        const today = storage[getTodayKey()];
+
+        if (!today) {
+          renderMoods();
+          renderTasks();
+          return;
+        }
+
+        state.selectedMood = today.mood || "";
+        state.tasks = Array.isArray(today.tasks) ? today.tasks : [];
+
+        elements.thoughts.value = today.thoughts || "";
+        elements.gratitude.value = today.gratitude || "";
+        elements.victory.value = today.victory || "";
+
+        renderMoods();
+        renderTasks();
+      }
+
+      function renderHistory() {
+        const storage = loadStorage();
+        const dates = Object.keys(storage).sort().reverse();
+
+        if (!dates.length) {
+          elements.historyList.innerHTML = `<p class="subtitle">Пока нет сохранённых записей.</p>`;
+          return;
+        }
+
+        elements.historyList.innerHTML = "";
+
+        dates.forEach((dateKey) => {
+          const item = storage[dateKey];
+          const mood = getMoodById(item.mood);
+          const previewText = getSafeText(item.victory, "Победа дня не заполнена");
+
+          const div = document.createElement("div");
+          div.className = "history-item";
+          div.tabIndex = 0;
+          div.role = "button";
+          div.dataset.dateKey = dateKey;
+          div.setAttribute("aria-label", `Открыть запись за ${getReadableDate(dateKey)}`);
+
+          const date = document.createElement("div");
+          date.className = "history-date";
+          date.textContent = getReadableDate(dateKey);
+
+          const preview = document.createElement("div");
+          preview.className = "history-preview";
+          preview.innerHTML = `
+            ${mood ? `${mood.icon} ${mood.text}` : "Настроение не выбрано"}<br>
+            Победа: ${escapeHtml(previewText.slice(0, 80))}
+          `;
+
+          div.append(date, preview);
+          elements.historyList.appendChild(div);
+        });
+      }
+
+      function openHistoryItem(dateKey) {
+        const storage = loadStorage();
+        const item = storage[dateKey];
+
+        if (!item) return;
+
+        const mood = getMoodById(item.mood);
+        const tasksText = Array.isArray(item.tasks) && item.tasks.length
+          ? item.tasks.map((task) => `${task.done ? "✓" : "○"} ${task.text}`).join("\n")
+          : "Нет дел";
+
+        const content = [
+          `<strong>Фраза дня:</strong> ${escapeHtml(getSafeText(item.phrase, "Нет фразы"))}`,
+          `<strong>Настроение:</strong> ${escapeHtml(mood ? `${mood.icon} ${mood.text}` : "Не выбрано")}`,
+          `<strong>Мысли:</strong> ${escapeHtml(getSafeText(item.thoughts))}`,
+          `<strong>Дела:</strong>\n${escapeHtml(tasksText)}`,
+          `<strong>Благодарность:</strong> ${escapeHtml(getSafeText(item.gratitude))}`,
+          `<strong>Маленькая победа:</strong> ${escapeHtml(getSafeText(item.victory))}`
+        ].join("\n\n");
+
+        openModal(getReadableDate(dateKey), content);
+      }
+
+      function openPage(pageId) {
+        elements.pages.forEach((page) => {
+          page.classList.toggle("active", page.id === pageId);
+        });
+
+        elements.navButtons.forEach((button) => {
+          button.classList.toggle("active", button.dataset.page === pageId);
+        });
+
+        if (pageId === "historyPage") {
+          renderHistory();
+        }
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function showToast(text) {
+        elements.toast.textContent = text;
+        elements.toast.classList.add("show");
+
+        window.clearTimeout(showToast.timerId);
+        showToast.timerId = window.setTimeout(() => {
+          elements.toast.classList.remove("show");
+        }, 1800);
+      }
+
+      function openModal(title, htmlContent) {
+        elements.modalTitle.textContent = title;
+        elements.modalContent.innerHTML = htmlContent;
+        elements.entryModal.classList.add("show");
+        elements.body.classList.add("modal-open");
+        elements.modalCloseButton.focus();
+      }
+
+      function closeModal() {
+        elements.entryModal.classList.remove("show");
+        elements.body.classList.remove("modal-open");
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function bindEvents() {
+        elements.themeToggle.addEventListener("click", toggleTheme);
+        elements.addTaskButton.addEventListener("click", addTask);
+        elements.saveTodayButton.addEventListener("click", () => saveToday(true));
+
+        elements.moodGrid.addEventListener("click", (event) => {
+          const button = event.target.closest(".mood-btn");
+          if (!button) return;
+          selectMood(button.dataset.moodId);
+        });
+
+        elements.navButtons.forEach((button) => {
+          button.addEventListener("click", () => openPage(button.dataset.page));
+        });
+
+        [elements.thoughts, elements.gratitude, elements.victory].forEach((field) => {
+          field.addEventListener("input", debouncedAutoSave);
+          field.addEventListener("blur", autoSave);
+        });
+
+        elements.taskInput.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            addTask();
+          }
+        });
+
+        elements.historyList.addEventListener("click", (event) => {
+          const item = event.target.closest(".history-item");
+          if (!item) return;
+          openHistoryItem(item.dataset.dateKey);
+        });
+
+        elements.historyList.addEventListener("keydown", (event) => {
+          const item = event.target.closest(".history-item");
+          if (!item) return;
+
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openHistoryItem(item.dataset.dateKey);
+          }
+        });
+
+        elements.modalCloseButton.addEventListener("click", closeModal);
+        elements.modalOkButton.addEventListener("click", closeModal);
+
+        elements.entryModal.addEventListener("click", (event) => {
+          if (event.target === elements.entryModal) {
+            closeModal();
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && elements.entryModal.classList.contains("show")) {
+            closeModal();
+          }
+        });
+      }
+
+      function initApp() {
+        cacheElements();
+        loadTheme();
+        setDailyPhrase();
+        bindEvents();
+        loadToday();
+        renderHistory();
+      }
+
+      document.addEventListener("DOMContentLoaded", initApp);
+    })();
+  </script>
+</body>
+</html>
