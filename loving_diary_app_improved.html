@@ -84,31 +84,12 @@
       opacity: 0.07;
     }
 
-    .decor-layer__veins {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      user-select: none;
-      opacity: 0.14;
-      background-image: url("./images/decor-vein-line-01.png");
-      background-repeat: no-repeat;
-      background-position: 88% 72%;
-      background-size: min(95%, 1100px);
-      -webkit-mask-image: linear-gradient(180deg, transparent 0%, transparent 8%, rgba(0, 0, 0, 0.25) 28%, #000 62%);
-      mask-image: linear-gradient(180deg, transparent 0%, transparent 8%, rgba(0, 0, 0, 0.25) 28%, #000 62%);
-      animation: veinSlowDrift 36s ease-in-out infinite alternate;
-    }
-    body.dark-theme .decor-layer__veins {
-      opacity: 0.06;
-    }
-
     .decor-layer__pearl {
       position: absolute;
       inset: 0;
       pointer-events: none;
       user-select: none;
       opacity: 0.12;
-      filter: blur(0.4px);
       background-image: url("./images/pearl-overlay.png");
       background-size: cover;
       background-position: center;
@@ -142,8 +123,8 @@
     .decor-layer {
       position: fixed;
       inset: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
       pointer-events: none;
       user-select: none;
@@ -156,177 +137,106 @@
       user-select: none;
       object-fit: contain;
     }
-    .decor-pearl-left {
+
+    .decor-vein {
       position: absolute;
-      left: max(12px, 3vw);
-      top: 14vh;
-      width: 44px;
+      top: -8%;
+      right: -6%;
+      width: 1100px;
+      max-width: min(1100px, 165vw);
       height: auto;
-      opacity: 0.82;
-      filter: drop-shadow(0 6px 16px rgba(255, 248, 238, 0.45));
-      animation: pearlFloat 14s ease-in-out infinite alternate;
-    }
-    .decor-sprig-left {
-      position: absolute;
-      left: max(-8px, -1vw);
-      top: 22vh;
-      width: 200px;
-      height: auto;
-      opacity: 0.76;
-      transform: rotate(-6deg);
-      filter: drop-shadow(4px 12px 22px rgba(72, 62, 56, 0.1));
-      animation: pearlFloat 22s ease-in-out infinite alternate-reverse;
-    }
-    .decor-petal-left {
-      position: absolute;
-      left: max(8px, 2.5vw);
-      top: 58vh;
-      width: 96px;
-      height: auto;
-      opacity: 0.78;
-      transform: rotate(-14deg);
-      filter: drop-shadow(2px 8px 18px rgba(62, 52, 46, 0.09));
-      animation: pearlFloat 18s ease-in-out infinite alternate;
-    }
-    .decor-crystal-right {
-      position: absolute;
-      right: max(18px, 5vw);
-      top: 16vh;
-      width: 44px;
-      height: auto;
-      opacity: 0.85;
-      filter: drop-shadow(-2px 8px 18px rgba(120, 140, 145, 0.16));
-      animation: pearlFloat 15s ease-in-out infinite alternate;
-    }
-    .decor-petal-right-large {
-      position: absolute;
-      right: max(36px, 6vw);
-      top: 42vh;
-      width: 148px;
-      height: auto;
-      opacity: 0.82;
-      transform: rotate(10deg);
-      filter: drop-shadow(-4px 12px 22px rgba(62, 52, 46, 0.1));
-      animation: pearlFloat 20s ease-in-out infinite alternate-reverse;
-    }
-    .decor-flower-right-open {
-      position: absolute;
-      right: max(56px, 12vw);
-      top: 14vh;
-      width: 38px;
-      height: auto;
-      opacity: 0.68;
-      filter: drop-shadow(0 8px 18px rgba(74, 58, 52, 0.1));
-      animation: pearlFloat 17s ease-in-out infinite alternate;
-    }
-    .decor-flower-left-small {
-      position: absolute;
-      left: max(16px, 4vw);
-      bottom: 22vh;
-      width: 52px;
-      height: auto;
-      opacity: 0.84;
-      filter: drop-shadow(0 6px 14px rgba(74, 58, 52, 0.1));
-      animation: pearlFloat 16s ease-in-out infinite alternate-reverse;
-    }
-    .decor-sprig-right-bottom {
-      position: absolute;
-      right: max(10px, 2vw);
-      bottom: max(100px, 14vh);
-      width: 140px;
-      height: auto;
-      opacity: 0.72;
-      filter: drop-shadow(-2px 8px 18px rgba(58, 50, 46, 0.1));
-      animation: pearlFloat 24s ease-in-out infinite alternate;
-    }
-    .decor-petal-under-quote {
-      position: absolute;
-      left: max(10px, 3vw);
-      top: 46vh;
-      width: 52px;
-      opacity: 0.66;
-      transform: rotate(12deg);
-      pointer-events: none;
-      user-select: none;
-    }
-    .decor-petal-near-mood {
-      position: absolute;
-      right: max(16px, 4vw);
-      top: 54vh;
-      width: 46px;
-      opacity: 0.6;
+      opacity: 0.42;
       transform: rotate(-18deg);
       pointer-events: none;
       user-select: none;
     }
-    body.dark-theme .decor-pearl-left { opacity: 0.62; }
-    body.dark-theme .decor-sprig-left { opacity: 0.56; }
-    body.dark-theme .decor-petal-left { opacity: 0.58; }
-    body.dark-theme .decor-flower-left-small { opacity: 0.62; }
-    body.dark-theme .decor-crystal-right { opacity: 0.58; }
-    body.dark-theme .decor-petal-right-large { opacity: 0.6; }
-    body.dark-theme .decor-flower-right-open { opacity: 0.56; }
-    body.dark-theme .decor-sprig-right-bottom { opacity: 0.52; }
-    body.dark-theme .decor-petal-under-quote,
-    body.dark-theme .decor-petal-near-mood { opacity: 0.48; }
+    body.dark-theme .decor-vein {
+      opacity: 0.42;
+    }
 
-    .decor-particle {
+    .decor-sprig-left {
       position: absolute;
-      width: 14px;
-      height: auto;
-      opacity: 0.38;
+      top: 18%;
+      left: 2%;
+      width: auto;
+      height: 42%;
+      opacity: 0.85;
       pointer-events: none;
       user-select: none;
     }
-    .decor-particle--title-left {
-      left: max(8px, calc(50% - 268px));
-      top: 108px;
-      transform: rotate(-12deg);
-      z-index: 1;
-    }
-    .decor-layer .decor-particle--quote {
-      left: calc(50% + min(128px, 20vw));
-      top: min(44vh, 420px);
-      width: 15px;
-      opacity: 0.26;
-      transform: rotate(8deg);
-      z-index: 3;
-    }
-    .decor-flower-bottom {
+    .decor-petal-left {
       position: absolute;
-      left: 50%;
-      bottom: 0;
-      transform: translateX(-50%);
-      width: min(88vw, 520px);
+      top: 58%;
+      left: 4%;
+      width: 120px;
       height: auto;
-      opacity: 0.45;
-      z-index: 1;
-      pointer-events: none;
-    }
-    body.dark-theme .decor-flower-bottom {
-      opacity: 0.38;
-    }
-    .decor-hero-flower {
-      position: fixed;
-      right: -80px;
-      top: 42%;
-      left: auto;
-      bottom: auto;
-      transform: none;
-      width: 360px;
-      max-width: none;
-      height: auto;
-      z-index: 1;
+      opacity: 0.88;
       pointer-events: none;
       user-select: none;
-      opacity: 0.75;
-      display: block;
-      filter: drop-shadow(0 24px 56px rgba(110, 150, 145, 0.22));
     }
-    body.dark-theme .decor-hero-flower {
-      opacity: 0.65;
-      filter: drop-shadow(0 20px 48px rgba(30, 46, 44, 0.35));
+    .decor-pearl-left {
+      position: absolute;
+      top: 10%;
+      left: 4%;
+      width: 18px;
+      height: auto;
+      opacity: 0.95;
+      pointer-events: none;
+      user-select: none;
     }
+    .flower-left {
+      position: absolute;
+      bottom: -2%;
+      left: -2%;
+      width: 22%;
+      height: auto;
+      opacity: 0.88;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .decor-petal-right {
+      position: absolute;
+      top: 40%;
+      right: 3%;
+      width: auto;
+      height: 26%;
+      max-height: 72vh;
+      opacity: 0.92;
+      pointer-events: none;
+      user-select: none;
+    }
+    .decor-crystal-right {
+      position: absolute;
+      top: 18%;
+      right: 7%;
+      width: 26px;
+      height: auto;
+      opacity: 0.95;
+      pointer-events: none;
+      user-select: none;
+    }
+    .decor-flower-right {
+      position: absolute;
+      top: 15%;
+      right: 12%;
+      width: 26px;
+      height: auto;
+      opacity: 0.88;
+      pointer-events: none;
+      user-select: none;
+    }
+    .flower-right {
+      position: absolute;
+      bottom: -3%;
+      right: -3%;
+      width: 22%;
+      height: auto;
+      opacity: 0.88;
+      pointer-events: none;
+      user-select: none;
+    }
+
     body.modal-open { overflow: hidden; }
     button, input, textarea, select { font: inherit; color: inherit; }
     button { background: none; }
@@ -341,6 +251,12 @@
       padding: 0 24px 160px;
       color: #4a403c;
     }
+    .app,
+    .main-content,
+    .page-wrapper {
+      position: relative;
+      z-index: 2;
+    }
     body.dark-theme main.app {
       color: var(--text);
     }
@@ -353,6 +269,35 @@
     section.page {
       position: relative;
       z-index: 2;
+    }
+    .save-day-decor-stack {
+      position: relative;
+      width: 100%;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: clamp(40px, 8vw, 72px);
+    }
+    .flower-bottom-wrapper {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -18px;
+      width: min(720px, calc(100vw - 32px));
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+    .flower-bottom {
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: 0.82;
+      pointer-events: none;
+      user-select: none;
+    }
+    body.dark-theme .flower-bottom {
+      opacity: 0.82;
     }
     .hero-section {
       position: relative;
@@ -1162,6 +1107,7 @@
         0 18px 55px rgba(176, 138, 88, 0.14),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
       position: relative;
+      z-index: 2;
       overflow: hidden;
       transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.45s ease;
     }
@@ -1675,10 +1621,6 @@
     .modal-body { white-space: pre-wrap; line-height: 1.55; font-size: 14px; }
     .modal-footer { margin-top: 16px; display: flex; justify-content: flex-end; }
 
-    @keyframes veinSlowDrift {
-      from { transform: translate3d(-1%, 0, 0) scale(1); }
-      to { transform: translate3d(1%, -8px, 0) scale(1.015); }
-    }
     @keyframes pearlFloat {
       from { transform: translateY(0) scale(1); }
       to { transform: translateY(-10px) scale(1.015); }
@@ -1764,27 +1706,13 @@
     }
 
     @media (max-width: 580px) {
-      .decor-hero-flower {
-        right: -100px;
-        top: 44%;
-        width: min(280px, 58vw);
-        opacity: 0.68;
+      .decor-vein {
+        width: min(1100px, 155vw);
+        opacity: 0.42;
       }
-      .decor-layer .decor-particle--quote {
-        opacity: 0.2;
-      }
-      .decor-sprig-left {
-        width: 180px;
-        left: -36px;
-        opacity: 0.72;
-      }
-      .decor-sprig-right-bottom {
-        width: 190px;
-        opacity: 0.74;
-      }
-      .decor-petal-right-large {
-        width: 130px;
-        opacity: 0.85;
+      .decor-petal-right {
+        right: 4%;
+        max-height: 68vh;
       }
       .mood-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .habit-row { grid-template-columns: 1fr; }
@@ -1803,23 +1731,17 @@
 </head>
 <body>
   <div class="decor-layer" aria-hidden="true">
-    <div class="decor-layer__veins"></div>
     <div class="decor-layer__pearl"></div>
     <div class="decor-layer__light"></div>
-    <img class="decor-pearl-left" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" />
-    <img class="decor-sprig-left" src="./images/decor-sprig-long-01.png" alt="" decoding="async" loading="lazy" />
-    <img class="decor-petal-left" src="./images/decor-petal-curved-01.png" alt="" decoding="async" loading="lazy" />
-    <img class="decor-flower-left-small" src="./images/decor-flower-small-01.png" alt="" decoding="async" loading="lazy" />
-    <img class="decor-crystal-right" src="./images/decor-crystal-drop-01.png" alt="" decoding="async" loading="lazy" />
-    <img class="decor-petal-right-large" src="./images/decor-petal-large-01.png" alt="" decoding="async" loading="lazy" />
-    <img class="decor-flower-right-open" src="./images/decor-flower-open-01.png" alt="" decoding="async" loading="lazy" />
-    <img class="decor-sprig-right-bottom" src="./images/decor-sprig-small-01.png" alt="" decoding="async" loading="lazy" />
-    <img class="decor-petal-under-quote" src="./images/decor-petal-small-01.png" alt="" decoding="async" loading="lazy" />
-    <img class="decor-petal-near-mood" src="./images/decor-petal-small-01.png" alt="" decoding="async" loading="lazy" />
-    <img class="decor-particle decor-particle--title-left" src="./images/decor-petal-tiny-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
-    <img class="decor-particle decor-particle--quote" src="./images/decor-petal-tiny-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
-    <img class="decor-hero-flower" src="./images/flower-hero.png" alt="" width="430" height="430" decoding="async" loading="lazy" aria-hidden="true" />
-    <img class="decor-flower-bottom" src="./images/flower-bottom.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-vein" src="./images/decor-vein-line-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-pearl-left" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-sprig-left" src="./images/decor-sprig-long-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-petal-left" src="./images/decor-petal-curved-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="flower-left" src="./images/flower-left.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-crystal-right" src="./images/decor-crystal-drop-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-petal-right" src="./images/decor-petal-large-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-flower-right" src="./images/decor-flower-open-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="flower-right" src="./images/flower-right.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
   </div>
 
   <main class="app">
@@ -1919,7 +1841,12 @@
         </div>
       </article>
 
-      <button id="saveTodayButton" class="primary-btn save-button" type="button"><span class="primary-btn__label">Сохранить день</span></button>
+      <div class="save-day-decor-stack">
+        <button id="saveTodayButton" class="primary-btn save-button" type="button"><span class="primary-btn__label">Сохранить день</span></button>
+        <div class="flower-bottom-wrapper" aria-hidden="true">
+          <img class="flower-bottom" src="./images/flower-bottom.png" alt="" decoding="async" loading="lazy" />
+        </div>
+      </div>
       <img class="decor-save-petal" src="./images/decor-petal-tiny-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
     </section>
 
