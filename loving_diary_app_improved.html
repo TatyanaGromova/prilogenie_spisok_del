@@ -3,55 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#FAF8F3" />
+  <meta name="theme-color" content="#F4F1EA" />
   <title>Делай любя, люби себя</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style id="app-styles">
+    /* Sculptural editorial wellness — light: matte plaster + relief; dark: preserved atmosphere */
     :root {
-      --bg-1: #f7f3ec;
-      --bg-2: #faf8f3;
-      --bg-3: #ffffff;
+      --paper: #f4f1ea;
+      --paper-2: #faf8f4;
+      --paper-3: #fffcf7;
       --text: #2f2b28;
       --muted: #8a8178;
       --gold: #b99a68;
       --gold-soft: #d9c29e;
-      --pearl: #f4ece2;
-      --silver: #d7d5d1;
-      --rose: #d8b8b5;
-      --line: rgba(185, 154, 104, 0.22);
-      --panel: rgba(255, 255, 255, 0.68);
-      --panel-strong: rgba(255, 255, 255, 0.84);
-      --input-bg: rgba(255, 255, 255, 0.74);
-      --shadow-main: 0 24px 70px rgba(55, 45, 35, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.75);
-      --shadow-soft: 0 16px 34px rgba(55, 45, 35, 0.08);
-      --shadow-nav: 0 18px 38px rgba(55, 45, 35, 0.12);
-      --radius-xl: 32px;
-      --radius-lg: 24px;
-      --radius-md: 18px;
+      --line: rgba(185, 154, 104, 0.18);
+      --shadow-deep: 0 36px 90px rgba(42, 36, 30, 0.07);
+      --inner-lit: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -22px 48px rgba(255, 255, 255, 0.18);
+      --radius-a: 26px 20px 28px 22px;
+      --radius-b: 18px 26px 20px 24px;
     }
-
     body.dark-theme {
-      --bg-1: #1f1b19;
-      --bg-2: #2a2623;
-      --bg-3: #332e2a;
+      --paper: #1f1b19;
+      --paper-2: #292420;
+      --paper-3: #342f2a;
       --text: #f4ece2;
       --muted: #b7aba0;
       --gold: #d9c29e;
       --gold-soft: #b99a68;
-      --pearl: #3a332e;
-      --silver: #5f5550;
-      --rose: #b48f8c;
-      --line: rgba(217, 194, 158, 0.28);
-      --panel: rgba(51, 46, 42, 0.72);
-      --panel-strong: rgba(60, 53, 48, 0.86);
-      --input-bg: rgba(46, 41, 37, 0.82);
-      --shadow-main: 0 24px 70px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      --shadow-soft: 0 16px 34px rgba(0, 0, 0, 0.22);
-      --shadow-nav: 0 18px 38px rgba(0, 0, 0, 0.32);
+      --line: rgba(217, 194, 158, 0.26);
+      --shadow-deep: 0 36px 90px rgba(0, 0, 0, 0.35);
+      --inner-lit: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -18px 36px rgba(0, 0, 0, 0.12);
     }
-
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -59,124 +43,129 @@
       min-height: 100vh;
       font-family: "Manrope", sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(circle at 12% 8%, rgba(217, 194, 158, 0.34), transparent 38%),
-        radial-gradient(circle at 86% 18%, rgba(216, 184, 181, 0.28), transparent 32%),
-        radial-gradient(circle at 50% 100%, rgba(215, 213, 209, 0.22), transparent 45%),
-        linear-gradient(180deg, var(--bg-1), var(--bg-2) 42%, var(--bg-3));
-      transition: color .35s ease, background .35s ease;
+      background-color: var(--paper);
+      transition: color 0.45s ease, background-color 0.45s ease;
       position: relative;
       overflow-x: hidden;
     }
-    body:not(.dark-theme)::after {
-      content: "";
-      position: fixed;
-      inset: -18%;
-      pointer-events: none;
-      z-index: 0;
-      background:
-        radial-gradient(circle at 22% 16%, rgba(255,255,255,.68), transparent 34%),
-        radial-gradient(circle at 78% 26%, rgba(244,236,226,.48), transparent 32%),
-        radial-gradient(circle at 52% 78%, rgba(217,194,158,.22), transparent 38%);
-      mix-blend-mode: screen;
-      opacity: .56;
+    /* Light: matte plaster — layered lights, no neon blobs */
+    body:not(.dark-theme) {
+      background-image:
+        linear-gradient(168deg, rgba(253, 251, 246, 0.97) 0%, rgba(245, 239, 228, 0.99) 42%, rgba(252, 249, 242, 1) 100%),
+        radial-gradient(ellipse 130% 85% at 6% -8%, rgba(226, 216, 200, 0.42), transparent 52%),
+        radial-gradient(ellipse 95% 72% at 94% 8%, rgba(212, 200, 186, 0.28), transparent 48%),
+        radial-gradient(ellipse 72% 58% at 52% 108%, rgba(198, 188, 176, 0.18), transparent 46%);
     }
     body.dark-theme {
-      background:
-        radial-gradient(circle at 14% 8%, rgba(217, 194, 158, 0.18), transparent 40%),
-        radial-gradient(circle at 84% 14%, rgba(180, 143, 140, 0.14), transparent 34%),
-        radial-gradient(circle at 50% 100%, rgba(95, 85, 80, 0.22), transparent 45%),
-        linear-gradient(180deg, var(--bg-1), var(--bg-2) 40%, var(--bg-3));
+      background-image:
+        linear-gradient(168deg, var(--paper) 0%, var(--paper-2) 45%, var(--paper-3) 100%),
+        radial-gradient(ellipse 120% 70% at 10% 0%, rgba(217, 194, 158, 0.12), transparent 55%),
+        radial-gradient(ellipse 90% 60% at 100% 30%, rgba(120, 90, 85, 0.14), transparent 50%);
     }
-
+    /* Grain + pearl studio mist */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       pointer-events: none;
-      background-image:
-        radial-gradient(circle at 20% 25%, rgba(0,0,0,0.015) 0 1px, transparent 1px),
-        radial-gradient(circle at 75% 60%, rgba(0,0,0,0.012) 0 1px, transparent 1px);
-      background-size: 140px 140px, 170px 170px;
-      opacity: 0.5;
       z-index: 0;
+      opacity: 0.42;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+      background-size: 280px 280px;
     }
     body.dark-theme::before {
-      background-image:
-        radial-gradient(circle at 18% 22%, rgba(255,255,255,0.028) 0 1px, transparent 1px),
-        radial-gradient(circle at 72% 56%, rgba(255,255,255,0.022) 0 1px, transparent 1px);
-      opacity: 0.62;
+      opacity: 0.28;
+      mix-blend-mode: soft-light;
     }
-
-    body.modal-open { overflow: hidden; }
-    button, input, textarea, select { font: inherit; color: inherit; }
-
-    .decor-flower {
+    body::after {
+      content: "";
       position: fixed;
-      border-radius: 50%;
+      inset: -15%;
       pointer-events: none;
       z-index: 0;
-      opacity: .8;
-      filter: blur(0.3px);
-      transform: scale(.92) rotate(-6deg);
-      animation: flowerBloom 1800ms cubic-bezier(.2,.8,.2,1) forwards;
-    }
-    .decor-flower::before,
-    .decor-flower::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
       background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.95), rgba(241,236,229,.88) 42%, rgba(216,213,209,.64) 64%, transparent 78%);
-      box-shadow:
-        0 20px 38px rgba(55, 45, 35, .08),
-        inset -10px -12px 24px rgba(185,154,104,.13),
-        inset 10px 12px 24px rgba(255,255,255,.8);
+        radial-gradient(ellipse 55% 40% at 18% 22%, rgba(255, 255, 255, 0.55), transparent 62%),
+        radial-gradient(ellipse 45% 36% at 78% 68%, rgba(244, 236, 226, 0.35), transparent 58%);
+      mix-blend-mode: soft-light;
+      opacity: 0.55;
+      animation: pearlFog 22s ease-in-out infinite alternate;
     }
-    .decor-flower::after { transform: scale(.62) translate(45%, -15%) rotate(24deg); opacity: .7; }
-    body:not(.dark-theme) .decor-flower::before,
-    body:not(.dark-theme) .decor-flower::after {
+    body.dark-theme::after {
+      opacity: 0.22;
       background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.98), rgba(248,242,234,.92) 44%, rgba(223,214,204,.68) 64%, transparent 78%);
-      box-shadow:
-        0 24px 46px rgba(62, 49, 37, .09),
-        inset -11px -13px 24px rgba(185,154,104,.15),
-        inset 12px 14px 25px rgba(255,255,255,.86);
+        radial-gradient(ellipse 50% 38% at 20% 25%, rgba(217, 194, 158, 0.14), transparent 60%),
+        radial-gradient(ellipse 42% 34% at 75% 70%, rgba(255, 255, 255, 0.06), transparent 58%);
     }
-    .decor-flower.top-right { width: 260px; height: 260px; right: -90px; top: 24px; }
-    .decor-flower.left { width: 230px; height: 230px; left: -120px; top: 40%; animation-delay: 240ms; }
-    .decor-flower.bottom-right { width: 290px; height: 290px; right: -110px; bottom: 120px; animation-delay: 380ms; }
-    body.dark-theme .decor-flower { opacity: .38; filter: blur(0.6px); }
-    body.dark-theme .decor-flower::before,
-    body.dark-theme .decor-flower::after {
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), rgba(142,127,116,.3) 46%, rgba(51,46,42,.44) 72%, transparent 82%);
-      box-shadow:
-        0 18px 34px rgba(0, 0, 0, .2),
-        inset -10px -12px 24px rgba(217,194,158,.12),
-        inset 10px 12px 22px rgba(255,255,255,.08);
-    }
+    body.modal-open { overflow: hidden; }
+    button, input, textarea, select { font: inherit; color: inherit; }
+    button { background: none; }
 
     .vein-lines {
       position: fixed;
-      inset: -10%;
+      inset: -12%;
       z-index: 0;
       pointer-events: none;
-      background:
-        linear-gradient(110deg, transparent 15%, rgba(185,154,104,.12) 49%, transparent 51%) 0 0 / 260px 260px,
-        linear-gradient(75deg, transparent 38%, rgba(185,154,104,.10) 50%, transparent 62%) 0 0 / 340px 340px;
+      opacity: 0.14;
       mix-blend-mode: multiply;
-      opacity: .22;
-      animation: veinFlow 14s linear infinite;
+      background:
+        repeating-linear-gradient(118deg, transparent 0, transparent 38px, rgba(185, 154, 104, 0.09) 39px, transparent 41px, transparent 86px),
+        repeating-linear-gradient(76deg, transparent 0, transparent 52px, rgba(185, 154, 104, 0.06) 53px, transparent 56px, transparent 112px);
+      animation: veinFlow 42s linear infinite;
     }
     body.dark-theme .vein-lines {
-      opacity: .28;
-      background:
-        linear-gradient(110deg, transparent 15%, rgba(217,194,158,.16) 49%, transparent 51%) 0 0 / 260px 260px,
-        linear-gradient(75deg, transparent 38%, rgba(217,194,158,.12) 50%, transparent 62%) 0 0 / 340px 340px;
-      mix-blend-mode: screen;
+      opacity: 0.18;
+      mix-blend-mode: soft-light;
     }
+
+    /* Sculptural florals — layered petals, not blur discs */
+    .floral {
+      position: fixed;
+      z-index: 0;
+      pointer-events: none;
+      animation: floralBloom 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards, floralBreath 18s ease-in-out 2.5s infinite alternate;
+    }
+    .floral__cluster { position: relative; width: 100%; height: 100%; }
+    .petal {
+      position: absolute;
+      border-radius: 52% 48% 62% 38%;
+      transform-origin: 50% 85%;
+      background:
+        linear-gradient(155deg, rgba(255, 255, 255, 0.55), rgba(244, 236, 226, 0.22)),
+        radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.75), rgba(217, 210, 200, 0.08));
+      box-shadow:
+        inset 4px 6px 14px rgba(255, 255, 255, 0.65),
+        inset -8px -10px 18px rgba(185, 154, 104, 0.12),
+        0 14px 28px rgba(47, 43, 38, 0.06);
+      opacity: 0;
+      animation: petalOpen 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+    body.dark-theme .petal {
+      background:
+        linear-gradient(155deg, rgba(255, 255, 255, 0.08), rgba(55, 48, 42, 0.35)),
+        radial-gradient(circle at 30% 28%, rgba(217, 194, 158, 0.18), transparent 65%);
+      box-shadow:
+        inset 3px 5px 12px rgba(255, 255, 255, 0.06),
+        inset -6px -8px 14px rgba(0, 0, 0, 0.22),
+        0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+    .floral--tr { width: min(52vw, 340px); height: min(52vw, 340px); right: max(-8vw, -48px); top: max(-4vw, -28px); transform: rotate(-8deg); }
+    .floral--tl { width: min(46vw, 280px); height: min(46vw, 280px); left: max(-14vw, -72px); top: 28%; transform: rotate(14deg); }
+    .floral--br { width: min(58vw, 380px); height: min(58vw, 380px); right: max(-12vw, -56px); bottom: min(8vh, 72px); transform: rotate(6deg); }
+    .floral--tr .petal:nth-child(1) { width: 42%; height: 38%; left: 38%; top: 18%; --rot: -18deg; animation-delay: 0.05s; }
+    .floral--tr .petal:nth-child(2) { width: 46%; height: 36%; left: 22%; top: 32%; --rot: 12deg; animation-delay: 0.15s; }
+    .floral--tr .petal:nth-child(3) { width: 40%; height: 34%; left: 52%; top: 38%; --rot: 38deg; animation-delay: 0.22s; }
+    .floral--tr .petal:nth-child(4) { width: 34%; height: 28%; left: 34%; top: 54%; --rot: -6deg; animation-delay: 0.3s; }
+    .floral--tr .petal:nth-child(5) { width: 28%; height: 22%; left: 46%; top: 62%; --rot: 22deg; animation-delay: 0.38s; }
+    .floral--tl .petal:nth-child(1) { width: 44%; height: 36%; left: 28%; top: 26%; --rot: 8deg; animation-delay: 0.08s; }
+    .floral--tl .petal:nth-child(2) { width: 38%; height: 34%; left: 42%; top: 38%; --rot: -22deg; animation-delay: 0.18s; }
+    .floral--tl .petal:nth-child(3) { width: 36%; height: 30%; left: 22%; top: 46%; --rot: 28deg; animation-delay: 0.26s; }
+    .floral--tl .petal:nth-child(4) { width: 30%; height: 26%; left: 48%; top: 54%; --rot: -12deg; animation-delay: 0.34s; }
+    .floral--br .petal:nth-child(1) { width: 48%; height: 40%; left: 26%; top: 20%; --rot: -10deg; animation-delay: 0.06s; }
+    .floral--br .petal:nth-child(2) { width: 42%; height: 36%; left: 44%; top: 34%; --rot: 24deg; animation-delay: 0.14s; }
+    .floral--br .petal:nth-child(3) { width: 36%; height: 32%; left: 18%; top: 40%; --rot: -32deg; animation-delay: 0.22s; }
+    .floral--br .petal:nth-child(4) { width: 32%; height: 28%; left: 52%; top: 52%; --rot: 14deg; animation-delay: 0.3s; }
+    .floral--br .petal:nth-child(5) { width: 26%; height: 22%; left: 36%; top: 60%; --rot: -4deg; animation-delay: 0.38s; }
 
     .app {
       position: relative;
@@ -184,446 +173,615 @@
       width: 100%;
       max-width: 760px;
       margin: 0 auto;
-      padding: 28px 24px 130px;
+      padding: clamp(28px, 5vw, 44px) clamp(18px, 4vw, 28px) 132px;
     }
-
-    .header { margin-bottom: 24px; }
+    .editorial-head {
+      margin-bottom: clamp(28px, 6vw, 48px);
+      display: grid;
+      gap: 14px;
+      transform: translateX(-4px);
+    }
     .header-label {
-      color: var(--muted);
-      letter-spacing: .24em;
-      font-size: 11px;
+      font-size: 10px;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      color: var(--muted);
+      font-weight: 500;
     }
     h1 {
-      margin: 0 0 10px;
+      margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(44px, 8vw, 72px);
       font-weight: 500;
-      letter-spacing: -0.04em;
-      color: var(--gold);
-      text-shadow: 0 12px 28px rgba(185,154,104,0.16);
-      line-height: .95;
+      font-size: clamp(52px, 11vw, 88px);
+      letter-spacing: -0.05em;
+      line-height: 0.92;
+      color: transparent;
+      background: linear-gradient(115deg, #c9aa78 0%, #e8d4b8 38%, #b99a68 62%, #dcc7a4 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 0 18px 42px rgba(185, 154, 104, 0.14);
+      position: relative;
+      max-width: 12ch;
+    }
+    body.dark-theme h1 {
+      background: linear-gradient(115deg, #efe2cf 0%, #d9c29e 45%, #f2e6d4 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    h1::after {
+      content: "";
+      position: absolute;
+      inset: -8% -15%;
+      background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.35) 50%, transparent 60%);
+      opacity: 0;
+      mix-blend-mode: soft-light;
+      animation: titlePearl 11s ease-in-out infinite;
+      pointer-events: none;
     }
     .subtitle {
       margin: 0;
-      color: var(--muted);
+      max-width: 34rem;
       font-size: 15px;
-      line-height: 1.55;
-      max-width: 620px;
+      line-height: 1.65;
+      color: var(--muted);
+      font-weight: 400;
     }
 
     .page { display: none; }
     .page.active { display: block; }
 
-    .card {
-      background: var(--panel);
-      backdrop-filter: blur(18px);
-      border: 1px solid rgba(185,154,104,0.18);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-main);
-      padding: 22px;
-      margin-bottom: 16px;
+    .surface {
       position: relative;
+      padding: clamp(20px, 4vw, 28px);
+      margin-bottom: clamp(18px, 4vw, 26px);
+      border-radius: var(--radius-a);
+      border: 1px solid var(--line);
+      background: linear-gradient(154deg, rgba(255, 253, 249, 0.55), rgba(244, 238, 228, 0.28));
+      box-shadow: var(--shadow-deep), var(--inner-lit);
       overflow: hidden;
       opacity: 0;
-      transform: translateY(18px);
-      animation: cardIn 740ms cubic-bezier(.2,.8,.2,1) forwards;
+      transform: translateY(22px);
+      animation: surfaceIn 1.05s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     }
-    body:not(.dark-theme) .card {
-      background:
-        linear-gradient(165deg, rgba(255,255,255,.78), rgba(249,244,236,.62));
-      border-color: rgba(185,154,104,.20);
-      box-shadow:
-        0 26px 64px rgba(62, 49, 37, .10),
-        inset 0 1px 0 rgba(255,255,255,.82),
-        inset 0 -22px 30px rgba(255,255,255,.18);
+    body.dark-theme .surface {
+      background: linear-gradient(154deg, rgba(54, 48, 43, 0.72), rgba(38, 34, 30, 0.52));
     }
-    body.dark-theme .card {
-      border-color: rgba(217, 194, 158, 0.24);
-      background:
-        linear-gradient(160deg, rgba(62,56,51,.86), rgba(45,40,36,.78));
-      box-shadow:
-        0 24px 70px rgba(0, 0, 0, 0.34),
-        inset 0 1px 0 rgba(255, 255, 255, 0.12);
-    }
-    .page.active .card:nth-child(1) { animation-delay: .05s; }
-    .page.active .card:nth-child(2) { animation-delay: .12s; }
-    .page.active .card:nth-child(3) { animation-delay: .19s; }
-    .page.active .card:nth-child(4) { animation-delay: .26s; }
-    .page.active .card:nth-child(5) { animation-delay: .33s; }
-    .page.active .card:nth-child(6) { animation-delay: .40s; }
-
-    .phrase-card { padding: 26px 26px 22px; min-height: 186px; }
-    .phrase-card::before {
+    .surface::before {
       content: "";
       position: absolute;
-      right: -38px;
-      top: 6px;
-      width: 208px;
-      height: 208px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.92), rgba(244,236,226,.75) 44%, rgba(185,154,104,.18) 72%, transparent 80%);
-      box-shadow:
-        inset -12px -14px 26px rgba(185,154,104,.18),
-        inset 12px 14px 20px rgba(255,255,255,.75);
-      opacity: .78;
+      inset: -40%;
+      background: radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.09), transparent 45%);
+      opacity: 0.55;
+      animation: cardFloatLight 14s ease-in-out infinite alternate;
+      pointer-events: none;
     }
-    body:not(.dark-theme) .phrase-card::before {
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.96), rgba(244,236,226,.84) 44%, rgba(185,154,104,.22) 72%, transparent 82%);
-      box-shadow:
-        inset -12px -14px 30px rgba(185,154,104,.21),
-        inset 12px 14px 24px rgba(255,255,255,.82),
-        0 8px 24px rgba(185,154,104,.11);
-      opacity: .86;
+    body:not(.dark-theme) .surface::before {
+      background: radial-gradient(circle at 22% 18%, rgba(255, 255, 255, 0.65), transparent 42%);
+      opacity: 0.35;
     }
-    body.dark-theme .phrase-card::before {
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.2), rgba(117,101,90,.36) 44%, rgba(217,194,158,.18) 72%, transparent 82%);
-      opacity: .62;
+    .surface > * { position: relative; z-index: 1; }
+    .page.active .surface:nth-child(1) { animation-delay: 0.06s; }
+    .page.active .surface:nth-child(2) { animation-delay: 0.14s; }
+    .page.active .surface:nth-child(3) { animation-delay: 0.22s; }
+    .page.active .surface:nth-child(4) { animation-delay: 0.3s; }
+    .page.active .surface:nth-child(5) { animation-delay: 0.38s; }
+    .page.active .surface:nth-child(6) { animation-delay: 0.46s; }
+
+    .surface--hero {
+      margin-left: -6px;
+      margin-right: clamp(12px, 8vw, 64px);
+      transform-origin: 0 50%;
+      border-radius: 32px 18px 36px 22px;
+      padding-bottom: clamp(24px, 5vw, 36px);
     }
+    .surface--shift { margin-left: clamp(12px, 5vw, 40px); margin-right: -4px; border-radius: var(--radius-b); }
     .phrase-label {
-      font-size: 11px;
+      font-size: 10px;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      letter-spacing: .24em;
       color: var(--muted);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .phrase {
       margin: 0;
-      max-width: 72%;
-      font-size: 26px;
-      line-height: 1.2;
       font-family: "Cormorant Garamond", serif;
-      color: color-mix(in srgb, var(--gold) 68%, var(--text) 32%);
-      position: relative;
-      z-index: 2;
-    }
-    body:not(.dark-theme) .phrase {
-      color: color-mix(in srgb, var(--gold) 74%, #5c4a36 26%);
-      text-shadow: 0 8px 18px rgba(185,154,104,.16);
+      font-size: clamp(24px, 5vw, 32px);
+      font-weight: 500;
+      line-height: 1.22;
+      letter-spacing: -0.03em;
+      color: color-mix(in srgb, var(--gold) 78%, var(--text) 22%);
+      max-width: 22rem;
     }
     .phrase-line {
-      margin-top: 16px;
-      width: 140px;
+      margin-top: 18px;
+      width: min(160px, 48%);
       height: 1px;
-      background: linear-gradient(90deg, rgba(185,154,104,.62), rgba(217,194,158,0));
+      background: linear-gradient(90deg, rgba(185, 154, 104, 0.55), transparent);
     }
 
     .section-title {
-      margin: 0 0 12px;
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing: -.01em;
+      margin: 0 0 14px;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: clamp(20px, 3.6vw, 26px);
+      letter-spacing: -0.02em;
+      color: var(--text);
     }
 
     .mood-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
     }
     .mood-btn {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      background: var(--panel-strong);
-      padding: 12px 10px;
-      cursor: pointer;
-      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
-      box-shadow: 0 8px 18px rgba(55,45,35,.06);
       position: relative;
       text-align: left;
+      padding: 14px 12px 16px;
+      border-radius: 22px 14px 20px 18px;
+      border: 1px solid var(--line);
+      cursor: pointer;
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+      box-shadow: 0 14px 28px rgba(47, 43, 38, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.75), inset 0 -12px 28px rgba(255, 255, 255, 0.12);
+      background: linear-gradient(148deg, rgba(255, 252, 247, 0.85), rgba(238, 229, 216, 0.35));
     }
-    body:not(.dark-theme) .mood-btn {
-      background: linear-gradient(160deg, rgba(255,255,255,.9), rgba(244,236,226,.62));
-      box-shadow: 0 10px 22px rgba(55,45,35,.08), inset 0 1px 0 rgba(255,255,255,.74);
+    body.dark-theme .mood-btn {
+      background: linear-gradient(148deg, rgba(58, 52, 46, 0.85), rgba(36, 32, 28, 0.45));
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22), var(--inner-lit);
     }
-    .mood-btn::after {
-      content: "";
-      position: absolute;
-      left: 10px;
-      right: 10px;
-      bottom: 8px;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(185,154,104,.5), rgba(185,154,104,.02));
-    }
-    .mood-icon { width: 20px; height: 20px; margin-bottom: 8px; stroke: var(--gold); fill: none; stroke-width: 1.8; }
-    .mood-text { font-size: 13px; color: var(--text); }
-    .mood-btn:hover { transform: translateY(-2px); }
+    .mood-btn:hover { transform: translateY(-3px); }
     .mood-btn.active {
-      transform: translateY(-3px);
-      border-color: rgba(185,154,104,.46);
-      box-shadow: 0 14px 30px rgba(185,154,104,.18), inset 0 0 0 1px rgba(255,255,255,.62);
-    }
-    body:not(.dark-theme) .mood-btn.active {
+      transform: translateY(-4px);
+      border-color: rgba(185, 154, 104, 0.42);
       box-shadow:
-        0 16px 34px rgba(185,154,104,.22),
-        inset 0 0 0 1px rgba(255,255,255,.82),
-        inset 0 -10px 16px rgba(255,255,255,.22);
+        0 18px 38px rgba(185, 154, 104, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85),
+        0 0 0 1px rgba(217, 194, 158, 0.22);
     }
+    .mood-icon { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.65; margin-bottom: 8px; }
+    .mood-text { font-size: 12px; letter-spacing: 0.02em; color: var(--text); }
 
-    .input-panel {
-      border: 1px solid rgba(185,154,104,.18);
-      background: var(--input-bg);
-      border-radius: var(--radius-lg);
-      padding: 14px;
+    .field-sheet {
+      border-radius: var(--radius-b);
+      border: 1px solid rgba(185, 154, 104, 0.12);
+      padding: 14px 16px;
       display: grid;
       grid-template-columns: 22px 1fr;
       gap: 12px;
       align-items: start;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.35), rgba(244, 236, 226, 0.14));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -16px 36px rgba(255, 255, 255, 0.25);
     }
-    body:not(.dark-theme) .input-panel {
-      background: linear-gradient(165deg, rgba(255,255,255,.78), rgba(244,236,226,.46));
-      border-color: rgba(185,154,104,.22);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
+    body.dark-theme .field-sheet {
+      background: linear-gradient(160deg, rgba(48, 43, 39, 0.55), rgba(28, 25, 22, 0.35));
+      box-shadow: var(--inner-lit);
     }
-    .line-icon { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.7; margin-top: 3px; }
+    .line-icon { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.65; margin-top: 2px; opacity: 0.85; }
     .field-label {
-      font-size: 12px;
-      letter-spacing: .07em;
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 8px;
-      display: block;
     }
-    textarea, input[type="text"], input[type="time"] {
+    textarea, input[type="text"], input[type="time"], input[type="date"] {
       width: 100%;
-      background: transparent;
       border: none;
       outline: none;
-      color: var(--text);
+      background: transparent;
+      resize: vertical;
       font-size: 15px;
-      line-height: 1.45;
-      padding: 0;
+      line-height: 1.5;
+      color: var(--text);
     }
-    textarea { min-height: 100px; resize: vertical; }
-    textarea::placeholder, input::placeholder { color: var(--muted); }
+    textarea { min-height: 96px; }
+    textarea::placeholder, input::placeholder { color: var(--muted); opacity: 0.85; }
 
-    .task-row { display: flex; gap: 10px; margin-bottom: 12px; }
-    .task-row .input-panel { flex: 1; padding: 12px 14px; }
-    .small-btn, .main-btn, .secondary-btn, .habit-toggle, .habit-delete, .day-pill, .everyday-btn {
-      border: 1px solid transparent;
-      border-radius: 16px;
+    .task-row { display: flex; gap: 12px; align-items: stretch; margin-bottom: 12px; flex-wrap: wrap; }
+    .task-row .field-sheet { flex: 1; min-width: 180px; padding: 12px 14px; }
+    .task-meta-row { width: 100%; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+    .task-date-label { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); }
+    input[type="date"]#taskDatePicker {
+      max-width: 160px;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 8px 12px;
+      background: rgba(255, 253, 249, 0.45);
+    }
+    body.dark-theme input[type="date"]#taskDatePicker {
+      background: rgba(40, 36, 32, 0.55);
+    }
+
+    .mini-btn {
+      min-width: 52px;
+      border-radius: 18px;
+      border: 1px solid rgba(185, 154, 104, 0.35);
+      font-size: 22px;
+      font-weight: 500;
+      color: #fff;
       cursor: pointer;
-      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease, background .25s ease;
+      background: linear-gradient(152deg, #c6a674, #dcc29e);
+      box-shadow: 0 18px 36px rgba(185, 154, 104, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      transition: transform 0.3s ease;
     }
-    .small-btn {
-      width: 52px;
-      background: linear-gradient(135deg, rgba(185,154,104,.95), rgba(217,194,158,.95));
-      color: white;
-      font-size: 24px;
-      box-shadow: 0 12px 24px rgba(185,154,104,.24);
-    }
-    .small-btn:active, .main-btn:active, .secondary-btn:active, .habit-toggle:active, .habit-delete:active, .day-pill:active, .everyday-btn:active, .theme-toggle:active, .nav-btn:active { transform: scale(.98); }
-    .main-btn {
+    .mini-btn:hover { transform: translateY(-2px); }
+    .mini-btn:active { transform: scale(0.98); }
+
+    .primary-btn {
       width: 100%;
       margin-top: 8px;
-      padding: 16px 18px;
+      padding: 17px 20px;
+      border: none;
+      border-radius: 22px 18px 24px 20px;
+      cursor: pointer;
       font-weight: 600;
-      font-size: 15px;
-      color: #fff;
-      background: linear-gradient(120deg, #b99a68, #d9c29e, #b99a68);
-      background-size: 200% 100%;
-      box-shadow: 0 14px 30px rgba(185,154,104,.28);
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255, 252, 247, 0.96);
+      background: linear-gradient(118deg, #ae8f5f, #d9c29e, #b99a68);
+      background-size: 220% 100%;
+      box-shadow: 0 22px 48px rgba(185, 154, 104, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.28);
       position: relative;
       overflow: hidden;
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
-    .main-btn::after {
+    .primary-btn::after {
       content: "";
       position: absolute;
-      inset: -130% auto -130% -38%;
-      width: 34%;
+      inset: -160%;
+      width: 38%;
+      left: -45%;
+      background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.45), transparent);
       transform: rotate(18deg);
-      background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.62), rgba(255,255,255,0));
-      animation: buttonShine 3.4s ease-in-out infinite;
+      animation: btnPearl 8s ease-in-out infinite;
     }
-    .secondary-btn {
-      background: var(--panel-strong);
-      border-color: var(--line);
-      padding: 10px 14px;
-      color: var(--text);
+    .primary-btn:hover { transform: translateY(-2px); }
+    .primary-btn:active { transform: scale(0.98); }
+    .primary-btn.is-saving-glow {
+      animation: saveGlow 1.1s ease forwards;
+    }
+
+    .ghost-btn {
+      padding: 10px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      cursor: pointer;
       font-weight: 600;
+      font-size: 13px;
+      background: linear-gradient(160deg, rgba(255, 253, 249, 0.5), rgba(238, 229, 216, 0.22));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+      transition: transform 0.25s ease;
     }
-    .small-btn:hover, .main-btn:hover, .secondary-btn:hover, .habit-toggle:hover, .habit-delete:hover, .theme-toggle:hover, .nav-btn:hover { transform: translateY(-2px); }
+    body.dark-theme .ghost-btn {
+      background: linear-gradient(160deg, rgba(54, 48, 43, 0.65), rgba(30, 27, 24, 0.45));
+    }
+    .ghost-btn:hover { transform: translateY(-2px); }
 
     .tasks { list-style: none; padding: 0; margin: 0; }
     .tasks li {
       display: flex;
       align-items: center;
       gap: 10px;
-      background: var(--panel-strong);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      padding: 10px 12px;
-      margin-bottom: 9px;
+      padding: 11px 12px;
+      margin-bottom: 8px;
+      border-radius: 18px 14px 20px 16px;
+      border: 1px solid rgba(185, 154, 104, 0.14);
+      background: linear-gradient(155deg, rgba(255, 253, 249, 0.52), rgba(238, 229, 216, 0.18));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), 0 10px 22px rgba(47, 43, 38, 0.04);
     }
-    .tasks input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--gold); cursor: pointer; }
+    body.dark-theme .tasks li {
+      background: linear-gradient(155deg, rgba(48, 43, 39, 0.72), rgba(28, 25, 22, 0.42));
+    }
+    .tasks input[type="checkbox"] { width: 17px; height: 17px; accent-color: var(--gold); cursor: pointer; }
     .tasks .done { text-decoration: line-through; color: var(--muted); }
     .task-habit-tag {
       margin-left: auto;
-      font-size: 11px;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       color: var(--gold);
-      border: 1px solid rgba(185,154,104,.35);
+      padding: 3px 8px;
       border-radius: 999px;
-      padding: 2px 8px;
-      background: rgba(217,194,158,.16);
+      border: 1px solid rgba(185, 154, 104, 0.28);
+      background: rgba(217, 194, 158, 0.12);
     }
     .delete-task {
       border: none;
-      background: transparent;
+      cursor: pointer;
       color: var(--muted);
-      font-size: 18px;
-      margin-left: 6px;
-      cursor: pointer;
+      font-size: 17px;
+      padding: 4px;
+      margin-left: 4px;
     }
 
-    .history-item {
-      border-radius: var(--radius-lg);
-      background: var(--panel-strong);
-      border: 1px solid var(--line);
-      padding: 14px;
-      margin-bottom: 10px;
-      cursor: pointer;
-      transition: transform .2s ease, box-shadow .2s ease;
+    /* Planner mini calendar */
+    .planner-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
     }
-    .history-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
-    .history-date { font-weight: 700; margin-bottom: 5px; }
-    .history-preview { color: var(--muted); font-size: 14px; line-height: 1.4; }
-
-    .habit-form { display: grid; gap: 10px; margin-bottom: 14px; }
-    .day-pills { display: flex; flex-wrap: wrap; gap: 8px; }
-    .day-pill, .everyday-btn {
-      background: var(--panel-strong);
-      border: 1px solid var(--line);
-      font-size: 13px;
-      padding: 8px 11px;
+    .planner-month {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px;
+      letter-spacing: -0.02em;
       color: var(--text);
     }
-    .day-pill.active, .everyday-btn.active {
-      border-color: rgba(185,154,104,.5);
-      box-shadow: 0 10px 22px rgba(185,154,104,.2);
-      transform: translateY(-1px);
-      color: var(--gold);
+    .cal-nav {
+      display: flex;
+      gap: 8px;
     }
-    .habit-row {
+    .cal-nav button {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
       border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      padding: 12px;
-      margin-bottom: 10px;
-      background: var(--panel-strong);
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+      background: linear-gradient(160deg, rgba(255, 253, 249, 0.55), rgba(238, 229, 216, 0.24));
+    }
+    body.dark-theme .cal-nav button {
+      background: linear-gradient(160deg, rgba(48, 43, 39, 0.65), rgba(28, 25, 22, 0.45));
+      box-shadow: var(--inner-lit);
+    }
+    .cal-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      margin-bottom: 6px;
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+    .cal-day {
+      aspect-ratio: 1;
+      border-radius: 14px 10px 14px 12px;
+      border: 1px solid transparent;
+      background: linear-gradient(155deg, rgba(255, 253, 249, 0.4), rgba(238, 229, 216, 0.12));
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      position: relative;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    }
+    body.dark-theme .cal-day {
+      background: linear-gradient(155deg, rgba(46, 41, 37, 0.65), rgba(28, 25, 22, 0.38));
+    }
+    .cal-day:hover { transform: translateY(-2px); }
+    .cal-day.is-out { opacity: 0.22; pointer-events: none; }
+    .cal-day.is-today { border-color: rgba(185, 154, 104, 0.35); }
+    .cal-day.is-selected {
+      border-color: rgba(185, 154, 104, 0.55);
+      box-shadow: 0 12px 26px rgba(185, 154, 104, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.65);
+    }
+    .cal-day.has-tasks::after {
+      content: "";
+      position: absolute;
+      bottom: 6px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.65;
+    }
+    .planner-add-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; align-items: flex-end; }
+    .planner-add-row .field-sheet { flex: 1; min-width: 200px; margin: 0; }
+    .habit-preview {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      border: 1px dashed rgba(185, 154, 104, 0.22);
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .habit-preview strong { color: var(--gold); font-weight: 600; }
+
+    .day-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .day-pill, .everyday-btn {
+      border-radius: 999px;
+      padding: 8px 13px;
+      font-size: 12px;
+      border: 1px solid var(--line);
+      cursor: pointer;
+      background: linear-gradient(160deg, rgba(255, 253, 249, 0.55), rgba(238, 229, 216, 0.18));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    body.dark-theme .day-pill,
+    body.dark-theme .everyday-btn {
+      background: linear-gradient(160deg, rgba(48, 43, 39, 0.65), rgba(28, 25, 22, 0.42));
+    }
+    .day-pill.active, .everyday-btn.active {
+      border-color: rgba(185, 154, 104, 0.48);
+      box-shadow: 0 12px 26px rgba(185, 154, 104, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.65);
+      color: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    .habit-row {
       display: grid;
       grid-template-columns: 1fr auto auto;
       gap: 8px;
       align-items: center;
+      padding: 14px;
+      margin-bottom: 10px;
+      border-radius: 20px 16px 22px 14px;
+      border: 1px solid var(--line);
+      background: linear-gradient(152deg, rgba(255, 253, 249, 0.48), rgba(238, 229, 216, 0.16));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 12px 26px rgba(47, 43, 38, 0.04);
+    }
+    body.dark-theme .habit-row {
+      background: linear-gradient(152deg, rgba(48, 43, 39, 0.72), rgba(28, 25, 22, 0.42));
     }
     .habit-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
     .habit-meta { font-size: 12px; color: var(--muted); }
     .habit-toggle, .habit-delete {
-      padding: 8px 10px;
-      font-size: 12px;
+      padding: 8px 11px;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      cursor: pointer;
       background: transparent;
-      border-color: var(--line);
     }
-    .habit-toggle.on { border-color: rgba(185,154,104,.44); color: var(--gold); }
-    .habit-delete { color: var(--rose); }
+    .habit-toggle.on { border-color: rgba(185, 154, 104, 0.44); color: var(--gold); }
+    .habit-delete { color: #b48f8c; }
+
+    .history-item {
+      padding: 16px 18px;
+      margin-bottom: 10px;
+      border-radius: 22px 16px 24px 18px;
+      border: 1px solid var(--line);
+      cursor: pointer;
+      background: linear-gradient(154deg, rgba(255, 253, 249, 0.5), rgba(238, 229, 216, 0.16));
+      box-shadow: 0 14px 28px rgba(47, 43, 38, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+      transition: transform 0.3s ease;
+    }
+    body.dark-theme .history-item {
+      background: linear-gradient(154deg, rgba(48, 43, 39, 0.72), rgba(28, 25, 22, 0.42));
+    }
+    .history-item:hover { transform: translateY(-3px); }
+    .history-date { font-family: "Cormorant Garamond", serif; font-size: 18px; margin-bottom: 6px; color: var(--text); }
+    .history-preview { font-size: 13px; color: var(--muted); line-height: 1.45; }
 
     .bottom-nav {
       position: fixed;
       left: 50%;
       bottom: 14px;
       transform: translateX(-50%);
-      width: calc(100% - 28px);
-      max-width: 740px;
-      background: var(--panel-strong);
-      backdrop-filter: blur(18px);
+      width: calc(100% - 26px);
+      max-width: 720px;
+      padding: 10px 10px 12px;
+      border-radius: 26px 20px 28px 22px;
       border: 1px solid var(--line);
-      border-radius: 26px;
-      padding: 8px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      box-shadow: var(--shadow-nav);
-      z-index: 10;
+      gap: 6px;
+      z-index: 12;
+      background: linear-gradient(165deg, rgba(255, 253, 249, 0.82), rgba(238, 229, 216, 0.42));
+      box-shadow: 0 22px 50px rgba(47, 43, 38, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.88);
     }
-    body:not(.dark-theme) .bottom-nav {
-      background: linear-gradient(155deg, rgba(255,255,255,.92), rgba(244,236,226,.72));
-      border-color: rgba(185,154,104,.24);
-      box-shadow: 0 20px 38px rgba(55,45,35,.16), inset 0 1px 0 rgba(255,255,255,.86);
+    body.dark-theme .bottom-nav {
+      background: linear-gradient(165deg, rgba(46, 41, 37, 0.88), rgba(28, 25, 22, 0.72));
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.38), var(--inner-lit);
     }
     .nav-btn {
       border: none;
-      background: transparent;
+      padding: 10px 6px;
       border-radius: 18px;
-      color: var(--muted);
-      padding: 9px 6px;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 4px;
-      font-size: 12px;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.25s ease;
     }
-    .nav-icon { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+    .nav-icon { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.7; }
     .nav-btn.active {
       color: var(--gold);
-      background: linear-gradient(160deg, rgba(255,255,255,.54), rgba(217,194,158,.25));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+      background: linear-gradient(160deg, rgba(255, 253, 249, 0.65), rgba(217, 194, 158, 0.22));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    }
+    body.dark-theme .nav-btn.active {
+      background: linear-gradient(160deg, rgba(58, 52, 46, 0.65), rgba(217, 194, 158, 0.08));
     }
 
     .theme-toggle {
       position: fixed;
-      right: 18px;
-      bottom: 94px;
-      width: 56px;
-      height: 56px;
+      right: max(14px, env(safe-area-inset-right));
+      bottom: 92px;
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
       border: 1px solid var(--line);
-      background: var(--panel-strong);
-      box-shadow: var(--shadow-soft);
-      z-index: 12;
+      z-index: 14;
+      cursor: pointer;
       display: grid;
       place-items: center;
       color: var(--gold);
-    }
-    body:not(.dark-theme) .theme-toggle {
-      background: linear-gradient(160deg, rgba(255,255,255,.94), rgba(244,236,226,.72));
-      border-color: rgba(185,154,104,.3);
-      box-shadow: 0 16px 32px rgba(55,45,35,.18), inset 0 1px 0 rgba(255,255,255,.9);
+      background: linear-gradient(160deg, rgba(255, 253, 249, 0.85), rgba(238, 229, 216, 0.42));
+      box-shadow: 0 16px 34px rgba(47, 43, 38, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.82);
+      transition: transform 0.25s ease;
     }
     body.dark-theme .theme-toggle {
-      background: linear-gradient(160deg, rgba(66,59,53,.9), rgba(45,40,36,.84));
-      border-color: rgba(217,194,158,.3);
-      box-shadow: 0 16px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.1);
+      background: linear-gradient(160deg, rgba(52, 46, 41, 0.92), rgba(28, 25, 22, 0.72));
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.35), var(--inner-lit);
     }
-    .theme-toggle svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+    .theme-toggle:hover { transform: translateY(-2px); }
+    .theme-toggle:active { transform: scale(0.97); }
+    .theme-toggle svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.75; }
 
     .toast {
       position: fixed;
       left: 50%;
       bottom: 96px;
-      transform: translateX(-50%) translateY(10px);
-      background: var(--panel-strong);
-      border: 1px solid var(--line);
-      color: var(--text);
-      padding: 12px 16px;
+      transform: translateX(-50%) translateY(12px);
+      padding: 12px 20px;
       border-radius: 999px;
-      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--line);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      background: linear-gradient(160deg, rgba(255, 253, 249, 0.92), rgba(238, 229, 216, 0.55));
+      box-shadow: 0 18px 36px rgba(47, 43, 38, 0.12);
       opacity: 0;
       pointer-events: none;
-      transition: opacity .25s ease, transform .25s ease;
-      z-index: 14;
-      font-size: 13px;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      z-index: 16;
+      max-width: calc(100% - 48px);
+      text-align: center;
+    }
+    body.dark-theme .toast {
+      background: linear-gradient(160deg, rgba(46, 41, 37, 0.94), rgba(28, 25, 22, 0.78));
     }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
     .save-petal {
       position: fixed;
-      width: 9px;
-      height: 9px;
-      border-radius: 50% 58% 62% 48%;
-      background: radial-gradient(circle at 30% 30%, #fff, #d9c29e);
+      width: 11px;
+      height: 11px;
+      border-radius: 58% 42% 62% 38%;
       pointer-events: none;
-      z-index: 16;
-      animation: petalBurst 980ms cubic-bezier(.2,.8,.2,1) forwards;
+      z-index: 18;
+      background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.95), rgba(217, 194, 158, 0.65));
+      opacity: 0.85;
+      box-shadow: 0 0 18px rgba(217, 194, 158, 0.35);
+      animation: savePetalDrift 1.15s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+    .save-orb {
+      position: fixed;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 17;
+      background: radial-gradient(circle, rgba(217, 194, 158, 0.22), transparent 68%);
+      animation: saveOrbFade 1s ease forwards;
     }
 
     .modal-overlay {
@@ -633,79 +791,114 @@
       align-items: flex-end;
       justify-content: center;
       padding: 18px;
-      background: rgba(37, 31, 27, .4);
-      backdrop-filter: blur(8px);
-      z-index: 20;
+      background: rgba(30, 26, 23, 0.42);
+      z-index: 24;
     }
     .modal-overlay.show { display: flex; }
-    .modal {
+    .modal-panel {
       width: 100%;
-      max-width: 740px;
+      max-width: 720px;
       max-height: 82vh;
       overflow: auto;
-      background: var(--panel-strong);
+      border-radius: 28px 18px 32px 22px;
       border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-main);
-      padding: 18px;
-      animation: cardIn .3s ease;
+      padding: 22px;
+      background: linear-gradient(158deg, rgba(255, 253, 249, 0.96), rgba(244, 238, 228, 0.88));
+      box-shadow: var(--shadow-deep), var(--inner-lit);
+      animation: surfaceIn 0.45s ease;
     }
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      gap: 8px;
-      margin-bottom: 10px;
+    body.dark-theme .modal-panel {
+      background: linear-gradient(158deg, rgba(46, 41, 37, 0.98), rgba(28, 25, 22, 0.94));
     }
-    .modal-title { margin: 0; font-size: 22px; font-family: "Cormorant Garamond", serif; color: var(--gold); }
+    .modal-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+    .modal-title {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 26px;
+      color: var(--gold);
+      letter-spacing: -0.02em;
+    }
     .modal-close {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       border: 1px solid var(--line);
-      background: transparent;
       cursor: pointer;
       font-size: 20px;
+      background: transparent;
     }
-    .modal-content { white-space: pre-wrap; line-height: 1.5; }
-    .modal-footer { margin-top: 12px; display: flex; justify-content: flex-end; }
+    .modal-body { white-space: pre-wrap; line-height: 1.55; font-size: 14px; }
+    .modal-footer { margin-top: 16px; display: flex; justify-content: flex-end; }
 
-    @keyframes flowerBloom {
-      0% { opacity: 0; transform: scale(.92) rotate(-10deg); }
-      100% { opacity: .82; transform: scale(1) rotate(0); }
+    @keyframes floralBloom {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes petalOpen {
+      from { opacity: 0; transform: scale(0.88) rotate(var(--rot, 0deg)); }
+      to { opacity: 1; transform: scale(1) rotate(var(--rot, 0deg)); }
+    }
+    @keyframes floralBreath {
+      from { transform: scale(1) rotate(var(--base-rot, 0deg)); }
+      to { transform: scale(1.02) rotate(var(--base-rot, 0deg)); }
     }
     @keyframes veinFlow {
-      0% { transform: translate3d(-2%, 0, 0); }
-      100% { transform: translate3d(2%, 0, 0); }
+      from { transform: translate3d(-1.5%, 0, 0); }
+      to { transform: translate3d(1.5%, 0, 0); }
     }
-    @keyframes cardIn {
-      from { opacity: 0; transform: translateY(18px); }
+    @keyframes pearlFog {
+      from { opacity: 0.42; transform: translate3d(0, 0, 0); }
+      to { opacity: 0.62; transform: translate3d(1.5%, -1%, 0); }
+    }
+    @keyframes surfaceIn {
+      from { opacity: 0; transform: translateY(26px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes buttonShine {
-      0%, 70%, 100% { transform: translateX(-150%) rotate(18deg); }
-      30% { transform: translateX(420%) rotate(18deg); }
+    @keyframes cardFloatLight {
+      from { transform: translate3d(-2%, -1%, 0); }
+      to { transform: translate3d(2%, 2%, 0); }
     }
-    @keyframes petalBurst {
+    @keyframes titlePearl {
+      0%, 70% { opacity: 0; transform: translateX(-18%); }
+      82% { opacity: 0.55; transform: translateX(22%); }
+      100% { opacity: 0; transform: translateX(40%); }
+    }
+    @keyframes btnPearl {
+      0%, 55% { transform: translateX(-130%) rotate(18deg); }
+      75% { transform: translateX(220%) rotate(18deg); }
+      100% { transform: translateX(220%) rotate(18deg); }
+    }
+    @keyframes saveGlow {
+      0% { box-shadow: 0 22px 48px rgba(185, 154, 104, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.28); }
+      40% { box-shadow: 0 26px 60px rgba(217, 194, 158, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.38); }
+      100% { box-shadow: 0 22px 48px rgba(185, 154, 104, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.28); }
+    }
+    @keyframes savePetalDrift {
       to {
-        transform: translate(var(--x, 0), var(--y, -60px)) scale(.5) rotate(var(--r, 20deg));
+        transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(0.45);
         opacity: 0;
       }
     }
+    @keyframes saveOrbFade {
+      from { opacity: 0.65; transform: translate(-50%, -50%) scale(0.7); }
+      to { opacity: 0; transform: translate(-50%, -50%) scale(1.6); }
+    }
 
-    @media (max-width: 880px) {
-      .app { padding: 20px 18px 120px; }
-      .phrase { max-width: 84%; font-size: 24px; }
-      .decor-flower.top-right { width: 220px; height: 220px; right: -110px; }
-      .decor-flower.left { width: 190px; height: 190px; left: -120px; }
-      .decor-flower.bottom-right { width: 240px; height: 240px; right: -120px; }
+    .floral { --base-rot: 0deg; }
+    .floral--tr { --base-rot: -8deg; }
+    .floral--tl { --base-rot: 14deg; }
+    .floral--br { --base-rot: 6deg; }
+
+    @media (min-width: 720px) {
+      .modal-overlay { align-items: center; }
+      .editorial-head { grid-template-columns: 1fr 0.35fr; align-items: end; }
+      .subtitle { grid-column: 1 / -1; }
     }
     @media (max-width: 580px) {
-      .mood-grid { grid-template-columns: repeat(2, 1fr); }
-      .phrase { max-width: 100%; }
-      .phrase-card::before { right: -78px; width: 180px; height: 180px; }
+      .mood-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .habit-row { grid-template-columns: 1fr; }
-      .theme-toggle { right: 12px; width: 52px; height: 52px; }
+      .task-row { flex-direction: column; }
+      .mini-btn { width: 100%; min-height: 48px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
@@ -718,33 +911,48 @@
   </style>
 </head>
 <body>
-  <div class="decor-flower top-right" aria-hidden="true"></div>
-  <div class="decor-flower left" aria-hidden="true"></div>
-  <div class="decor-flower bottom-right" aria-hidden="true"></div>
   <div class="vein-lines" aria-hidden="true"></div>
 
+  <div class="floral floral--tr" aria-hidden="true">
+    <div class="floral__cluster">
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+    </div>
+  </div>
+  <div class="floral floral--tl" aria-hidden="true">
+    <div class="floral__cluster">
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+    </div>
+  </div>
+  <div class="floral floral--br" aria-hidden="true">
+    <div class="floral__cluster">
+      <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+    </div>
+  </div>
+
   <main class="app">
-    <header class="header">
-      <div class="header-label">Личный дневник чувств</div>
-      <h1>Делай любя, люби себя</h1>
-      <p class="subtitle">Тихое пространство, где можно заметить себя, свои чувства, желания, благодарность и маленькие победы.</p>
+    <header class="editorial-head">
+      <div>
+        <div class="header-label">Личный дневник чувств</div>
+        <h1>Делай любя,<br />люби себя</h1>
+      </div>
+      <p class="subtitle">Тихое пространство, где можно заметить себя: чувства, желания, благодарность и маленькие победы — без спешки и оценки.</p>
     </header>
 
     <section id="todayPage" class="page active" aria-labelledby="todayTitle">
-      <article class="card phrase-card">
+      <article class="surface surface--hero">
         <div class="phrase-label">Фраза дня</div>
         <p id="dailyPhrase" class="phrase"></p>
         <div class="phrase-line"></div>
       </article>
 
-      <article class="card">
+      <article class="surface surface--shift">
         <h2 id="todayTitle" class="section-title">Какое у тебя сегодня настроение?</h2>
         <div class="mood-grid" id="moodGrid"></div>
       </article>
 
-      <article class="card">
+      <article class="surface">
         <h2 class="section-title">Что сейчас у тебя внутри?</h2>
-        <div class="input-panel">
+        <div class="field-sheet">
           <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4c4.2 0 7.6 3.2 7.6 7.2S16.2 19 12 19s-7.6-3.8-7.6-7.8S7.8 4 12 4Z"/><path d="M9.5 10.8c.7-.8 1.5-1.2 2.5-1.2s1.8.4 2.5 1.2"/></svg>
           <div>
             <label class="field-label" for="thoughts">Что сейчас у тебя внутри?</label>
@@ -753,24 +961,29 @@
         </div>
       </article>
 
-      <article class="card">
-        <h2 class="section-title">Что сегодня хочется сделать?</h2>
+      <article class="surface surface--shift">
+        <h2 class="section-title">Что хочется сделать?</h2>
+        <div class="task-meta-row">
+          <span class="task-date-label">Дата дела</span>
+          <input type="date" id="taskDatePicker" aria-label="Дата задачи" />
+        </div>
         <div class="task-row">
-          <div class="input-panel">
+          <div class="field-sheet">
             <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h8"/></svg>
             <div>
-              <label class="field-label" for="taskInput">Добавить дело</label>
+              <label class="field-label" for="taskInput">Новое дело</label>
               <input id="taskInput" type="text" placeholder="Например: 16:40 — Уроки английского" autocomplete="off" />
             </div>
           </div>
-          <button id="addTaskButton" class="small-btn" type="button" aria-label="Добавить дело">+</button>
+          <button id="addTaskButton" class="mini-btn" type="button" aria-label="Добавить дело">+</button>
         </div>
+        <p class="subtitle" style="margin-top:4px;font-size:12px;">Сегодняшний список ниже. Другую дату можно выбрать здесь или во вкладке «Ещё» — календарь.</p>
         <ul class="tasks" id="tasksList"></ul>
       </article>
 
-      <article class="card">
+      <article class="surface">
         <h2 class="section-title">За что сегодня благодарна?</h2>
-        <div class="input-panel">
+        <div class="field-sheet">
           <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-6.7-3.8-8.4-7.4C2.2 9.5 4 6.8 7 6.8c2 0 3 1.1 5 3 2-1.9 3-3 5-3 3 0 4.8 2.7 3.4 5.8C18.7 16.2 12 20 12 20Z"/></svg>
           <div>
             <label class="field-label" for="gratitude">За что сегодня благодарна?</label>
@@ -779,9 +992,9 @@
         </div>
       </article>
 
-      <article class="card">
+      <article class="surface surface--shift">
         <h2 class="section-title">Моя маленькая победа дня</h2>
-        <div class="input-panel">
+        <div class="field-sheet">
           <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.2 4.4L19 8l-3.6 3.3.8 4.7L12 13.8 7.8 16l.8-4.7L5 8l4.8-.6L12 3Z"/></svg>
           <div>
             <label class="field-label" for="victory">Моя маленькая победа дня</label>
@@ -790,29 +1003,62 @@
         </div>
       </article>
 
-      <button id="saveTodayButton" class="main-btn" type="button">Сохранить день</button>
+      <button id="saveTodayButton" class="primary-btn" type="button">Сохранить день</button>
     </section>
 
     <section id="historyPage" class="page" aria-labelledby="historyTitle">
-      <article class="card">
+      <article class="surface">
         <h2 id="historyTitle" class="section-title">История записей</h2>
         <div id="historyList"></div>
       </article>
     </section>
 
     <section id="futurePage" class="page" aria-labelledby="futureTitle">
-      <article class="card">
+      <article class="surface">
+        <h2 class="section-title">Календарь дел</h2>
+        <p class="subtitle">Выбери дату, смотри дела и добавляй новые — как в лёгком планере.</p>
+        <div class="planner-head">
+          <div id="calMonthTitle" class="planner-month"></div>
+          <div class="cal-nav">
+            <button type="button" id="calPrevBtn" aria-label="Предыдущий месяц">‹</button>
+            <button type="button" id="calNextBtn" aria-label="Следующий месяц">›</button>
+          </div>
+        </div>
+        <div class="cal-weekdays"><span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span></div>
+        <div id="calGrid" class="cal-grid"></div>
+        <div class="planner-add-row">
+          <div class="field-sheet" style="margin:0;">
+            <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4M16 2v4M4 10h16M6 4h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg>
+            <div>
+              <label class="field-label" for="plannerDateInput">Дата</label>
+              <input type="date" id="plannerDateInput" />
+            </div>
+          </div>
+          <div class="field-sheet" style="margin:0;flex:2;">
+            <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h8"/></svg>
+            <div>
+              <label class="field-label" for="plannerTaskInput">Дело</label>
+              <input id="plannerTaskInput" type="text" placeholder="Что запланировать?" autocomplete="off" />
+            </div>
+          </div>
+          <button type="button" id="plannerAddTaskBtn" class="ghost-btn">Добавить</button>
+        </div>
+        <ul class="tasks" id="plannerTasksList"></ul>
+        <div id="plannerHabitPreview" class="habit-preview" hidden></div>
+      </article>
+
+      <article class="surface surface--shift">
         <h2 id="futureTitle" class="section-title">Привычки и расписание</h2>
-        <p class="subtitle">Добавь повторяющиеся дела, и в нужные дни они автоматически появятся в сегодняшнем списке.</p>
-        <form id="habitForm" class="habit-form">
-          <div class="input-panel">
+        <p class="subtitle">Повторяющиеся дела подставляются в нужные дни автоматически.</p>
+        <form id="habitForm">
+          <div class="field-sheet" style="margin-bottom:10px;">
             <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M12 4v16"/></svg>
             <div>
-              <label class="field-label" for="habitTitle">Название привычки/дела</label>
+              <label class="field-label" for="habitTitle">Название</label>
               <input id="habitTitle" type="text" placeholder="Например: Маска для лица" required />
             </div>
           </div>
-          <div class="input-panel">
+          <div class="field-sheet" style="margin-bottom:10px;">
             <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             <div>
               <span class="field-label">Дни недели</span>
@@ -820,50 +1066,74 @@
               <button id="everydayButton" class="everyday-btn" type="button">Каждый день</button>
             </div>
           </div>
-          <div class="input-panel">
+          <div class="field-sheet" style="margin-bottom:12px;">
             <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v5l3 3"/><circle cx="12" cy="12" r="8"/></svg>
             <div>
               <label class="field-label" for="habitTime">Время (необязательно)</label>
               <input id="habitTime" type="time" />
             </div>
           </div>
-          <button class="secondary-btn" type="submit">Добавить привычку</button>
+          <button class="ghost-btn" type="submit">Добавить привычку</button>
         </form>
         <div id="habitsList"></div>
       </article>
     </section>
   </main>
 
-  <button id="themeToggle" class="theme-toggle" type="button" aria-label="Переключить тему"><svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg></button>
+  <button id="themeToggle" class="theme-toggle" type="button" aria-label="Переключить тему">
+    <svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg>
+  </button>
 
   <nav class="bottom-nav" aria-label="Основная навигация">
-    <button class="nav-btn active" type="button" data-page="todayPage"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M4 6h16M4 18h16"/></svg><span>Сегодня</span></button>
-    <button class="nav-btn" type="button" data-page="historyPage"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M18 5v14M8 12h8"/></svg><span>История</span></button>
-    <button class="nav-btn" type="button" data-page="futurePage"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.4 5 5.6.8-4 3.8.9 5.4-4.9-2.6L7 18l.9-5.4-4-3.8 5.6-.8L12 3Z"/></svg><span>Ещё</span></button>
+    <button class="nav-btn active" type="button" data-page="todayPage">
+      <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M4 6h16M4 18h16"/></svg>
+      <span>Сегодня</span>
+    </button>
+    <button class="nav-btn" type="button" data-page="historyPage">
+      <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M18 5v14M8 12h8"/></svg>
+      <span>История</span>
+    </button>
+    <button class="nav-btn" type="button" data-page="futurePage">
+      <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.4 5 5.6.8-4 3.8.9 5.4-4.9-2.6L7 18l.9-5.4-4-3.8 5.6-.8L12 3Z"/></svg>
+      <span>Ещё</span>
+    </button>
   </nav>
 
-  <div id="toast" class="toast" role="status" aria-live="polite">Сохранено</div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
   <div id="entryModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal">
+    <div class="modal-panel">
       <div class="modal-header">
         <h2 id="modalTitle" class="modal-title">Запись</h2>
-        <button id="modalCloseButton" class="modal-close" type="button" aria-label="Закрыть окно">×</button>
+        <button id="modalCloseButton" class="modal-close" type="button" aria-label="Закрыть">×</button>
       </div>
-      <div id="modalContent" class="modal-content"></div>
-      <div class="modal-footer"><button id="modalOkButton" class="secondary-btn" type="button">Закрыть</button></div>
+      <div id="modalContent" class="modal-body"></div>
+      <div class="modal-footer">
+        <button id="modalOkButton" class="ghost-btn" type="button">Закрыть</button>
+      </div>
     </div>
   </div>
 
   <script>
     (() => {
       "use strict";
+
       const APP_STORAGE_KEY = "lovingDiaryApp_v3";
       const LEGACY_STORAGE_KEY = "lovingDiaryApp_v2";
       const THEME_STORAGE_KEY = "lovingDiaryTheme";
       const HABITS_STORAGE_KEY = "lovingDiaryHabits_v1";
       const AUTOSAVE_DELAY = 500;
 
-      const phrases = ["Сегодня можно выбрать мягкость, а не строгость к себе.","Маленький шаг с любовью важнее идеального плана.","Сначала дыхание, потом всё остальное.","Ты имеешь право на тишину, паузу и заботу о себе.","Пусть день будет не идеальным, а живым.","Ты можешь начинать заново столько раз, сколько нужно.","Твои чувства не нужно оправдывать — они уже важны.","Сегодня твоя сила может быть в нежности к себе."];
+      const phrases = [
+        "Сегодня можно выбрать мягкость, а не строгость к себе.",
+        "Маленький шаг с любовью важнее идеального плана.",
+        "Сначала дыхание, потом всё остальное.",
+        "Ты имеешь право на тишину, паузу и заботу о себе.",
+        "Пусть день будет не идеальным, а живым.",
+        "Ты можешь начинать заново столько раз, сколько нужно.",
+        "Твои чувства не нужно оправдывать — они уже важны.",
+        "Сегодня твоя сила может быть в нежности к себе."
+      ];
 
       const moodIcons = {
         sun: '<svg class="mood-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1l2.1-2.1M17 7l2.1-2.1"/></svg>',
@@ -873,74 +1143,931 @@
         leaf: '<svg class="mood-icon" viewBox="0 0 24 24"><path d="M5 16c0-7 6-11 14-11 0 8-4 14-11 14-1.7 0-3-1.3-3-3Z"/><path d="M8 16c2-2.5 5-4.4 9-5.7"/></svg>',
         star: '<svg class="mood-icon" viewBox="0 0 24 24"><path d="m12 3 2.5 5.2L20 9l-4 3.8.9 5.5L12 15.6 7.1 18.3 8 12.8 4 9l5.5-.8L12 3Z"/></svg>'
       };
-      const moods = [{ id: "joy", icon: moodIcons.sun, text: "Радость" },{ id: "calm", icon: moodIcons.branch, text: "Спокойствие" },{ id: "tired", icon: moodIcons.moon, text: "Усталость" },{ id: "sad", icon: moodIcons.cloud, text: "Грусть" },{ id: "anxiety", icon: moodIcons.leaf, text: "Тревога" },{ id: "inspiration", icon: moodIcons.star, text: "Вдохновение" }];
-      const weekdays = [{ value: 1, short: "Пн" },{ value: 2, short: "Вт" },{ value: 3, short: "Ср" },{ value: 4, short: "Чт" },{ value: 5, short: "Пт" },{ value: 6, short: "Сб" },{ value: 0, short: "Вс" }];
-      const state = { selectedMood: "", tasks: [], habits: [], selectedHabitDays: [] };
+
+      const moods = [
+        { id: "joy", icon: moodIcons.sun, text: "Радость" },
+        { id: "calm", icon: moodIcons.branch, text: "Спокойствие" },
+        { id: "tired", icon: moodIcons.moon, text: "Усталость" },
+        { id: "sad", icon: moodIcons.cloud, text: "Грусть" },
+        { id: "anxiety", icon: moodIcons.leaf, text: "Тревога" },
+        { id: "inspiration", icon: moodIcons.star, text: "Вдохновение" }
+      ];
+
+      const weekdays = [
+        { value: 1, short: "Пн" }, { value: 2, short: "Вт" }, { value: 3, short: "Ср" },
+        { value: 4, short: "Чт" }, { value: 5, short: "Пт" }, { value: 6, short: "Сб" }, { value: 0, short: "Вс" }
+      ];
+
+      const state = {
+        selectedMood: "",
+        tasks: [],
+        habits: [],
+        selectedHabitDays: [],
+        plannerMonth: null,
+        selectedPlannerDate: ""
+      };
+
       const elements = {};
 
-      function cacheElements() { elements.body = document.body; elements.themeToggle = document.getElementById("themeToggle"); elements.themeIcon = document.getElementById("themeIcon"); elements.dailyPhrase = document.getElementById("dailyPhrase"); elements.moodGrid = document.getElementById("moodGrid"); elements.thoughts = document.getElementById("thoughts"); elements.taskInput = document.getElementById("taskInput"); elements.addTaskButton = document.getElementById("addTaskButton"); elements.tasksList = document.getElementById("tasksList"); elements.gratitude = document.getElementById("gratitude"); elements.victory = document.getElementById("victory"); elements.saveTodayButton = document.getElementById("saveTodayButton"); elements.historyList = document.getElementById("historyList"); elements.navButtons = document.querySelectorAll(".nav-btn"); elements.pages = document.querySelectorAll(".page"); elements.toast = document.getElementById("toast"); elements.entryModal = document.getElementById("entryModal"); elements.modalTitle = document.getElementById("modalTitle"); elements.modalContent = document.getElementById("modalContent"); elements.modalCloseButton = document.getElementById("modalCloseButton"); elements.modalOkButton = document.getElementById("modalOkButton"); elements.habitForm = document.getElementById("habitForm"); elements.habitTitle = document.getElementById("habitTitle"); elements.habitTime = document.getElementById("habitTime"); elements.dayPills = document.getElementById("dayPills"); elements.everydayButton = document.getElementById("everydayButton"); elements.habitsList = document.getElementById("habitsList"); }
-      function debounce(callback, delay) { let timerId; return (...args) => { window.clearTimeout(timerId); timerId = window.setTimeout(() => callback(...args), delay); }; }
-      function safeParseJson(rawValue, fallbackValue = {}) { try { return rawValue ? JSON.parse(rawValue) : fallbackValue; } catch { return fallbackValue; } }
-      function getTodayKey() { const now = new Date(); return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`; }
-      function getReadableDate(dateKey) { const [year, month, day] = dateKey.split("-").map(Number); return new Date(year, month - 1, day).toLocaleDateString("ru-RU", { day: "numeric", month: "long", year: "numeric" }); }
-      function getMoodById(moodId) { return moods.find((m) => m.id === moodId); }
-      function getSafeText(value, fallback = "Не заполнено") { const t = String(value || "").trim(); return t || fallback; }
-      function escapeHtml(value) { return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;"); }
-      function createId() { return crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`; }
-      function loadStorage() { const currentRaw = localStorage.getItem(APP_STORAGE_KEY); if (currentRaw) return safeParseJson(currentRaw, {}); const legacyData = safeParseJson(localStorage.getItem(LEGACY_STORAGE_KEY), {}); if (Object.keys(legacyData).length > 0) saveStorage(legacyData); return legacyData; }
-      function saveStorage(data) { try { localStorage.setItem(APP_STORAGE_KEY, JSON.stringify(data)); return true; } catch { showToast("Не удалось сохранить данные"); return false; } }
-      function loadHabits() { const habitsRaw = localStorage.getItem(HABITS_STORAGE_KEY); const parsed = safeParseJson(habitsRaw, []); state.habits = Array.isArray(parsed) ? parsed : []; }
-      function saveHabits() { try { localStorage.setItem(HABITS_STORAGE_KEY, JSON.stringify(state.habits)); return true; } catch { showToast("Не удалось сохранить привычки"); return false; } }
-      function getTodayWeekday() { return new Date().getDay(); }
-      function buildHabitTaskTitle(habit) { return habit.time ? `${habit.time} — ${habit.title}` : habit.title; }
-      function applyHabitsForToday() { const weekday = getTodayWeekday(); const todayHabits = state.habits.filter((habit) => habit.enabled && Array.isArray(habit.days) && habit.days.includes(weekday)); if (!todayHabits.length) return; const currentTitles = new Set(state.tasks.map((task) => task.text.trim().toLowerCase())); todayHabits.forEach((habit) => { const title = buildHabitTaskTitle(habit); if (currentTitles.has(title.trim().toLowerCase())) return; state.tasks.push({ id: createId(), text: title, done: false, source: "habit", habitId: habit.id }); }); }
-      function renderDayPills() { elements.dayPills.innerHTML = ""; weekdays.forEach((day) => { const btn = document.createElement("button"); btn.type = "button"; btn.className = "day-pill"; btn.dataset.day = String(day.value); btn.textContent = day.short; if (state.selectedHabitDays.includes(day.value)) btn.classList.add("active"); elements.dayPills.appendChild(btn); }); elements.everydayButton.classList.toggle("active", state.selectedHabitDays.length === 7); }
-      function renderHabits() { elements.habitsList.innerHTML = ""; if (!state.habits.length) { elements.habitsList.innerHTML = '<p class="subtitle">Пока нет привычек. Добавь первую и я буду подставлять её по расписанию.</p>'; return; } state.habits.forEach((habit) => { const row = document.createElement("div"); row.className = "habit-row"; const daysText = weekdays.filter((d) => habit.days.includes(d.value)).map((d) => d.short).join(" "); const info = document.createElement("div"); info.innerHTML = `<div class="habit-title">${escapeHtml(habit.title)}</div><div class="habit-meta">${daysText || "Без дней"}${habit.time ? ` • ${habit.time}` : ""}</div>`; const toggle = document.createElement("button"); toggle.type = "button"; toggle.className = `habit-toggle ${habit.enabled ? "on" : ""}`; toggle.dataset.habitId = habit.id; toggle.textContent = habit.enabled ? "Включено" : "Выключено"; const del = document.createElement("button"); del.type = "button"; del.className = "habit-delete"; del.dataset.habitId = habit.id; del.textContent = "Удалить"; row.append(info, toggle, del); elements.habitsList.appendChild(row); }); }
-      function addHabit() { const title = elements.habitTitle.value.trim(); const days = [...state.selectedHabitDays]; const time = elements.habitTime.value.trim(); if (!title) { showToast("Добавь название привычки"); return; } if (!days.length) { showToast("Выбери хотя бы один день"); return; } state.habits.unshift({ id: createId(), title, days, time, enabled: true, createdAt: new Date().toISOString() }); if (!saveHabits()) return; elements.habitForm.reset(); state.selectedHabitDays = []; renderDayPills(); renderHabits(); applyHabitsForToday(); renderTasks(); saveToday(false); showToast("Привычка добавлена. Я буду подставлять её в нужные дни."); }
-      function deleteHabit(habitId) { state.habits = state.habits.filter((habit) => habit.id !== habitId); saveHabits(); renderHabits(); }
-      function toggleHabit(habitId) { state.habits = state.habits.map((habit) => habit.id === habitId ? { ...habit, enabled: !habit.enabled } : habit); saveHabits(); renderHabits(); }
-      function setDailyPhrase() { const dayNumber = Number(getTodayKey().replaceAll("-", "")); elements.dailyPhrase.textContent = phrases[dayNumber % phrases.length]; }
-      function renderMoods() { elements.moodGrid.innerHTML = ""; moods.forEach((mood) => { const button = document.createElement("button"); button.className = "mood-btn"; button.type = "button"; button.dataset.moodId = mood.id; button.setAttribute("aria-pressed", String(state.selectedMood === mood.id)); if (state.selectedMood === mood.id) button.classList.add("active"); button.innerHTML = `${mood.icon}<div class="mood-text">${mood.text}</div>`; elements.moodGrid.appendChild(button); }); }
-      function selectMood(moodId) { state.selectedMood = moodId; renderMoods(); debouncedAutoSave(); }
-      function addTask() { const text = elements.taskInput.value.trim(); if (!text) return showToast("Сначала напиши дело"); state.tasks.push({ id: createId(), text, done: false, source: "manual" }); elements.taskInput.value = ""; renderTasks(); debouncedAutoSave(); }
-      function toggleTask(taskId, isDone) { state.tasks = state.tasks.map((task) => task.id === taskId ? { ...task, done: isDone } : task); renderTasks(); debouncedAutoSave(); }
-      function deleteTask(taskId) { state.tasks = state.tasks.filter((task) => task.id !== taskId); renderTasks(); debouncedAutoSave(); }
-      function renderTasks() { elements.tasksList.innerHTML = ""; if (!state.tasks.length) { elements.tasksList.innerHTML = '<li><span class="history-preview">Пока дел нет. Можно добавить первое мягкое действие для себя.</span></li>'; return; } state.tasks.forEach((task) => { const li = document.createElement("li"); const checkbox = document.createElement("input"); checkbox.type = "checkbox"; checkbox.checked = Boolean(task.done); checkbox.addEventListener("change", (event) => toggleTask(task.id, event.target.checked)); const text = document.createElement("span"); text.textContent = task.text; text.className = task.done ? "done" : ""; li.append(checkbox, text); if (task.source === "habit") { const tag = document.createElement("span"); tag.className = "task-habit-tag"; tag.textContent = "Привычка"; li.appendChild(tag); } const deleteButton = document.createElement("button"); deleteButton.className = "delete-task"; deleteButton.type = "button"; deleteButton.textContent = "×"; deleteButton.addEventListener("click", () => deleteTask(task.id)); li.append(deleteButton); elements.tasksList.appendChild(li); }); }
-      function collectTodayData() { return { date: getTodayKey(), phrase: elements.dailyPhrase.textContent, mood: state.selectedMood, thoughts: elements.thoughts.value.trim(), tasks: state.tasks.map((task) => ({ ...task })), gratitude: elements.gratitude.value.trim(), victory: elements.victory.value.trim(), updatedAt: new Date().toISOString() }; }
-      function saveToday(showMessage = true) { const storage = loadStorage(); const todayKey = getTodayKey(); storage[todayKey] = collectTodayData(); if (saveStorage(storage)) { renderHistory(); if (showMessage) { createSavePetals(); showToast("Сохранено. Ты сегодня уже сделала шаг."); } } }
-      function autoSave() { saveToday(false); }
+      function cacheElements() {
+        elements.body = document.body;
+        elements.themeToggle = document.getElementById("themeToggle");
+        elements.themeIcon = document.getElementById("themeIcon");
+        elements.dailyPhrase = document.getElementById("dailyPhrase");
+        elements.moodGrid = document.getElementById("moodGrid");
+        elements.thoughts = document.getElementById("thoughts");
+        elements.taskInput = document.getElementById("taskInput");
+        elements.taskDatePicker = document.getElementById("taskDatePicker");
+        elements.addTaskButton = document.getElementById("addTaskButton");
+        elements.tasksList = document.getElementById("tasksList");
+        elements.gratitude = document.getElementById("gratitude");
+        elements.victory = document.getElementById("victory");
+        elements.saveTodayButton = document.getElementById("saveTodayButton");
+        elements.historyList = document.getElementById("historyList");
+        elements.navButtons = document.querySelectorAll(".nav-btn");
+        elements.pages = document.querySelectorAll(".page");
+        elements.toast = document.getElementById("toast");
+        elements.entryModal = document.getElementById("entryModal");
+        elements.modalTitle = document.getElementById("modalTitle");
+        elements.modalContent = document.getElementById("modalContent");
+        elements.modalCloseButton = document.getElementById("modalCloseButton");
+        elements.modalOkButton = document.getElementById("modalOkButton");
+        elements.habitForm = document.getElementById("habitForm");
+        elements.habitTitle = document.getElementById("habitTitle");
+        elements.habitTime = document.getElementById("habitTime");
+        elements.dayPills = document.getElementById("dayPills");
+        elements.everydayButton = document.getElementById("everydayButton");
+        elements.habitsList = document.getElementById("habitsList");
+        elements.calMonthTitle = document.getElementById("calMonthTitle");
+        elements.calPrevBtn = document.getElementById("calPrevBtn");
+        elements.calNextBtn = document.getElementById("calNextBtn");
+        elements.calGrid = document.getElementById("calGrid");
+        elements.plannerDateInput = document.getElementById("plannerDateInput");
+        elements.plannerTaskInput = document.getElementById("plannerTaskInput");
+        elements.plannerAddTaskBtn = document.getElementById("plannerAddTaskBtn");
+        elements.plannerTasksList = document.getElementById("plannerTasksList");
+        elements.plannerHabitPreview = document.getElementById("plannerHabitPreview");
+      }
+
+      function debounce(callback, delay) {
+        let timerId;
+        return (...args) => {
+          window.clearTimeout(timerId);
+          timerId = window.setTimeout(() => callback(...args), delay);
+        };
+      }
+
+      function safeParseJson(rawValue, fallbackValue = {}) {
+        try {
+          return rawValue ? JSON.parse(rawValue) : fallbackValue;
+        } catch {
+          return fallbackValue;
+        }
+      }
+
+      function createId() {
+        return crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`;
+      }
+
+      function getTodayKey() {
+        const now = new Date();
+        return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+      }
+
+      function getReadableDate(dateKey) {
+        const [year, month, day] = dateKey.split("-").map(Number);
+        return new Date(year, month - 1, day).toLocaleDateString("ru-RU", {
+          day: "numeric",
+          month: "long",
+          year: "numeric"
+        });
+      }
+
+      function getWeekdayFromDateKey(dateKey) {
+        const [y, m, d] = dateKey.split("-").map(Number);
+        return new Date(y, m - 1, d).getDay();
+      }
+
+      function normalizeTask(task, defaultDateKey) {
+        const dateKey = task.date || defaultDateKey;
+        return {
+          ...task,
+          id: task.id || createId(),
+          text: String(task.text || ""),
+          done: Boolean(task.done),
+          date: dateKey,
+          source: task.source || "manual",
+          habitId: task.habitId ?? null,
+          createdAt: task.createdAt || new Date().toISOString()
+        };
+      }
+
+      function migrateTasksArray(tasks, defaultDateKey) {
+        if (!Array.isArray(tasks)) return [];
+        return tasks.map((t) => normalizeTask(t, defaultDateKey));
+      }
+
+      function ensureDaySlot(storage, dateKey) {
+        if (!storage[dateKey]) {
+          storage[dateKey] = {
+            date: dateKey,
+            phrase: "",
+            mood: "",
+            thoughts: "",
+            tasks: [],
+            gratitude: "",
+            victory: "",
+            updatedAt: new Date().toISOString(),
+            _minimal: true
+          };
+        }
+        return storage[dateKey];
+      }
+
+      function dayShowsInHistory(item) {
+        if (!item || typeof item !== "object") return false;
+        if (!item._minimal) return true;
+        const hasJournal = Boolean(
+          item.mood ||
+            String(item.thoughts || "").trim() ||
+            String(item.gratitude || "").trim() ||
+            String(item.victory || "").trim()
+        );
+        return hasJournal;
+      }
+
+      function loadStorage() {
+        const currentRaw = localStorage.getItem(APP_STORAGE_KEY);
+        if (currentRaw) return safeParseJson(currentRaw, {});
+        const legacyData = safeParseJson(localStorage.getItem(LEGACY_STORAGE_KEY), {});
+        if (Object.keys(legacyData).length > 0) saveStorage(legacyData);
+        return legacyData;
+      }
+
+      function saveStorage(data) {
+        try {
+          localStorage.setItem(APP_STORAGE_KEY, JSON.stringify(data));
+          return true;
+        } catch {
+          showToast("Не удалось сохранить данные");
+          return false;
+        }
+      }
+
+      function loadHabits() {
+        const parsed = safeParseJson(localStorage.getItem(HABITS_STORAGE_KEY), []);
+        state.habits = Array.isArray(parsed) ? parsed : [];
+      }
+
+      function saveHabits() {
+        try {
+          localStorage.setItem(HABITS_STORAGE_KEY, JSON.stringify(state.habits));
+          return true;
+        } catch {
+          showToast("Не удалось сохранить привычки");
+          return false;
+        }
+      }
+
+      function getMoodById(moodId) {
+        return moods.find((m) => m.id === moodId);
+      }
+
+      function getSafeText(value, fallback = "Не заполнено") {
+        const t = String(value || "").trim();
+        return t || fallback;
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function getTodayWeekday() {
+        return new Date().getDay();
+      }
+
+      function buildHabitTaskTitle(habit) {
+        return habit.time ? `${habit.time} — ${habit.title}` : habit.title;
+      }
+
+      function applyHabitsForToday() {
+        const weekday = getTodayWeekday();
+        const todayKey = getTodayKey();
+        const todayHabits = state.habits.filter(
+          (habit) => habit.enabled && Array.isArray(habit.days) && habit.days.includes(weekday)
+        );
+        if (!todayHabits.length) return;
+        const currentTitles = new Set(state.tasks.map((task) => task.text.trim().toLowerCase()));
+        todayHabits.forEach((habit) => {
+          const title = buildHabitTaskTitle(habit);
+          if (currentTitles.has(title.trim().toLowerCase())) return;
+          state.tasks.push(
+            normalizeTask(
+              {
+                id: createId(),
+                text: title,
+                done: false,
+                source: "habit",
+                habitId: habit.id
+              },
+              todayKey
+            )
+          );
+        });
+      }
+
+      function tasksExistOnDate(storage, dateKey) {
+        const slot = storage[dateKey];
+        return !!(slot && Array.isArray(slot.tasks) && slot.tasks.length > 0);
+      }
+
+      function renderDayPills() {
+        elements.dayPills.innerHTML = "";
+        weekdays.forEach((day) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "day-pill";
+          btn.dataset.day = String(day.value);
+          btn.textContent = day.short;
+          if (state.selectedHabitDays.includes(day.value)) btn.classList.add("active");
+          elements.dayPills.appendChild(btn);
+        });
+        elements.everydayButton.classList.toggle("active", state.selectedHabitDays.length === 7);
+      }
+
+      function renderHabits() {
+        elements.habitsList.innerHTML = "";
+        if (!state.habits.length) {
+          elements.habitsList.innerHTML =
+            '<p class="subtitle">Пока нет привычек. Добавь первую — я буду подставлять её по расписанию.</p>';
+          return;
+        }
+        state.habits.forEach((habit) => {
+          const row = document.createElement("div");
+          row.className = "habit-row";
+          const daysText = weekdays.filter((d) => habit.days.includes(d.value)).map((d) => d.short).join(" ");
+          const info = document.createElement("div");
+          info.innerHTML = `<div class="habit-title">${escapeHtml(habit.title)}</div><div class="habit-meta">${daysText || "Без дней"}${habit.time ? ` • ${habit.time}` : ""}</div>`;
+          const toggle = document.createElement("button");
+          toggle.type = "button";
+          toggle.className = `habit-toggle ${habit.enabled ? "on" : ""}`;
+          toggle.dataset.habitId = habit.id;
+          toggle.textContent = habit.enabled ? "Включено" : "Выключено";
+          const del = document.createElement("button");
+          del.type = "button";
+          del.className = "habit-delete";
+          del.dataset.habitId = habit.id;
+          del.textContent = "Удалить";
+          row.append(info, toggle, del);
+          elements.habitsList.appendChild(row);
+        });
+      }
+
+      function addHabit() {
+        const title = elements.habitTitle.value.trim();
+        const days = [...state.selectedHabitDays];
+        const time = elements.habitTime.value.trim();
+        if (!title) return showToast("Добавь название привычки");
+        if (!days.length) return showToast("Выбери хотя бы один день");
+        state.habits.unshift({
+          id: createId(),
+          title,
+          days,
+          time,
+          enabled: true,
+          createdAt: new Date().toISOString()
+        });
+        if (!saveHabits()) return;
+        elements.habitForm.reset();
+        state.selectedHabitDays = [];
+        renderDayPills();
+        renderHabits();
+        applyHabitsForToday();
+        renderTasks();
+        saveToday(false);
+        renderPlannerHabitPreview();
+        showToast("Привычка добавлена. Я буду подставлять её в нужные дни.");
+      }
+
+      function deleteHabit(habitId) {
+        state.habits = state.habits.filter((habit) => habit.id !== habitId);
+        saveHabits();
+        renderHabits();
+        renderPlannerHabitPreview();
+      }
+
+      function toggleHabit(habitId) {
+        state.habits = state.habits.map((habit) =>
+          habit.id === habitId ? { ...habit, enabled: !habit.enabled } : habit
+        );
+        saveHabits();
+        renderHabits();
+        renderPlannerHabitPreview();
+      }
+
+      function setDailyPhrase() {
+        const dayNumber = Number(getTodayKey().replaceAll("-", ""));
+        elements.dailyPhrase.textContent = phrases[dayNumber % phrases.length];
+      }
+
+      function renderMoods() {
+        elements.moodGrid.innerHTML = "";
+        moods.forEach((mood) => {
+          const button = document.createElement("button");
+          button.className = "mood-btn";
+          button.type = "button";
+          button.dataset.moodId = mood.id;
+          button.setAttribute("aria-pressed", String(state.selectedMood === mood.id));
+          if (state.selectedMood === mood.id) button.classList.add("active");
+          button.innerHTML = `${mood.icon}<div class="mood-text">${mood.text}</div>`;
+          elements.moodGrid.appendChild(button);
+        });
+      }
+
+      function selectMood(moodId) {
+        state.selectedMood = moodId;
+        renderMoods();
+        debouncedAutoSave();
+      }
+
+      function renderTasks() {
+        elements.tasksList.innerHTML = "";
+        const todayKey = getTodayKey();
+        const todayTasks = state.tasks.filter((t) => (t.date || todayKey) === todayKey);
+        if (!todayTasks.length) {
+          elements.tasksList.innerHTML =
+            '<li><span class="history-preview">Пока дел нет на сегодня. Добавь первое мягкое действие.</span></li>';
+          return;
+        }
+        todayTasks.forEach((task) => {
+          const li = document.createElement("li");
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.checked = Boolean(task.done);
+          checkbox.addEventListener("change", (event) => toggleTask(task.id, event.target.checked));
+          const text = document.createElement("span");
+          text.textContent = task.text;
+          text.className = task.done ? "done" : "";
+          li.append(checkbox, text);
+          if (task.source === "habit") {
+            const tag = document.createElement("span");
+            tag.className = "task-habit-tag";
+            tag.textContent = "Привычка";
+            li.appendChild(tag);
+          }
+          const deleteButton = document.createElement("button");
+          deleteButton.className = "delete-task";
+          deleteButton.type = "button";
+          deleteButton.textContent = "×";
+          deleteButton.addEventListener("click", () => deleteTask(task.id));
+          li.append(deleteButton);
+          elements.tasksList.appendChild(li);
+        });
+      }
+
+      function toggleTask(taskId, isDone) {
+        state.tasks = state.tasks.map((task) => (task.id === taskId ? { ...task, done: isDone } : task));
+        renderTasks();
+        debouncedAutoSave();
+      }
+
+      function deleteTask(taskId) {
+        state.tasks = state.tasks.filter((task) => task.id !== taskId);
+        renderTasks();
+        debouncedAutoSave();
+      }
+
+      function addTask() {
+        const text = elements.taskInput.value.trim();
+        if (!text) return showToast("Сначала напиши дело");
+        const picked = elements.taskDatePicker.value || getTodayKey();
+        const todayKey = getTodayKey();
+        const task = normalizeTask(
+          { id: createId(), text, done: false, source: "manual", habitId: null },
+          picked
+        );
+
+        if (picked === todayKey) {
+          state.tasks.push(task);
+          elements.taskInput.value = "";
+          renderTasks();
+          debouncedAutoSave();
+        } else {
+          const storage = loadStorage();
+          const slot = ensureDaySlot(storage, picked);
+          slot.tasks = migrateTasksArray(slot.tasks, picked);
+          slot.tasks.push(task);
+          saveStorage(storage);
+          elements.taskInput.value = "";
+          state.selectedPlannerDate = picked;
+          alignPlannerMonthToDate(picked);
+          syncPlannerInputsFromState();
+          showToast(`Задача на ${getReadableDate(picked)} сохранена`);
+          renderMiniCalendar();
+        }
+      }
+
+      function collectTodayData() {
+        const todayKey = getTodayKey();
+        const tasksToday = migrateTasksArray(state.tasks, todayKey).filter(
+          (t) => (t.date || todayKey) === todayKey
+        );
+        return {
+          date: todayKey,
+          phrase: elements.dailyPhrase.textContent,
+          mood: state.selectedMood,
+          thoughts: elements.thoughts.value.trim(),
+          tasks: tasksToday.map((t) => ({ ...t })),
+          gratitude: elements.gratitude.value.trim(),
+          victory: elements.victory.value.trim(),
+          updatedAt: new Date().toISOString(),
+          _minimal: false
+        };
+      }
+
+      function saveToday(showMessage = true) {
+        const storage = loadStorage();
+        const todayKey = getTodayKey();
+        storage[todayKey] = { ...collectTodayData(), _minimal: false };
+        if (saveStorage(storage)) {
+          renderHistory();
+          renderMiniCalendar();
+          if (showMessage) {
+            createSavePetals();
+            showToast("Сохранено. Ты сегодня уже сделала шаг.");
+          }
+        }
+      }
+
+      function autoSave() {
+        saveToday(false);
+      }
+
       const debouncedAutoSave = debounce(autoSave, AUTOSAVE_DELAY);
-      function loadToday() { const storage = loadStorage(); const today = storage[getTodayKey()]; if (today) { state.selectedMood = today.mood || ""; state.tasks = Array.isArray(today.tasks) ? today.tasks : []; elements.thoughts.value = today.thoughts || ""; elements.gratitude.value = today.gratitude || ""; elements.victory.value = today.victory || ""; } else { state.tasks = []; } applyHabitsForToday(); renderMoods(); renderTasks(); }
-      function renderHistory() { const storage = loadStorage(); const dates = Object.keys(storage).sort().reverse(); if (!dates.length) return (elements.historyList.innerHTML = '<p class="subtitle">Пока нет сохранённых записей.</p>'); elements.historyList.innerHTML = ""; dates.forEach((dateKey) => { const item = storage[dateKey]; const mood = getMoodById(item.mood); const previewText = getSafeText(item.victory, "Победа дня не заполнена"); const div = document.createElement("div"); div.className = "history-item"; div.tabIndex = 0; div.role = "button"; div.dataset.dateKey = dateKey; div.innerHTML = `<div class="history-date">${getReadableDate(dateKey)}</div><div class="history-preview">${mood ? `${mood.text}` : "Настроение не выбрано"}<br>Победа: ${escapeHtml(previewText.slice(0, 80))}</div>`; elements.historyList.appendChild(div); }); }
-      function openHistoryItem(dateKey) { const storage = loadStorage(); const item = storage[dateKey]; if (!item) return; const mood = getMoodById(item.mood); const tasksText = Array.isArray(item.tasks) && item.tasks.length ? item.tasks.map((task) => `${task.done ? "✓" : "○"} ${task.text}`).join("\n") : "Нет дел"; const content = [`<strong>Фраза дня:</strong> ${escapeHtml(getSafeText(item.phrase, "Нет фразы"))}`,`<strong>Настроение:</strong> ${escapeHtml(mood ? mood.text : "Не выбрано")}`,`<strong>Что сейчас у тебя внутри?:</strong> ${escapeHtml(getSafeText(item.thoughts))}`,`<strong>Что сегодня хочется сделать?:</strong>\n${escapeHtml(tasksText)}`,`<strong>За что сегодня благодарна?:</strong> ${escapeHtml(getSafeText(item.gratitude))}`,`<strong>Моя маленькая победа дня:</strong> ${escapeHtml(getSafeText(item.victory))}`].join("\n\n"); openModal(getReadableDate(dateKey), content); }
-      function openPage(pageId) { elements.pages.forEach((page) => page.classList.toggle("active", page.id === pageId)); elements.navButtons.forEach((button) => button.classList.toggle("active", button.dataset.page === pageId)); if (pageId === "historyPage") renderHistory(); if (pageId === "futurePage") renderHabits(); window.scrollTo({ top: 0, behavior: "smooth" }); }
-      function showToast(text) { elements.toast.textContent = text; elements.toast.classList.add("show"); window.clearTimeout(showToast.timerId); showToast.timerId = window.setTimeout(() => elements.toast.classList.remove("show"), 2600); }
-      function openModal(title, htmlContent) { elements.modalTitle.textContent = title; elements.modalContent.innerHTML = htmlContent; elements.entryModal.classList.add("show"); elements.body.classList.add("modal-open"); }
-      function closeModal() { elements.entryModal.classList.remove("show"); elements.body.classList.remove("modal-open"); }
-      function createSavePetals() { const rect = elements.saveTodayButton.getBoundingClientRect(); const count = Math.floor(Math.random() * 5) + 8; for (let i = 0; i < count; i += 1) { const petal = document.createElement("span"); petal.className = "save-petal"; petal.style.left = `${rect.left + rect.width / 2 + (Math.random() * 46 - 23)}px`; petal.style.top = `${rect.top + rect.height / 2}px`; petal.style.setProperty("--x", `${Math.random() * 160 - 80}px`); petal.style.setProperty("--y", `${-(Math.random() * 90 + 40)}px`); petal.style.setProperty("--r", `${Math.random() * 80 - 40}deg`); document.body.appendChild(petal); window.setTimeout(() => petal.remove(), 1000); } }
-      function applyTheme(theme) { const isDark = theme === "dark"; elements.body.classList.toggle("dark-theme", isDark); elements.themeToggle.setAttribute("aria-label", isDark ? "Включить светлую тему" : "Включить тёмную тему"); elements.themeIcon.innerHTML = isDark ? '<path d="M12 3v3M12 18v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1l2.1-2.1M17 7l2.1-2.1"/><circle cx="12" cy="12" r="4"/>' : '<path d="M18 15.8A8 8 0 1 1 8.2 6 6.5 6.5 0 0 0 18 15.8Z"/>'; document.querySelector("meta[name='theme-color']")?.setAttribute("content", isDark ? "#1f1b19" : "#FAF8F3"); }
-      function toggleTheme() { const isDark = elements.body.classList.contains("dark-theme"); const newTheme = isDark ? "light" : "dark"; localStorage.setItem(THEME_STORAGE_KEY, newTheme); applyTheme(newTheme); }
-      function loadTheme() { applyTheme(localStorage.getItem(THEME_STORAGE_KEY) || "light"); }
+
+      function loadToday() {
+        const storage = loadStorage();
+        const todayKey = getTodayKey();
+        const today = storage[todayKey];
+        if (today) {
+          state.selectedMood = today.mood || "";
+          state.tasks = migrateTasksArray(today.tasks || [], todayKey).filter(
+            (t) => (t.date || todayKey) === todayKey
+          );
+          elements.thoughts.value = today.thoughts || "";
+          elements.gratitude.value = today.gratitude || "";
+          elements.victory.value = today.victory || "";
+        } else {
+          state.tasks = [];
+        }
+        applyHabitsForToday();
+        renderMoods();
+        renderTasks();
+      }
+
+      function renderHistory() {
+        const storage = loadStorage();
+        const dates = Object.keys(storage)
+          .filter((k) => /\d{4}-\d{2}-\d{2}/.test(k) && dayShowsInHistory(storage[k]))
+          .sort()
+          .reverse();
+        if (!dates.length) {
+          elements.historyList.innerHTML = '<p class="subtitle">Пока нет сохранённых записей.</p>';
+          return;
+        }
+        elements.historyList.innerHTML = "";
+        dates.forEach((dateKey) => {
+          const item = storage[dateKey];
+          const mood = getMoodById(item.mood);
+          const previewText = getSafeText(item.victory, "Победа дня не заполнена");
+          const div = document.createElement("div");
+          div.className = "history-item";
+          div.tabIndex = 0;
+          div.role = "button";
+          div.dataset.dateKey = dateKey;
+          div.innerHTML = `<div class="history-date">${getReadableDate(dateKey)}</div><div class="history-preview">${mood ? mood.text : "Настроение не выбрано"}<br>Победа: ${escapeHtml(previewText.slice(0, 80))}</div>`;
+          elements.historyList.appendChild(div);
+        });
+      }
+
+      function openHistoryItem(dateKey) {
+        const storage = loadStorage();
+        const item = storage[dateKey];
+        if (!item) return;
+        const mood = getMoodById(item.mood);
+        const tasksForDay = migrateTasksArray(item.tasks || [], dateKey);
+        const tasksText =
+          tasksForDay.length > 0
+            ? tasksForDay.map((task) => `${task.done ? "✓" : "○"} ${task.text}`).join("\n")
+            : "Нет дел";
+        const content = [
+          `<strong>Фраза дня:</strong> ${escapeHtml(getSafeText(item.phrase, "Нет фразы"))}`,
+          `<strong>Настроение:</strong> ${escapeHtml(mood ? mood.text : "Не выбрано")}`,
+          `<strong>Что сейчас у тебя внутри?:</strong> ${escapeHtml(getSafeText(item.thoughts))}`,
+          `<strong>Дела:</strong>\n${escapeHtml(tasksText)}`,
+          `<strong>За что сегодня благодарна?:</strong> ${escapeHtml(getSafeText(item.gratitude))}`,
+          `<strong>Моя маленькая победа дня:</strong> ${escapeHtml(getSafeText(item.victory))}`
+        ].join("\n\n");
+        openModal(getReadableDate(dateKey), content);
+      }
+
+      function syncPlannerInputsFromState() {
+        elements.plannerDateInput.value = state.selectedPlannerDate;
+      }
+
+      /** Показывает в сетке месяц, в котором лежит dateKey (YYYY-MM-DD). */
+      function alignPlannerMonthToDate(dateKey) {
+        if (!dateKey || !/^\d{4}-\d{2}-\d{2}$/.test(dateKey)) return;
+        const [y, mo] = dateKey.split("-").map(Number);
+        state.plannerMonth = new Date(y, mo - 1, 1);
+      }
+
+      function renderMiniCalendar() {
+        const storage = loadStorage();
+        const y = state.plannerMonth.getFullYear();
+        const m = state.plannerMonth.getMonth();
+        elements.calMonthTitle.textContent = new Date(y, m, 1).toLocaleDateString("ru-RU", {
+          month: "long",
+          year: "numeric"
+        });
+
+        const first = new Date(y, m, 1);
+        const start = (first.getDay() + 6) % 7;
+        const dim = new Date(y, m + 1, 0).getDate();
+        const prevDim = new Date(y, m, 0).getDate();
+
+        elements.calGrid.innerHTML = "";
+        const todayKey = getTodayKey();
+
+        let cell = 0;
+        for (let i = 0; i < start; i++) {
+          const dayNum = prevDim - start + i + 1;
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "cal-day is-out";
+          btn.textContent = String(dayNum);
+          btn.disabled = true;
+          elements.calGrid.appendChild(btn);
+          cell++;
+        }
+
+        for (let d = 1; d <= dim; d++) {
+          const dk = `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "cal-day";
+          btn.textContent = String(d);
+          btn.dataset.date = dk;
+          if (dk === todayKey) btn.classList.add("is-today");
+          if (dk === state.selectedPlannerDate) btn.classList.add("is-selected");
+          if (tasksExistOnDate(storage, dk)) btn.classList.add("has-tasks");
+          elements.calGrid.appendChild(btn);
+          cell++;
+        }
+
+        let next = 1;
+        while (cell < 42) {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "cal-day is-out";
+          btn.textContent = String(next++);
+          btn.disabled = true;
+          elements.calGrid.appendChild(btn);
+          cell++;
+        }
+      }
+
+      function renderPlannerTasks() {
+        const storage = loadStorage();
+        const dk = state.selectedPlannerDate;
+        const slot = storage[dk];
+        const tasks = slot ? migrateTasksArray(slot.tasks || [], dk) : [];
+        elements.plannerTasksList.innerHTML = "";
+        if (!tasks.length) {
+          elements.plannerTasksList.innerHTML =
+            '<li><span class="history-preview">На этот день пока нет дел.</span></li>';
+          return;
+        }
+        tasks.forEach((task) => {
+          const li = document.createElement("li");
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.checked = Boolean(task.done);
+          checkbox.addEventListener("change", (event) =>
+            togglePlannerTask(dk, task.id, event.target.checked)
+          );
+          const text = document.createElement("span");
+          text.textContent = task.text;
+          text.className = task.done ? "done" : "";
+          li.append(checkbox, text);
+          if (task.source === "habit") {
+            const tag = document.createElement("span");
+            tag.className = "task-habit-tag";
+            tag.textContent = "Привычка";
+            li.appendChild(tag);
+          }
+          const deleteButton = document.createElement("button");
+          deleteButton.className = "delete-task";
+          deleteButton.type = "button";
+          deleteButton.textContent = "×";
+          deleteButton.addEventListener("click", () => deletePlannerTask(dk, task.id));
+          li.append(deleteButton);
+          elements.plannerTasksList.appendChild(li);
+        });
+      }
+
+      function togglePlannerTask(dateKey, taskId, isDone) {
+        const storage = loadStorage();
+        const slot = ensureDaySlot(storage, dateKey);
+        slot.tasks = migrateTasksArray(slot.tasks, dateKey).map((t) =>
+          t.id === taskId ? { ...t, done: isDone } : t
+        );
+        slot.updatedAt = new Date().toISOString();
+        saveStorage(storage);
+        if (dateKey === getTodayKey()) loadToday();
+        renderPlannerTasks();
+        renderMiniCalendar();
+      }
+
+      function deletePlannerTask(dateKey, taskId) {
+        const storage = loadStorage();
+        const slot = ensureDaySlot(storage, dateKey);
+        slot.tasks = migrateTasksArray(slot.tasks, dateKey).filter((t) => t.id !== taskId);
+        slot.updatedAt = new Date().toISOString();
+        saveStorage(storage);
+        if (dateKey === getTodayKey()) loadToday();
+        renderPlannerTasks();
+        renderMiniCalendar();
+      }
+
+      function addPlannerTask() {
+        const text = elements.plannerTaskInput.value.trim();
+        const dk = elements.plannerDateInput.value || state.selectedPlannerDate;
+        if (!text) return showToast("Напиши дело");
+        if (!dk) return showToast("Выбери дату");
+        const storage = loadStorage();
+        const slot = ensureDaySlot(storage, dk);
+        slot.tasks = migrateTasksArray(slot.tasks, dk);
+        slot.tasks.push(
+          normalizeTask({ id: createId(), text, done: false, source: "manual", habitId: null }, dk)
+        );
+        slot.updatedAt = new Date().toISOString();
+        saveStorage(storage);
+        elements.plannerTaskInput.value = "";
+        state.selectedPlannerDate = dk;
+        alignPlannerMonthToDate(dk);
+        syncPlannerInputsFromState();
+        renderPlannerTasks();
+        renderMiniCalendar();
+        if (dk === getTodayKey()) loadToday();
+        showToast("Задача добавлена в календарь");
+      }
+
+      function renderPlannerHabitPreview() {
+        const dk = state.selectedPlannerDate || getTodayKey();
+        const wd = getWeekdayFromDateKey(dk);
+        const lines = state.habits
+          .filter((h) => h.enabled && Array.isArray(h.days) && h.days.includes(wd))
+          .map((h) => buildHabitTaskTitle(h));
+        if (!lines.length) {
+          elements.plannerHabitPreview.hidden = true;
+          elements.plannerHabitPreview.innerHTML = "";
+          return;
+        }
+        elements.plannerHabitPreview.hidden = false;
+        elements.plannerHabitPreview.innerHTML = `<strong>Привычки на этот день</strong><br>${lines.map(escapeHtml).join("<br>")}`;
+      }
+
+      function openPlannerDate(dateKey) {
+        state.selectedPlannerDate = dateKey;
+        alignPlannerMonthToDate(dateKey);
+        syncPlannerInputsFromState();
+        renderPlannerTasks();
+        renderPlannerHabitPreview();
+        renderMiniCalendar();
+      }
+
+      function shiftPlannerMonth(delta) {
+        const y = state.plannerMonth.getFullYear();
+        const m = state.plannerMonth.getMonth();
+        state.plannerMonth = new Date(y, m + delta, 1);
+        renderMiniCalendar();
+      }
+
+      function openPage(pageId) {
+        elements.pages.forEach((page) => page.classList.toggle("active", page.id === pageId));
+        elements.navButtons.forEach((button) => button.classList.toggle("active", button.dataset.page === pageId));
+        if (pageId === "historyPage") renderHistory();
+        if (pageId === "futurePage") {
+          alignPlannerMonthToDate(state.selectedPlannerDate || getTodayKey());
+          syncPlannerInputsFromState();
+          renderMiniCalendar();
+          renderPlannerTasks();
+          renderPlannerHabitPreview();
+          renderHabits();
+        }
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function showToast(text) {
+        elements.toast.textContent = text;
+        elements.toast.classList.add("show");
+        window.clearTimeout(showToast.timerId);
+        showToast.timerId = window.setTimeout(() => elements.toast.classList.remove("show"), 2800);
+      }
+
+      function openModal(title, htmlContent) {
+        elements.modalTitle.textContent = title;
+        elements.modalContent.innerHTML = htmlContent;
+        elements.entryModal.classList.add("show");
+        elements.body.classList.add("modal-open");
+      }
+
+      function closeModal() {
+        elements.entryModal.classList.remove("show");
+        elements.body.classList.remove("modal-open");
+      }
+
+      function createSavePetals() {
+        const btn = elements.saveTodayButton;
+        const rect = btn.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+
+        const orb = document.createElement("div");
+        orb.className = "save-orb";
+        orb.style.left = `${cx}px`;
+        orb.style.top = `${cy}px`;
+        orb.style.transform = "translate(-50%, -50%)";
+        document.body.appendChild(orb);
+        window.setTimeout(() => orb.remove(), 1100);
+
+        btn.classList.add("is-saving-glow");
+        window.setTimeout(() => btn.classList.remove("is-saving-glow"), 1100);
+
+        const count = Math.floor(Math.random() * 5) + 8;
+        for (let i = 0; i < count; i++) {
+          const petal = document.createElement("span");
+          petal.className = "save-petal";
+          petal.style.left = `${cx + (Math.random() * 40 - 20)}px`;
+          petal.style.top = `${cy}px`;
+          petal.style.setProperty("--x", `${Math.random() * 140 - 70}px`);
+          petal.style.setProperty("--y", `${-(Math.random() * 70 + 36)}px`);
+          petal.style.setProperty("--r", `${Math.random() * 70 - 35}deg`);
+          document.body.appendChild(petal);
+          window.setTimeout(() => petal.remove(), 1200);
+        }
+      }
+
+      function applyTheme(theme) {
+        const isDark = theme === "dark";
+        elements.body.classList.toggle("dark-theme", isDark);
+        elements.themeToggle.setAttribute(
+          "aria-label",
+          isDark ? "Включить светлую тему" : "Включить тёмную тему"
+        );
+        elements.themeIcon.innerHTML = isDark
+          ? '<path d="M12 3v3M12 18v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1l2.1-2.1M17 7l2.1-2.1"/><circle cx="12" cy="12" r="4"/>'
+          : '<path d="M18 15.8A8 8 0 1 1 8.2 6 6.5 6.5 0 0 0 18 15.8Z"/>';
+        document.querySelector("meta[name='theme-color']")?.setAttribute("content", isDark ? "#1f1b19" : "#F4F1EA");
+      }
+
+      function toggleTheme() {
+        const isDark = elements.body.classList.contains("dark-theme");
+        const newTheme = isDark ? "light" : "dark";
+        localStorage.setItem(THEME_STORAGE_KEY, newTheme);
+        applyTheme(newTheme);
+      }
+
+      function loadTheme() {
+        applyTheme(localStorage.getItem(THEME_STORAGE_KEY) || "light");
+      }
+
       function bindEvents() {
         elements.themeToggle.addEventListener("click", toggleTheme);
         elements.addTaskButton.addEventListener("click", addTask);
         elements.saveTodayButton.addEventListener("click", () => saveToday(true));
-        elements.moodGrid.addEventListener("click", (event) => { const button = event.target.closest(".mood-btn"); if (button) selectMood(button.dataset.moodId); });
-        elements.navButtons.forEach((button) => button.addEventListener("click", () => openPage(button.dataset.page)));
-        [elements.thoughts, elements.gratitude, elements.victory].forEach((field) => { field.addEventListener("input", debouncedAutoSave); field.addEventListener("blur", autoSave); });
-        elements.taskInput.addEventListener("keydown", (event) => { if (event.key === "Enter") { event.preventDefault(); addTask(); } });
-        elements.historyList.addEventListener("click", (event) => { const item = event.target.closest(".history-item"); if (item) openHistoryItem(item.dataset.dateKey); });
-        elements.historyList.addEventListener("keydown", (event) => { const item = event.target.closest(".history-item"); if (item && (event.key === "Enter" || event.key === " ")) { event.preventDefault(); openHistoryItem(item.dataset.dateKey); } });
+        elements.moodGrid.addEventListener("click", (event) => {
+          const button = event.target.closest(".mood-btn");
+          if (button) selectMood(button.dataset.moodId);
+        });
+        elements.navButtons.forEach((button) =>
+          button.addEventListener("click", () => openPage(button.dataset.page))
+        );
+        [elements.thoughts, elements.gratitude, elements.victory].forEach((field) => {
+          field.addEventListener("input", debouncedAutoSave);
+          field.addEventListener("blur", autoSave);
+        });
+        elements.taskInput.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            addTask();
+          }
+        });
+
+        elements.historyList.addEventListener("click", (event) => {
+          const item = event.target.closest(".history-item");
+          if (item) openHistoryItem(item.dataset.dateKey);
+        });
+        elements.historyList.addEventListener("keydown", (event) => {
+          const item = event.target.closest(".history-item");
+          if (item && (event.key === "Enter" || event.key === " ")) {
+            event.preventDefault();
+            openHistoryItem(item.dataset.dateKey);
+          }
+        });
+
         elements.modalCloseButton.addEventListener("click", closeModal);
         elements.modalOkButton.addEventListener("click", closeModal);
-        elements.entryModal.addEventListener("click", (event) => { if (event.target === elements.entryModal) closeModal(); });
-        document.addEventListener("keydown", (event) => { if (event.key === "Escape" && elements.entryModal.classList.contains("show")) closeModal(); });
-        elements.dayPills.addEventListener("click", (event) => { const btn = event.target.closest(".day-pill"); if (!btn) return; const day = Number(btn.dataset.day); state.selectedHabitDays = state.selectedHabitDays.includes(day) ? state.selectedHabitDays.filter((v) => v !== day) : [...state.selectedHabitDays, day]; state.selectedHabitDays.sort((a, b) => (a === 0 ? 7 : a) - (b === 0 ? 7 : b)); renderDayPills(); });
-        elements.everydayButton.addEventListener("click", () => { state.selectedHabitDays = state.selectedHabitDays.length === 7 ? [] : weekdays.map((d) => d.value); renderDayPills(); });
-        elements.habitForm.addEventListener("submit", (event) => { event.preventDefault(); addHabit(); });
-        elements.habitsList.addEventListener("click", (event) => { const toggle = event.target.closest(".habit-toggle"); if (toggle) { toggleHabit(toggle.dataset.habitId); return; } const del = event.target.closest(".habit-delete"); if (del) deleteHabit(del.dataset.habitId); });
+        elements.entryModal.addEventListener("click", (event) => {
+          if (event.target === elements.entryModal) closeModal();
+        });
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && elements.entryModal.classList.contains("show")) closeModal();
+        });
+
+        elements.dayPills.addEventListener("click", (event) => {
+          const btn = event.target.closest(".day-pill");
+          if (!btn) return;
+          const day = Number(btn.dataset.day);
+          state.selectedHabitDays = state.selectedHabitDays.includes(day)
+            ? state.selectedHabitDays.filter((v) => v !== day)
+            : [...state.selectedHabitDays, day];
+          state.selectedHabitDays.sort((a, b) => (a === 0 ? 7 : a) - (b === 0 ? 7 : b));
+          renderDayPills();
+        });
+        elements.everydayButton.addEventListener("click", () => {
+          state.selectedHabitDays =
+            state.selectedHabitDays.length === 7 ? [] : weekdays.map((d) => d.value);
+          renderDayPills();
+        });
+        elements.habitForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          addHabit();
+        });
+        elements.habitsList.addEventListener("click", (event) => {
+          const toggle = event.target.closest(".habit-toggle");
+          if (toggle) {
+            toggleHabit(toggle.dataset.habitId);
+            return;
+          }
+          const del = event.target.closest(".habit-delete");
+          if (del) deleteHabit(del.dataset.habitId);
+        });
+
+        elements.calPrevBtn.addEventListener("click", () => shiftPlannerMonth(-1));
+        elements.calNextBtn.addEventListener("click", () => shiftPlannerMonth(1));
+        elements.calGrid.addEventListener("click", (event) => {
+          const btn = event.target.closest(".cal-day[data-date]");
+          if (!btn || btn.disabled) return;
+          openPlannerDate(btn.dataset.date);
+        });
+        elements.plannerDateInput.addEventListener("change", () => {
+          state.selectedPlannerDate = elements.plannerDateInput.value || getTodayKey();
+          alignPlannerMonthToDate(state.selectedPlannerDate);
+          renderPlannerTasks();
+          renderPlannerHabitPreview();
+          renderMiniCalendar();
+        });
+        elements.taskDatePicker.addEventListener("change", () => {
+          const v = elements.taskDatePicker.value;
+          if (!v) return;
+          state.selectedPlannerDate = v;
+          alignPlannerMonthToDate(v);
+          syncPlannerInputsFromState();
+        });
+        elements.plannerAddTaskBtn.addEventListener("click", addPlannerTask);
+        elements.plannerTaskInput.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            addPlannerTask();
+          }
+        });
       }
-      function initApp() { cacheElements(); loadTheme(); setDailyPhrase(); loadHabits(); renderDayPills(); bindEvents(); loadToday(); renderHabits(); renderHistory(); }
+
+      function initApp() {
+        cacheElements();
+        loadTheme();
+        setDailyPhrase();
+        const now = new Date();
+        state.selectedPlannerDate = getTodayKey();
+        alignPlannerMonthToDate(state.selectedPlannerDate);
+        elements.taskDatePicker.value = getTodayKey();
+        loadHabits();
+        renderDayPills();
+        bindEvents();
+        syncPlannerInputsFromState();
+        loadToday();
+        renderHabits();
+        renderHistory();
+        renderMiniCalendar();
+      }
+
       document.addEventListener("DOMContentLoaded", initApp);
     })();
   </script>
