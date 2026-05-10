@@ -125,7 +125,7 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden;
+      overflow: visible;
       pointer-events: none;
       user-select: none;
       z-index: 0;
@@ -147,6 +147,7 @@
       height: auto;
       opacity: 0.42;
       transform: rotate(-18deg);
+      z-index: 0;
       pointer-events: none;
       user-select: none;
     }
@@ -154,85 +155,213 @@
       opacity: 0.42;
     }
 
-    .decor-sprig-left {
-      position: absolute;
-      top: 18%;
-      left: 2%;
+    .decor-sprig-left,
+    .decor-sprig-long-01 {
+      position: fixed;
+      left: -22px;
+      bottom: 195px;
       width: auto;
-      height: 42%;
+      height: min(42vh, 280px);
+      object-fit: contain;
       opacity: 0.85;
+      z-index: 1;
       pointer-events: none;
       user-select: none;
     }
-    .decor-petal-left {
-      position: absolute;
-      top: 58%;
-      left: 4%;
-      width: 120px;
+    .decor-petal-left,
+    .decor-petal-curved-01,
+    .decor-petal-curved,
+    .left-petal,
+    .petal-left {
+      position: fixed;
+      left: 162px;
+      bottom: 255px;
+      width: 80px;
       height: auto;
       opacity: 0.88;
+      z-index: 1;
       pointer-events: none;
       user-select: none;
     }
-    .decor-pearl-left {
+    .decor-pearl-main-left {
       position: absolute;
-      top: 10%;
-      left: 4%;
-      width: 18px;
+      top: 6.5%;
+      left: 2.2%;
+      width: 72px;
       height: auto;
-      opacity: 0.95;
+      opacity: 0.96;
+      transform: rotate(-8deg);
       pointer-events: none;
       user-select: none;
     }
-    .flower-left {
+    .decor-pearl-medium {
       position: absolute;
-      bottom: -2%;
-      left: -2%;
-      width: 22%;
+      width: 26px;
       height: auto;
-      opacity: 0.88;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .decor-petal-right {
-      position: absolute;
-      top: 40%;
-      right: 3%;
-      width: auto;
-      height: 26%;
-      max-height: 72vh;
       opacity: 0.92;
       pointer-events: none;
       user-select: none;
     }
-    .decor-crystal-right {
+    .decor-pearl-tiny {
       position: absolute;
-      top: 18%;
-      right: 7%;
-      width: 26px;
+      width: 12px;
       height: auto;
-      opacity: 0.95;
+      opacity: 0.88;
       pointer-events: none;
       user-select: none;
     }
-    .decor-flower-right {
-      position: absolute;
+    .decor-pearl-scatter--m1 {
+      top: 5%;
+      left: 11.5%;
+      transform: rotate(14deg);
+    }
+    .decor-pearl-scatter--m2 {
       top: 15%;
-      right: 12%;
-      width: 26px;
+      left: 0.5%;
+      transform: rotate(-11deg);
+    }
+    .decor-pearl-scatter--t1 {
+      top: 4.2%;
+      left: 6.8%;
+      transform: rotate(22deg);
+    }
+    .decor-pearl-scatter--t2 {
+      top: 11.2%;
+      left: 9.2%;
+      transform: rotate(-6deg);
+    }
+    .decor-pearl-scatter--t3 {
+      top: 17.5%;
+      left: 3.6%;
+      transform: rotate(9deg);
+    }
+    .decor-pearl-scatter--ll-accent {
+      top: 22.5%;
+      left: 7%;
+      width: 36px;
       height: auto;
-      opacity: 0.88;
+      opacity: 0.94;
+      transform: rotate(5deg);
+    }
+    .decor-pearl-scatter--ll-m1 {
+      top: 30%;
+      left: 2.8%;
+      width: 28px;
+      opacity: 0.9;
+      transform: rotate(7deg);
+    }
+    .decor-pearl-scatter--ll-t1 {
+      top: 38%;
+      left: 5.2%;
+      opacity: 0.86;
+      transform: rotate(-14deg);
+    }
+    .decor-pearl-scatter--ll-t2 {
+      top: 46%;
+      left: 1.4%;
+      opacity: 0.84;
+      transform: rotate(18deg);
+    }
+    .decor-pearl-scatter--rt-m1 {
+      top: 24.5%;
+      right: 4.2%;
+      transform: rotate(-10deg);
+    }
+    .decor-pearl-scatter--rt-t1 {
+      top: 18.5%;
+      right: 16.2%;
+      transform: rotate(11deg);
+    }
+    .decor-pearl-scatter--rt-t2 {
+      top: 27%;
+      right: 12.8%;
+      transform: rotate(-7deg);
+    }
+    .decor-pearl-scatter--bot-t1 {
+      bottom: 11%;
+      left: 18%;
+      width: 10px;
+      opacity: 0.78;
+      transform: rotate(15deg);
+    }
+    .decor-pearl-scatter--bot-t2 {
+      bottom: 9.5%;
+      left: 48%;
+      width: 9px;
+      opacity: 0.74;
+      transform: rotate(-12deg);
+    }
+    .decor-pearl-scatter--bot-t3 {
+      bottom: 10.2%;
+      right: 22%;
+      width: 10px;
+      opacity: 0.76;
+      transform: rotate(8deg);
+    }
+    .flower-left,
+    .decor-flower-left,
+    .left-flower {
+      position: fixed;
+      left: -10px;
+      bottom: -5px;
+      width: 441px;
+      height: auto;
+      object-fit: contain;
+      object-position: 10px 8px;
+      clip-path: inset(0 0 4px 5px);
+      opacity: 0.92;
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .decor-petal-right,
+    .decor-petal-large-01 {
+      position: absolute;
+      top: 20%;
+      bottom: 535px;
+      right: 15%;
+      width: auto;
+      height: 10%;
+      max-height: 72vh;
+      object-fit: contain;
+      opacity: 0.92;
+      pointer-events: none;
+      user-select: none;
+    }
+    .crystal-drop-top {
+      position: absolute;
+      top: 20.5%;
+      right: 6.5%;
+      width: 54px;
+      height: auto;
+      opacity: 0.96;
+      transform: rotate(-4deg);
+      pointer-events: none;
+      user-select: none;
+    }
+    .flower-open-top,
+    .decor-flower-open-01 {
+      position: absolute;
+      top: 5%;
+      right: 16.5%;
+      width: 78px;
+      height: auto;
+      opacity: 0.95;
+      transform: rotate(6deg);
+      z-index: 2;
       pointer-events: none;
       user-select: none;
     }
     .flower-right {
       position: absolute;
-      bottom: -3%;
-      right: -3%;
-      width: 22%;
+      right: -1%;
+      bottom: -10%;
+      width: calc(22vw * 1.15 * 0.9);
+      min-width: 228px;
+      max-width: 446px;
       height: auto;
-      opacity: 0.88;
+      opacity: 0.9;
       pointer-events: none;
       user-select: none;
     }
@@ -270,34 +399,30 @@
       position: relative;
       z-index: 2;
     }
-    .save-day-decor-stack {
-      position: relative;
-      width: 100%;
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: clamp(40px, 8vw, 72px);
-    }
-    .flower-bottom-wrapper {
-      position: absolute;
+    .flower-bottom-bg,
+    .flower-bottom-new {
+      position: fixed;
       left: 50%;
+      bottom: -180px;
       transform: translateX(-50%);
-      bottom: -18px;
-      width: min(720px, calc(100vw - 32px));
-      pointer-events: none;
-      user-select: none;
-      z-index: 0;
-    }
-    .flower-bottom {
-      width: 100%;
+      width: calc(98vw * 0.765);
+      max-width: calc(1380px * 0.765);
       height: auto;
-      display: block;
-      opacity: 0.82;
+      object-fit: contain;
+      object-position: center bottom;
+      opacity: 0.84;
+      z-index: 1;
       pointer-events: none;
       user-select: none;
+      filter: drop-shadow(0 12px 24px rgba(214, 197, 170, 0.09));
     }
-    body.dark-theme .flower-bottom {
-      opacity: 0.82;
+    @media (max-width: 768px) {
+      .flower-bottom-bg,
+      .flower-bottom-new {
+        width: calc(128vw * 0.765);
+        bottom: -95px;
+        opacity: 0.8;
+      }
     }
     .hero-section {
       position: relative;
@@ -545,7 +670,7 @@
         radial-gradient(circle at 22% 14%, rgba(217, 194, 158, 0.09), transparent 52%);
       opacity: 0.55;
     }
-    .surface > *:not(.card-decor):not(.quote-gold-wrap) { position: relative; z-index: 1; }
+    .surface > *:not(.card-decor):not(.phrase-card__gold-line) { position: relative; z-index: 1; }
     .hero-section .surface--hero {
       animation-delay: 0.06s;
     }
@@ -567,7 +692,7 @@
       isolation: isolate;
       overflow: hidden;
       border-radius: 34px;
-      padding: clamp(12px, 2.4vw, 16px) clamp(18px, 3.2vw, 26px) clamp(12px, 2.6vw, 16px);
+      padding: clamp(8px, 1.5vw, 12px) clamp(16px, 2.8vw, 22px) clamp(8px, 1.6vw, 12px);
       max-width: 720px;
       width: 100%;
       background: rgba(255, 255, 255, 0.64);
@@ -615,8 +740,8 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 2px;
+      gap: 6px;
+      margin-bottom: 0;
       position: relative;
       z-index: 3;
     }
@@ -658,89 +783,74 @@
       position: relative;
       overflow: hidden;
     }
-    .quote-card .quote-gold-wrap {
-      position: absolute;
-      overflow: hidden;
+    .phrase-card__gold-line {
+      width: 100%;
+      max-width: 28rem;
+      margin-left: 0;
+      margin-right: auto;
       pointer-events: none;
       user-select: none;
-      z-index: 1;
+      z-index: 2;
+      position: relative;
+      align-self: stretch;
     }
-    .quote-card .quote-gold-wrap--top {
-      top: 72px;
-      left: 44px;
-      width: 88px;
-      max-width: 90px;
-      height: 8px;
+    .phrase-card__gold-line--before-phrase {
+      margin-top: clamp(4px, 1vw, 8px);
+      margin-bottom: clamp(8px, 1.8vw, 14px);
     }
-    .quote-card .quote-gold-wrap--bottom {
-      bottom: 42px;
-      left: 44px;
-      width: 72px;
-      max-width: 90px;
-      height: 8px;
+    .phrase-card__gold-line--after-phrase {
+      margin-top: clamp(8px, 1.8vw, 14px);
+      margin-bottom: 0;
     }
-    @media (max-width: 520px) {
-      .quote-card .quote-gold-wrap--top {
-        top: clamp(44px, 14vw, 64px);
-        left: clamp(16px, 5vw, 44px);
-        width: min(80px, 22vw);
-      }
-      .quote-card .quote-gold-wrap--bottom {
-        bottom: clamp(14px, 5vw, 36px);
-        left: clamp(16px, 5vw, 44px);
-        width: min(68px, 20vw);
-      }
-      .surface.surface--hero.phrase-card.quote-card .phrase.quote-text {
-        margin-top: clamp(22px, 7vw, 40px);
-        margin-bottom: clamp(20px, 6vw, 36px);
-      }
-    }
-    .quote-card .quote-gold-line-top,
-    .quote-card .quote-gold-line-bottom {
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 100%;
-      height: 100%;
-      max-width: none;
+    .phrase-card__gold-img {
+      display: block;
+      width: calc(88px * 3);
+      max-width: min(calc(88px * 3), 100%);
+      height: auto;
       object-fit: contain;
       object-position: left center;
-      display: block;
-      pointer-events: none;
     }
-    .quote-card .quote-gold-line-top {
+    .phrase-card__gold-line--before-phrase .phrase-card__gold-img {
       opacity: 0.7;
       filter: brightness(0.94) contrast(0.96) saturate(0.9);
     }
-    .quote-card .quote-gold-line-bottom {
+    .phrase-card__gold-line--after-phrase .phrase-card__gold-img {
       opacity: 0.55;
       filter: brightness(0.93) contrast(0.95) saturate(0.88);
     }
-    body.dark-theme .quote-card .quote-gold-line-top {
+    body.dark-theme .phrase-card__gold-line--before-phrase .phrase-card__gold-img {
       opacity: 0.58;
       filter: brightness(0.88) contrast(0.94) saturate(0.85);
     }
-    body.dark-theme .quote-card .quote-gold-line-bottom {
+    body.dark-theme .phrase-card__gold-line--after-phrase .phrase-card__gold-img {
       opacity: 0.46;
       filter: brightness(0.84) contrast(0.93) saturate(0.82);
+    }
+    @media (max-width: 520px) {
+      .phrase-card__gold-img {
+        width: min(calc(80px * 3), 100%);
+      }
+      .surface.surface--hero.phrase-card.quote-card .phrase.quote-text {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
     }
     .surface.surface--hero.phrase-card.quote-card .phrase.quote-text {
       position: relative;
       z-index: 2;
-      margin-top: 48px;
-      margin-bottom: 42px;
+      margin-top: 0;
+      margin-bottom: 0;
       margin-left: 0;
       margin-right: 0;
       padding: 0;
-      line-height: 1.35;
+      line-height: 1.28;
       text-align: left;
     }
     .surface.surface--hero.phrase-card .phrase-card__head .card-decor.flower-small {
       position: relative;
       right: auto;
       top: auto;
-      width: 48px;
+      width: 40px;
       height: auto;
       flex-shrink: 0;
       opacity: 0.88;
@@ -1107,7 +1217,7 @@
         0 18px 55px rgba(176, 138, 88, 0.14),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
       position: relative;
-      z-index: 2;
+      z-index: 5;
       overflow: hidden;
       transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.45s ease;
     }
@@ -1135,6 +1245,9 @@
     .primary-btn__label {
       position: relative;
       z-index: 1;
+    }
+    .primary-btn.save-button .primary-btn__label {
+      z-index: 6;
     }
     .primary-btn.save-button:hover {
       transform: translateY(-2px);
@@ -1450,7 +1563,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 6px;
-      z-index: 50;
+      z-index: 10;
       backdrop-filter: blur(30px);
       -webkit-backdrop-filter: blur(30px);
       background: rgba(255, 255, 255, 0.26);
@@ -1710,9 +1823,34 @@
         width: min(1100px, 155vw);
         opacity: 0.42;
       }
-      .decor-petal-right {
-        right: 4%;
+      .decor-petal-right,
+      .decor-petal-large-01 {
+        top: 20%;
+        bottom: 535px;
+        right: 15%;
+        height: 10%;
         max-height: 68vh;
+      }
+      .flower-left,
+      .decor-flower-left,
+      .left-flower {
+        left: -10px;
+        bottom: -5px;
+        width: min(441px, 92vw);
+        clip-path: inset(0 0 2px 3px);
+      }
+      .decor-petal-left,
+      .decor-petal-curved-01,
+      .decor-petal-curved,
+      .left-petal,
+      .petal-left {
+        left: max(108px, 24vw);
+        bottom: min(255px, 40vh);
+        width: 80px;
+      }
+      .flower-right {
+        min-width: 0;
+        opacity: 0.9;
       }
       .mood-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .habit-row { grid-template-columns: 1fr; }
@@ -1734,15 +1872,32 @@
     <div class="decor-layer__pearl"></div>
     <div class="decor-layer__light"></div>
     <img class="decor-vein" src="./images/decor-vein-line-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
-    <img class="decor-pearl-left" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
-    <img class="decor-sprig-left" src="./images/decor-sprig-long-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-pearl-main-left" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-pearl-medium decor-pearl-scatter--m1" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-pearl-medium decor-pearl-scatter--m2" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-pearl-tiny decor-pearl-scatter--t1" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-pearl-tiny decor-pearl-scatter--t2" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-pearl-tiny decor-pearl-scatter--t3" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-pearl-medium decor-pearl-scatter--ll-accent" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-pearl-medium decor-pearl-scatter--ll-m1" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-pearl-tiny decor-pearl-scatter--ll-t1" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-pearl-tiny decor-pearl-scatter--ll-t2" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-sprig-left decor-sprig-long-01" src="./images/decor-sprig-long-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
     <img class="decor-petal-left" src="./images/decor-petal-curved-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
     <img class="flower-left" src="./images/flower-left.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
-    <img class="decor-crystal-right" src="./images/decor-crystal-drop-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
-    <img class="decor-petal-right" src="./images/decor-petal-large-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
-    <img class="decor-flower-right" src="./images/decor-flower-open-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="crystal-drop-top" src="./images/decor-crystal-drop-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="flower-open-top decor-flower-open-01" src="./images/decor-flower-open-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-pearl-medium decor-pearl-scatter--rt-m1" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-pearl-tiny decor-pearl-scatter--rt-t1" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-pearl-tiny decor-pearl-scatter--rt-t2" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-petal-right decor-petal-large-01" src="./images/decor-petal-large-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
     <img class="flower-right" src="./images/flower-right.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-pearl-tiny decor-pearl-scatter--bot-t1" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-pearl-tiny decor-pearl-scatter--bot-t2" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+    <img class="decor-pearl-tiny decor-pearl-scatter--bot-t3" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
   </div>
+
+  <img class="flower-bottom-bg flower-bottom-new" src="./images/flower-bottom-new.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
 
   <main class="app">
     <header class="editorial-head hero">
@@ -1765,12 +1920,12 @@
               <div class="phrase-label">Фраза дня</div>
               <img class="card-decor flower-small" src="./images/decor-flower-small-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
             </div>
-            <div class="quote-gold-wrap quote-gold-wrap--top" aria-hidden="true">
-              <img class="quote-gold-line-top" src="./images/decor-gold-line-01.png" alt="" decoding="async" loading="lazy" />
+            <div class="phrase-card__gold-line phrase-card__gold-line--before-phrase" aria-hidden="true">
+              <img class="phrase-card__gold-img" src="./images/decor-gold-line-01.png" alt="" decoding="async" loading="lazy" />
             </div>
             <p id="dailyPhrase" class="phrase quote-text"></p>
-            <div class="quote-gold-wrap quote-gold-wrap--bottom" aria-hidden="true">
-              <img class="quote-gold-line-bottom" src="./images/decor-gold-line-01.png" alt="" decoding="async" loading="lazy" />
+            <div class="phrase-card__gold-line phrase-card__gold-line--after-phrase" aria-hidden="true">
+              <img class="phrase-card__gold-img" src="./images/decor-gold-line-01.png" alt="" decoding="async" loading="lazy" />
             </div>
           </article>
         </div>
@@ -1841,12 +1996,7 @@
         </div>
       </article>
 
-      <div class="save-day-decor-stack">
-        <button id="saveTodayButton" class="primary-btn save-button" type="button"><span class="primary-btn__label">Сохранить день</span></button>
-        <div class="flower-bottom-wrapper" aria-hidden="true">
-          <img class="flower-bottom" src="./images/flower-bottom.png" alt="" decoding="async" loading="lazy" />
-        </div>
-      </div>
+      <button id="saveTodayButton" class="primary-btn save-button" type="button"><span class="primary-btn__label">Сохранить день</span></button>
       <img class="decor-save-petal" src="./images/decor-petal-tiny-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
     </section>
 
