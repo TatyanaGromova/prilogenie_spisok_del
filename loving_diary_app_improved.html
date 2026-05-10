@@ -692,7 +692,13 @@
       isolation: isolate;
       overflow: hidden;
       border-radius: 34px;
-      padding: clamp(8px, 1.5vw, 12px) clamp(16px, 2.8vw, 22px) clamp(8px, 1.6vw, 12px);
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      min-height: 0;
+      height: auto;
+      padding: 14px 24px 16px;
       max-width: 720px;
       width: 100%;
       background: rgba(255, 255, 255, 0.64);
@@ -745,6 +751,9 @@
       position: relative;
       z-index: 3;
     }
+    .surface.surface--hero.phrase-card.quote-card > .phrase-card__head {
+      margin-bottom: 10px;
+    }
     .phrase-label {
       font-size: 10px;
       letter-spacing: 0.22em;
@@ -779,71 +788,101 @@
       position: relative;
       z-index: 3;
     }
-    .quote-card {
-      position: relative;
-      overflow: hidden;
-    }
-    .phrase-card__gold-line {
-      width: 100%;
-      max-width: 28rem;
+    .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line {
+      width: auto;
+      max-width: none;
       margin-left: 0;
       margin-right: auto;
       pointer-events: none;
       user-select: none;
-      z-index: 2;
+      z-index: 3;
       position: relative;
-      align-self: stretch;
+      align-self: flex-start;
     }
-    .phrase-card__gold-line--before-phrase {
-      margin-top: clamp(4px, 1vw, 8px);
-      margin-bottom: clamp(8px, 1.8vw, 14px);
+    .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase {
+      margin-top: 0;
+      margin-bottom: 6px;
     }
-    .phrase-card__gold-line--after-phrase {
-      margin-top: clamp(8px, 1.8vw, 14px);
+    .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--after-phrase {
+      margin-top: 6px;
       margin-bottom: 0;
     }
-    .phrase-card__gold-img {
+    .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-img,
+    .surface.surface--hero.phrase-card.quote-card img[src*="decor-gold-line-01"] {
       display: block;
-      width: calc(88px * 3);
-      max-width: min(calc(88px * 3), 100%);
+      width: 220px;
+      max-width: 220px;
       height: auto;
       object-fit: contain;
       object-position: left center;
     }
-    .phrase-card__gold-line--before-phrase .phrase-card__gold-img {
+    .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase .phrase-card__gold-img,
+    .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase img[src*="decor-gold-line-01"] {
+      opacity: 0.74;
+      filter: brightness(1.03) contrast(1.02) saturate(1.05);
+    }
+    .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--after-phrase .phrase-card__gold-img,
+    .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--after-phrase img[src*="decor-gold-line-01"] {
+      opacity: 0.64;
+      filter: brightness(1.02) contrast(1.02) saturate(1.03);
+    }
+    body.dark-theme .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase .phrase-card__gold-img,
+    body.dark-theme .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase img[src*="decor-gold-line-01"] {
       opacity: 0.7;
-      filter: brightness(0.94) contrast(0.96) saturate(0.9);
+      filter: brightness(1.06) contrast(1.02) saturate(1.04);
     }
-    .phrase-card__gold-line--after-phrase .phrase-card__gold-img {
-      opacity: 0.55;
-      filter: brightness(0.93) contrast(0.95) saturate(0.88);
-    }
-    body.dark-theme .phrase-card__gold-line--before-phrase .phrase-card__gold-img {
-      opacity: 0.58;
-      filter: brightness(0.88) contrast(0.94) saturate(0.85);
-    }
-    body.dark-theme .phrase-card__gold-line--after-phrase .phrase-card__gold-img {
-      opacity: 0.46;
-      filter: brightness(0.84) contrast(0.93) saturate(0.82);
+    body.dark-theme .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--after-phrase .phrase-card__gold-img,
+    body.dark-theme .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--after-phrase img[src*="decor-gold-line-01"] {
+      opacity: 0.6;
+      filter: brightness(1.04) contrast(1.02) saturate(1.03);
     }
     @media (max-width: 520px) {
-      .phrase-card__gold-img {
-        width: min(calc(80px * 3), 100%);
-      }
       .surface.surface--hero.phrase-card.quote-card .phrase.quote-text {
         margin-top: 0;
         margin-bottom: 0;
       }
     }
+    @media (max-width: 768px) {
+      .surface.surface--hero.phrase-card.quote-card {
+        padding: 12px 20px 14px;
+      }
+      .surface.surface--hero.phrase-card.quote-card > .phrase-card__head {
+        margin-bottom: 8px;
+      }
+      .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase {
+        margin-bottom: 5px;
+      }
+      .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--after-phrase {
+        margin-top: 5px;
+      }
+      .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-img,
+      .surface.surface--hero.phrase-card.quote-card img[src*="decor-gold-line-01"] {
+        width: 160px;
+        max-width: 160px;
+      }
+      .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase .phrase-card__gold-img,
+      .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase img[src*="decor-gold-line-01"] {
+        opacity: 0.72;
+      }
+      .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--after-phrase .phrase-card__gold-img,
+      .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--after-phrase img[src*="decor-gold-line-01"] {
+        opacity: 0.62;
+      }
+      body.dark-theme .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase .phrase-card__gold-img,
+      body.dark-theme .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase img[src*="decor-gold-line-01"] {
+        opacity: 0.7;
+      }
+      body.dark-theme .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--after-phrase .phrase-card__gold-img,
+      body.dark-theme .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--after-phrase img[src*="decor-gold-line-01"] {
+        opacity: 0.6;
+      }
+    }
     .surface.surface--hero.phrase-card.quote-card .phrase.quote-text {
       position: relative;
       z-index: 2;
-      margin-top: 0;
-      margin-bottom: 0;
-      margin-left: 0;
-      margin-right: 0;
+      margin: 0;
       padding: 0;
-      line-height: 1.28;
+      line-height: 1.35;
       text-align: left;
     }
     .surface.surface--hero.phrase-card .phrase-card__head .card-decor.flower-small {
