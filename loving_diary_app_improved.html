@@ -23,6 +23,7 @@
       --inner-lit: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -22px 48px rgba(255, 255, 255, 0.18);
       --radius-a: 26px 20px 28px 22px;
       --radius-b: 18px 26px 20px 24px;
+      --bottom-nav-safe-area: 200px;
     }
     body.dark-theme {
       --paper: #1f1b19;
@@ -377,7 +378,8 @@
       max-width: 760px;
       margin-left: auto;
       margin-right: auto;
-      padding: 0 24px 160px;
+      margin-top: -45px;
+      padding: 0 24px var(--bottom-nav-safe-area);
       color: #4a403c;
     }
     .app,
@@ -389,6 +391,14 @@
     body.dark-theme main.app {
       color: var(--text);
     }
+    @media (max-width: 768px) {
+      :root {
+        --bottom-nav-safe-area: 225px;
+      }
+      main.app {
+        margin-top: -25px;
+      }
+    }
     @media (max-width: 640px) {
       main.app {
         padding-left: max(16px, env(safe-area-inset-left));
@@ -398,6 +408,15 @@
     section.page {
       position: relative;
       z-index: 2;
+    }
+    /* Подъём контента вкладки «Сегодня» от «Фразы дня» вниз; hero вне этой секции — не смещается */
+    #todayPage.page {
+      margin-top: -24px;
+    }
+    /* «История» и «Календарь»: ближе к вводной части экрана, одна вертикальная логика для обеих вкладок */
+    #historyPage.page,
+    #futurePage.page {
+      margin-top: -32px;
     }
     .flower-bottom-bg,
     .flower-bottom-new {
@@ -529,11 +548,11 @@
       display: inline-flex;
       align-items: center;
       justify-content: flex-start;
-      gap: 14px;
-      padding: 12px 22px;
+      gap: 8px;
+      padding: 7px 11px;
       margin: 0 0 28px 0;
       width: fit-content;
-      max-width: 520px;
+      max-width: 424px;
       box-sizing: border-box;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.76);
@@ -568,9 +587,9 @@
     .daily-pulse img,
     .daily-pulse .daily-pulse__heart,
     .daily-pulse .heart-icon {
-      width: 64px !important;
-      height: 64px !important;
-      min-width: 64px !important;
+      width: 38px !important;
+      height: 38px !important;
+      min-width: 38px !important;
       flex-shrink: 0;
       object-fit: contain;
       opacity: 1 !important;
@@ -581,22 +600,22 @@
       filter:
         brightness(0) saturate(100%) invert(26%) sepia(52%) saturate(2400%) hue-rotate(325deg) brightness(0.88) contrast(1.14)
         saturate(1.35) contrast(1.12)
-        drop-shadow(0 0 18px rgba(185, 74, 72, 0.45))
-        drop-shadow(0 10px 28px rgba(185, 74, 72, 0.22));
+        drop-shadow(0 0 11px rgba(185, 74, 72, 0.38))
+        drop-shadow(0 6px 15px rgba(185, 74, 72, 0.17));
     }
     body.dark-theme .daily-pulse img,
     body.dark-theme .daily-pulse .daily-pulse__heart {
       filter:
         brightness(0) saturate(100%) invert(30%) sepia(48%) saturate(2000%) hue-rotate(322deg) brightness(0.95) contrast(1.1)
         saturate(1.3) contrast(1.1)
-        drop-shadow(0 0 20px rgba(185, 74, 72, 0.42))
-        drop-shadow(0 10px 26px rgba(185, 74, 72, 0.2));
+        drop-shadow(0 0 12px rgba(185, 74, 72, 0.36))
+        drop-shadow(0 6px 17px rgba(185, 74, 72, 0.15));
     }
     .daily-pulse__text,
     .daily-pulse-text {
       margin: 0;
       font-family: "Manrope", sans-serif;
-      font-size: 18px;
+      font-size: calc(18px * 0.875 * 1.05);
       font-weight: 500;
       line-height: 1.35;
       letter-spacing: 0.01em;
@@ -1944,7 +1963,7 @@
         <div class="header-label">Личный дневник чувств</div>
         <h1 class="hero-title">Делай любя,<br />люби себя</h1>
         <div class="daily-pulse">
-          <img src="./images/icon-heart.png" alt="" class="daily-pulse__heart" width="64" height="64" decoding="async" />
+          <img src="./images/icon-heart.png" alt="" class="daily-pulse__heart" width="38" height="38" decoding="async" />
           <p id="emotionalPulseText" class="daily-pulse__text daily-pulse-text" aria-live="polite"></p>
         </div>
       </div>
