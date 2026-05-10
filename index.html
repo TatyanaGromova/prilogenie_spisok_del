@@ -366,6 +366,63 @@
       pointer-events: none;
       user-select: none;
     }
+    @media (min-width: 1024px) {
+      /* Левый pearl cluster: легче на desktop */
+      .decor-pearl-main-left {
+        width: 54px;
+        left: 0.6%;
+      }
+      .decor-pearl-scatter--m1 {
+        left: 10.2%;
+        width: 22px;
+      }
+      .decor-pearl-scatter--m2 {
+        left: -0.3%;
+        width: 22px;
+      }
+      .decor-pearl-scatter--t1 {
+        left: 6.1%;
+        width: 10px;
+      }
+      .decor-pearl-scatter--t2 {
+        left: 8.4%;
+        width: 10px;
+      }
+      .decor-pearl-scatter--t3 {
+        left: 2.9%;
+        width: 10px;
+      }
+      .decor-pearl-scatter--ll-accent {
+        left: 6.2%;
+        width: 28px;
+      }
+      .decor-pearl-scatter--ll-m1 {
+        left: 2.2%;
+        width: 22px;
+      }
+      .decor-pearl-scatter--ll-t1 {
+        left: 4.5%;
+        width: 10px;
+      }
+      .decor-pearl-scatter--ll-t2 {
+        left: 0.8%;
+        width: 10px;
+      }
+
+      /* Правый верхний узел: оставляем только crystal + верхний flower */
+      .decor-pearl-scatter--rt-m1,
+      .decor-pearl-scatter--rt-t1,
+      .decor-pearl-scatter--rt-t2,
+      .decor-petal-right,
+      .decor-petal-large-01 {
+        display: none !important;
+      }
+      .crystal-drop-top,
+      .flower-open-top,
+      .decor-flower-open-01 {
+        display: block !important;
+      }
+    }
 
     body.modal-open { overflow: hidden; }
     button, input, textarea, select { font: inherit; color: inherit; }
