@@ -393,10 +393,36 @@
     }
     @media (max-width: 768px) {
       :root {
-        --bottom-nav-safe-area: 225px;
+        --bottom-nav-safe-area: 220px;
       }
       main.app {
         margin-top: -25px;
+        padding-bottom: var(--bottom-nav-safe-area);
+        box-sizing: border-box;
+      }
+      .app,
+      .page {
+        padding-bottom: 220px;
+        box-sizing: border-box;
+      }
+      /* Дополнительный запас для вкладки календаря и привычек */
+      #futurePage.page {
+        padding-bottom: 240px;
+      }
+      .bottom-nav {
+        position: fixed;
+        left: 50%;
+        bottom: calc(22px + env(safe-area-inset-bottom));
+        transform: translateX(-50%);
+        width: calc(100% - 32px);
+        max-width: 640px;
+        z-index: 100;
+      }
+      .theme-toggle {
+        position: fixed;
+        right: 18px;
+        bottom: calc(138px + env(safe-area-inset-bottom));
+        z-index: 110;
       }
     }
     @media (max-width: 640px) {
@@ -1283,6 +1309,41 @@
     .history-empty-text {
       margin: 0;
       max-width: 26rem;
+    }
+    #historyPage.page {
+      padding-bottom: 170px;
+      box-sizing: border-box;
+    }
+    #historyPage .surface.surface--history-accent {
+      min-height: auto;
+      max-height: none;
+      padding: 42px 44px 54px;
+      box-sizing: border-box;
+    }
+    #historyPage #historyList {
+      max-height: 360px;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+    #historyPage .history-empty-state {
+      min-height: 180px;
+      padding: 32px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    @media (min-width: 769px) {
+      #historyPage.page {
+        padding-bottom: 180px;
+      }
+      #historyPage .surface.surface--history-accent {
+        max-width: 820px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 40px 42px 52px;
+      }
     }
 
     .planner-head--decor {
@@ -2311,6 +2372,61 @@
     }
 
     @media (max-width: 768px) {
+      .editorial-head.hero {
+        padding-top: 56px;
+        padding-left: 26px;
+        padding-right: 26px;
+      }
+      h1.hero-title {
+        font-size: clamp(52px, 16vw, 78px);
+        line-height: 0.9;
+        letter-spacing: -0.03em;
+      }
+      .editorial-head.hero .subtitle.hero-subtitle {
+        font-size: 18px;
+        line-height: 1.45;
+        max-width: 100%;
+      }
+      .daily-pulse {
+        width: 100%;
+        max-width: 100%;
+        padding: 12px 18px;
+        gap: 12px;
+        border-radius: 999px;
+      }
+      .daily-pulse img,
+      .daily-pulse .daily-pulse__heart,
+      .daily-pulse .heart-icon {
+        width: 42px !important;
+        height: 42px !important;
+        min-width: 42px !important;
+        flex-shrink: 0;
+      }
+      .daily-pulse__text,
+      .daily-pulse-text {
+        font-size: 20px;
+        line-height: 1.25;
+      }
+      .surface.quote-card,
+      .surface.mood-card-surface,
+      .surface.journal-card--thoughts,
+      .surface.task-card,
+      .surface.journal-card--gratitude,
+      .surface.journal-card--victory,
+      .surface.surface--history-accent,
+      .surface.surface--calendar-accent,
+      .surface.habits-card-surface {
+        width: calc(100% - 32px);
+        max-width: calc(100% - 32px);
+        margin-left: auto;
+        margin-right: auto;
+        padding: 28px 22px;
+        border-radius: 28px;
+      }
+      .field-sheet {
+        padding: 22px 18px;
+        border-radius: 24px;
+      }
       .history-card-gold img,
       .calendar-card-gold img {
         width: 172px;
@@ -2401,6 +2517,16 @@
       }
       .card-decor.gratitude-flower {
         width: clamp(34px, 9vw, 42px);
+      }
+      .mood-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .mood-btn,
+      .mood-button {
+        min-height: 92px;
+        border-radius: 28px;
       }
     }
 
