@@ -689,7 +689,19 @@
         radial-gradient(circle at 22% 14%, rgba(217, 194, 158, 0.09), transparent 52%);
       opacity: 0.55;
     }
-    .surface > *:not(.card-decor):not(.phrase-card__gold-line) { position: relative; z-index: 1; }
+    /* Контент карточки над декором (деkor z-index: 1) */
+    .surface > *:not(.card-decor):not(.phrase-card__gold-line):not(.card-decor-layer):not(.inline-card-goldline) {
+      position: relative;
+      z-index: 2;
+    }
+    .card-decor-layer,
+    .inline-card-goldline {
+      pointer-events: none;
+      user-select: none;
+      position: relative;
+      z-index: 1;
+      align-self: flex-start;
+    }
     .hero-section .surface--hero {
       animation-delay: 0.06s;
     }
@@ -801,7 +813,7 @@
       position: absolute;
       pointer-events: none;
       user-select: none;
-      z-index: 2;
+      z-index: 1;
     }
     .surface.surface--hero.phrase-card .phrase {
       position: relative;
@@ -814,7 +826,7 @@
       margin-right: auto;
       pointer-events: none;
       user-select: none;
-      z-index: 3;
+      z-index: 2;
       position: relative;
       align-self: flex-start;
     }
@@ -826,34 +838,51 @@
       margin-top: 6px;
       margin-bottom: 0;
     }
+    .surface.surface--hero.phrase-card.quote-card .phrase-card__glare {
+      position: absolute;
+      top: -18%;
+      right: -12%;
+      width: min(58%, 200px);
+      height: auto;
+      pointer-events: none;
+      user-select: none;
+      opacity: 0.15;
+      transform: rotate(-22deg);
+      object-fit: contain;
+      z-index: 1;
+      filter: saturate(0.85);
+    }
+    body.dark-theme .surface.surface--hero.phrase-card.quote-card .phrase-card__glare {
+      opacity: 0.12;
+    }
     .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-img,
     .surface.surface--hero.phrase-card.quote-card img[src*="decor-gold-line-01"] {
       display: block;
-      width: 220px;
-      max-width: 220px;
+      width: 260px;
+      max-width: 260px;
       height: auto;
       object-fit: contain;
       object-position: left center;
     }
     .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase .phrase-card__gold-img,
     .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase img[src*="decor-gold-line-01"] {
-      opacity: 0.74;
-      filter: brightness(1.03) contrast(1.02) saturate(1.05);
+      opacity: 0.78;
+      filter: brightness(1.05) contrast(1.03) saturate(1.06);
     }
     .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--after-phrase .phrase-card__gold-img,
     .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--after-phrase img[src*="decor-gold-line-01"] {
-      opacity: 0.64;
-      filter: brightness(1.02) contrast(1.02) saturate(1.03);
+      opacity: 0.68;
+      filter: brightness(1.04) contrast(1.02) saturate(1.05);
     }
     body.dark-theme .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase .phrase-card__gold-img,
     body.dark-theme .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase img[src*="decor-gold-line-01"] {
-      opacity: 0.7;
-      filter: brightness(1.06) contrast(1.02) saturate(1.04);
+      opacity: 0.74;
+      filter: brightness(1.08) contrast(1.03) saturate(1.05);
     }
     body.dark-theme .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--after-phrase .phrase-card__gold-img,
     body.dark-theme .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--after-phrase img[src*="decor-gold-line-01"] {
-      opacity: 0.6;
-      filter: brightness(1.04) contrast(1.02) saturate(1.03);
+      opacity: 0.65;
+      filter: brightness(1.06) contrast(1.02) saturate(1.04);
     }
     @media (max-width: 520px) {
       .surface.surface--hero.phrase-card.quote-card .phrase.quote-text {
@@ -874,10 +903,15 @@
       .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--after-phrase {
         margin-top: 5px;
       }
+      .surface.surface--hero.phrase-card.quote-card .phrase-card__glare {
+        width: min(52%, 160px);
+        top: -14%;
+        opacity: 0.13;
+      }
       .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-img,
       .surface.surface--hero.phrase-card.quote-card img[src*="decor-gold-line-01"] {
-        width: 160px;
-        max-width: 160px;
+        width: 180px;
+        max-width: 180px;
       }
       .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase .phrase-card__gold-img,
       .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase img[src*="decor-gold-line-01"] {
@@ -889,16 +923,16 @@
       }
       body.dark-theme .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase .phrase-card__gold-img,
       body.dark-theme .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--before-phrase img[src*="decor-gold-line-01"] {
-        opacity: 0.7;
+        opacity: 0.69;
       }
       body.dark-theme .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--after-phrase .phrase-card__gold-img,
       body.dark-theme .surface.surface--hero.phrase-card.quote-card .phrase-card__gold-line--after-phrase img[src*="decor-gold-line-01"] {
-        opacity: 0.6;
+        opacity: 0.58;
       }
     }
     .surface.surface--hero.phrase-card.quote-card .phrase.quote-text {
       position: relative;
-      z-index: 2;
+      z-index: 3;
       margin: 0;
       padding: 0;
       line-height: 1.35;
@@ -908,41 +942,134 @@
       position: relative;
       right: auto;
       top: auto;
-      width: 40px;
+      width: clamp(36px, 9vw, 44px);
       height: auto;
       flex-shrink: 0;
-      opacity: 0.88;
-      filter: drop-shadow(0 8px 18px rgba(74, 58, 52, 0.1));
+      opacity: 0.8;
+      filter: drop-shadow(0 8px 20px rgba(74, 58, 52, 0.14));
+    }
+    body.dark-theme .surface.surface--hero.phrase-card .phrase-card__head .card-decor.flower-small {
+      opacity: 0.76;
     }
     .journal-card--thoughts {
       position: relative;
     }
-    .journal-card--thoughts > .card-decor.sprig {
-      width: 76px;
-      height: auto;
-      right: 14px;
-      bottom: 16px;
-      opacity: 0.45;
-      z-index: 0;
+    .journal-card--thoughts .field-sheet {
+      position: relative;
     }
-    body.dark-theme .journal-card--thoughts > .card-decor.sprig {
-      opacity: 0.36;
+    .journal-card--thoughts .field-sheet::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 48px;
+      width: 20px;
+      height: 20px;
+      background: url("./images/decor-pearl-01.png") center / contain no-repeat;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 1;
+    }
+    body.dark-theme .journal-card--thoughts .field-sheet::before {
+      opacity: 0.62;
+    }
+    .textarea-decor-wrap {
+      position: relative;
+      z-index: 2;
+    }
+    .thoughts-field-glare {
+      position: absolute;
+      top: 8px;
+      right: 6px;
+      width: 100px;
+      height: auto;
+      opacity: 0.14;
+      transform: rotate(-14deg);
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+      object-fit: contain;
+    }
+    body.dark-theme .thoughts-field-glare {
+      opacity: 0.12;
+    }
+    .thoughts-field-sprig {
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+      width: 96px;
+      height: auto;
+      opacity: 0.46;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+      object-fit: contain;
+    }
+    body.dark-theme .thoughts-field-sprig {
+      opacity: 0.4;
+    }
+    .journal-card--thoughts .textarea-decor-wrap textarea {
+      position: relative;
+      z-index: 2;
+      padding-right: 92px;
+      padding-bottom: 62px;
     }
     .journal-card--gratitude {
       position: relative;
     }
-    .journal-card--gratitude .card-decor.gratitude-sprig {
-      position: absolute;
-      right: 12px;
-      bottom: 14px;
-      width: 72px;
-      height: auto;
-      opacity: 0.48;
-      z-index: 0;
-      pointer-events: none;
+    .journal-card--gratitude .field-sheet {
+      position: relative;
     }
-    body.dark-theme .journal-card--gratitude .card-decor.gratitude-sprig {
-      opacity: 0.38;
+    .journal-card--gratitude .field-sheet::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 48px;
+      width: 20px;
+      height: 20px;
+      background: url("./images/decor-pearl-01.png") center / contain no-repeat;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 1;
+    }
+    body.dark-theme .journal-card--gratitude .field-sheet::before {
+      opacity: 0.62;
+    }
+    .gratitude-field-glare {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 96px;
+      height: auto;
+      opacity: 0.13;
+      transform: rotate(-12deg);
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+      object-fit: contain;
+    }
+    body.dark-theme .gratitude-field-glare {
+      opacity: 0.11;
+    }
+    .gratitude-field-sprig {
+      position: absolute;
+      right: 6px;
+      bottom: 6px;
+      width: 94px;
+      height: auto;
+      opacity: 0.46;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+      object-fit: contain;
+    }
+    body.dark-theme .gratitude-field-sprig {
+      opacity: 0.4;
+    }
+    .journal-card--gratitude .textarea-decor-wrap textarea {
+      position: relative;
+      z-index: 2;
+      padding-right: 90px;
+      padding-bottom: 58px;
     }
     .section-title-row {
       display: flex;
@@ -956,43 +1083,140 @@
     }
     .card-decor.gratitude-flower {
       position: relative;
-      width: 32px;
+      width: clamp(36px, 8.5vw, 44px);
       height: auto;
       flex-shrink: 0;
-      opacity: 0.82;
-      filter: drop-shadow(0 4px 12px rgba(74, 58, 52, 0.12));
+      opacity: 0.8;
+      filter: drop-shadow(0 5px 14px rgba(74, 58, 52, 0.14));
       z-index: 1;
     }
     body.dark-theme .card-decor.gratitude-flower {
-      opacity: 0.68;
+      opacity: 0.76;
     }
 
-    .card-decor.victory-pearl {
+    .journal-card--victory {
+      position: relative;
+    }
+    .journal-card--victory .field-sheet {
+      position: relative;
+    }
+    .journal-card--victory .field-sheet::before {
+      content: "";
       position: absolute;
-      right: 22px;
-      top: 22px;
-      width: 22px;
-      height: auto;
-      opacity: 0.72;
+      left: 20px;
+      top: 48px;
+      width: 20px;
+      height: 20px;
+      background: url("./images/decor-pearl-01.png") center / contain no-repeat;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 1;
+    }
+    body.dark-theme .journal-card--victory .field-sheet::before {
+      opacity: 0.62;
+    }
+    .journal-card--thoughts .field-sheet > *,
+    .journal-card--gratitude .field-sheet > *,
+    .journal-card--victory .field-sheet > * {
+      position: relative;
       z-index: 2;
     }
-    body.dark-theme .card-decor.victory-pearl {
-      opacity: 0.52;
+    .card-decor.victory-crystal {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      width: 47px;
+      height: auto;
+      opacity: 0.8;
+      z-index: 1;
+      filter: drop-shadow(0 8px 18px rgba(185, 154, 104, 0.22));
+    }
+    body.dark-theme .card-decor.victory-crystal {
+      opacity: 0.72;
+    }
+    .journal-card--victory .victory-gold-line {
+      margin-top: -6px;
+      margin-bottom: 10px;
+    }
+    .journal-card--victory .victory-gold-line img {
+      display: block;
+      width: 182px;
+      height: auto;
+      opacity: 0.62;
+      object-fit: contain;
+      object-position: left center;
+    }
+    body.dark-theme .journal-card--victory .victory-gold-line img {
+      opacity: 0.56;
     }
 
     .task-card {
       position: relative;
     }
+    .task-card .task-card-gold-line {
+      margin-bottom: 12px;
+    }
+    .task-card .task-card-gold-line img {
+      display: block;
+      width: 192px;
+      height: auto;
+      opacity: 0.6;
+      object-fit: contain;
+      object-position: left center;
+    }
+    body.dark-theme .task-card .task-card-gold-line img {
+      opacity: 0.54;
+    }
+    .task-card .task-row {
+      position: relative;
+      z-index: 2;
+    }
     .task-card .task-row-petal {
       position: absolute;
-      right: 4px;
-      bottom: 8px;
-      width: 30px;
+      right: 56px;
+      bottom: 50%;
+      transform: translateY(50%);
+      width: 26px;
       height: auto;
-      opacity: 0.48;
+      opacity: 0.55;
       pointer-events: none;
       user-select: none;
       z-index: 1;
+    }
+    body.dark-theme .task-card .task-row-petal {
+      opacity: 0.48;
+    }
+
+    .surface.mood-card-surface {
+      position: relative;
+    }
+    .mood-card-surface .mood-card-pearl {
+      top: 14px;
+      right: 14px;
+      width: 25px;
+      height: auto;
+      opacity: 0.7;
+      z-index: 1;
+    }
+    body.dark-theme .mood-card-surface .mood-card-pearl {
+      opacity: 0.62;
+    }
+    .mood-card-surface .mood-card-petal {
+      left: 12px;
+      bottom: 12px;
+      width: 27px;
+      height: auto;
+      opacity: 0.5;
+      transform: rotate(-12deg);
+      z-index: 1;
+    }
+    body.dark-theme .mood-card-surface .mood-card-petal {
+      opacity: 0.43;
+    }
+    .mood-card-surface .section-title,
+    .mood-card-surface .mood-grid {
+      position: relative;
+      z-index: 2;
     }
 
     .surface--history-accent,
@@ -1002,17 +1226,181 @@
     .card-decor.history-leaf,
     .card-decor.calendar-leaf {
       position: absolute;
-      right: 16px;
-      top: 20px;
-      width: 72px;
+      right: 12px;
+      top: 16px;
+      width: 136px;
       height: auto;
-      opacity: 0.42;
-      z-index: 0;
+      opacity: 0.58;
+      z-index: 1;
       pointer-events: none;
+      user-select: none;
     }
     body.dark-theme .card-decor.history-leaf,
     body.dark-theme .card-decor.calendar-leaf {
-      opacity: 0.32;
+      opacity: 0.5;
+    }
+
+    .history-card-gold,
+    .calendar-card-gold {
+      margin-top: -4px;
+      margin-bottom: 8px;
+    }
+    .history-card-gold img,
+    .calendar-card-gold img {
+      display: block;
+      width: 202px;
+      height: auto;
+      opacity: 0.62;
+      object-fit: contain;
+      object-position: left center;
+    }
+    body.dark-theme .history-card-gold img,
+    body.dark-theme .calendar-card-gold img {
+      opacity: 0.55;
+    }
+    .history-empty-state {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 8px 0 16px;
+      gap: 14px;
+    }
+    .history-empty-flower {
+      width: 88px;
+      height: auto;
+      opacity: 0.62;
+      pointer-events: none;
+      user-select: none;
+      display: block;
+      filter: drop-shadow(0 10px 22px rgba(185, 154, 104, 0.15));
+    }
+    body.dark-theme .history-empty-flower {
+      opacity: 0.52;
+    }
+    .history-empty-text {
+      margin: 0;
+      max-width: 26rem;
+    }
+
+    .planner-head--decor {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .planner-month-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 0;
+      position: relative;
+      z-index: 2;
+    }
+    .calendar-pearl-nav {
+      width: 20px;
+      height: auto;
+      flex-shrink: 0;
+      opacity: 0.68;
+      pointer-events: none;
+      user-select: none;
+    }
+    body.dark-theme .calendar-pearl-nav {
+      opacity: 0.58;
+    }
+    .planner-head--decor .cal-nav {
+      position: relative;
+      z-index: 2;
+      flex-shrink: 0;
+    }
+    .calendar-corner-flower {
+      position: absolute;
+      right: 12px;
+      bottom: 14px;
+      width: 32px;
+      height: auto;
+      opacity: 0.54;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+    }
+    body.dark-theme .calendar-corner-flower {
+      opacity: 0.46;
+    }
+    .surface--calendar-accent .subtitle,
+    .surface--calendar-accent .planner-head,
+    .surface--calendar-accent .cal-weekdays,
+    .surface--calendar-accent .cal-grid,
+    .surface--calendar-accent .planner-add-row,
+    .surface--calendar-accent .tasks {
+      position: relative;
+      z-index: 2;
+    }
+
+    .surface.habits-card-surface {
+      position: relative;
+    }
+    .habits-card-surface .habits-card-sprig {
+      top: 12px;
+      right: 10px;
+      width: 126px;
+      height: auto;
+      opacity: 0.52;
+      z-index: 1;
+    }
+    body.dark-theme .habits-card-surface .habits-card-sprig {
+      opacity: 0.44;
+    }
+    .habits-card-gold img {
+      display: block;
+      width: 202px;
+      height: auto;
+      opacity: 0.62;
+      object-fit: contain;
+      object-position: left center;
+      margin-bottom: 14px;
+    }
+    body.dark-theme .habits-card-gold img {
+      opacity: 0.55;
+    }
+    .habits-submit-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      margin-top: 4px;
+    }
+    .habits-submit-wrap .habits-petal-btn.card-decor {
+      position: absolute;
+      left: calc(100% + 10px);
+      right: auto;
+      top: 50%;
+      bottom: auto;
+      transform: translateY(-50%);
+      width: 27px;
+      height: auto;
+      opacity: 0.55;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+    }
+    body.dark-theme .habits-submit-wrap .habits-petal-btn {
+      opacity: 0.48;
+    }
+    .habits-submit-wrap .ghost-btn {
+      position: relative;
+      z-index: 2;
+    }
+    .habits-card-surface .section-title,
+    .habits-card-surface .subtitle,
+    .habits-card-surface form,
+    .habits-card-surface #habitsList {
+      position: relative;
+      z-index: 2;
     }
 
     .section-title {
@@ -1084,10 +1472,10 @@
     .mood-icon {
       width: 22px;
       height: 22px;
-      color: #a88652;
+      color: #9f7e54;
       stroke: currentColor;
       fill: none;
-      stroke-width: 1.35;
+      stroke-width: 1.15;
       stroke-linecap: round;
       stroke-linejoin: round;
       margin-bottom: 8px;
@@ -1913,8 +2301,109 @@
       .mood-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .habit-row { grid-template-columns: 1fr; }
       .task-row { flex-direction: column; }
+      .task-card .task-row-petal {
+        right: 14px;
+        bottom: auto;
+        top: 12px;
+        transform: none;
+      }
       .mini-btn { width: 100%; min-height: 48px; }
     }
+
+    @media (max-width: 768px) {
+      .history-card-gold img,
+      .calendar-card-gold img {
+        width: 172px;
+      }
+      .journal-card--victory .victory-gold-line img {
+        width: 158px;
+      }
+      .task-card .task-card-gold-line img {
+        width: 176px;
+      }
+      .habits-card-gold img {
+        width: 172px;
+      }
+      .card-decor.victory-crystal {
+        width: 40px;
+      }
+      .history-empty-flower {
+        width: 76px;
+      }
+      .card-decor.history-leaf,
+      .card-decor.calendar-leaf {
+        width: 108px;
+        opacity: 0.52;
+      }
+      body.dark-theme .card-decor.history-leaf,
+      body.dark-theme .card-decor.calendar-leaf {
+        opacity: 0.44;
+      }
+      .habits-card-surface .habits-card-sprig {
+        width: 102px;
+        opacity: 0.46;
+      }
+      .thoughts-field-sprig {
+        width: 80px;
+        opacity: 0.42;
+      }
+      .gratitude-field-sprig {
+        width: 78px;
+        opacity: 0.42;
+      }
+      .thoughts-field-glare,
+      .gratitude-field-glare {
+        width: 86px;
+        opacity: 0.13;
+      }
+      body.dark-theme .thoughts-field-glare,
+      body.dark-theme .gratitude-field-glare {
+        opacity: 0.11;
+      }
+      .surface.surface--hero.phrase-card.quote-card .phrase-card__glare {
+        width: min(52%, 168px);
+      }
+      .surface.surface--hero.phrase-card .phrase-card__head .card-decor.flower-small {
+        width: clamp(34px, 10vw, 42px);
+      }
+      .mood-card-surface .mood-card-pearl {
+        width: 22px;
+      }
+      .mood-card-surface .mood-card-petal {
+        width: 24px;
+      }
+      .calendar-corner-flower {
+        width: 28px;
+        opacity: 0.48;
+      }
+      .calendar-pearl-nav {
+        width: 18px;
+      }
+      .journal-card--thoughts .textarea-decor-wrap textarea {
+        padding-right: 82px;
+        padding-bottom: 56px;
+      }
+      .journal-card--gratitude .textarea-decor-wrap textarea {
+        padding-right: 80px;
+        padding-bottom: 52px;
+      }
+      .journal-card--thoughts .field-sheet::before,
+      .journal-card--gratitude .field-sheet::before,
+      .journal-card--victory .field-sheet::before {
+        width: 18px;
+        height: 18px;
+      }
+      .task-card .task-row-petal {
+        width: 24px;
+      }
+      .habits-submit-wrap .habits-petal-btn.card-decor {
+        width: 24px;
+      }
+      .card-decor.gratitude-flower {
+        width: clamp(34px, 9vw, 42px);
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -1974,6 +2463,7 @@
       <div class="hero-section">
         <div class="hero-section__content">
           <article class="surface surface--hero phrase-card quote-card">
+            <img class="card-decor phrase-card__glare" src="./images/decor-light-reflection-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
             <div class="phrase-card__head">
               <div class="phrase-label">Фраза дня</div>
               <img class="card-decor flower-small" src="./images/decor-flower-small-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
@@ -1989,19 +2479,24 @@
         </div>
       </div>
 
-      <article class="surface surface--shift surface--quiet">
+      <article class="surface surface--shift surface--quiet mood-card-surface">
+        <img class="card-decor mood-card-pearl" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+        <img class="card-decor mood-card-petal" src="./images/decor-petal-tiny-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
         <h2 id="todayTitle" class="section-title">Какое у тебя сегодня настроение?</h2>
         <div class="mood-grid" id="moodGrid"></div>
       </article>
 
       <article class="surface surface--quiet journal-card--thoughts">
-        <img class="card-decor sprig" src="./images/decor-sprig-small-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
         <h2 class="section-title">Что сейчас у тебя внутри?</h2>
         <div class="field-sheet">
           <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4c4.2 0 7.6 3.2 7.6 7.2S16.2 19 12 19s-7.6-3.8-7.6-7.8S7.8 4 12 4Z"/><path d="M9.5 10.8c.7-.8 1.5-1.2 2.5-1.2s1.8.4 2.5 1.2"/></svg>
           <div>
             <label class="field-label" for="thoughts">Что сейчас у тебя внутри?</label>
-            <textarea id="thoughts" placeholder="Можно писать честно и мягко, без оценки и спешки."></textarea>
+            <div class="textarea-decor-wrap">
+              <img class="thoughts-field-glare" src="./images/decor-light-reflection-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+              <img class="thoughts-field-sprig" src="./images/decor-sprig-small-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+              <textarea id="thoughts" placeholder="Можно писать честно и мягко, без оценки и спешки."></textarea>
+            </div>
           </div>
         </div>
       </article>
@@ -2011,6 +2506,9 @@
         <div class="task-meta-row">
           <span class="task-date-label">Дата дела</span>
           <input type="date" id="taskDatePicker" aria-label="Дата задачи" />
+        </div>
+        <div class="inline-card-goldline task-card-gold-line" aria-hidden="true">
+          <img src="./images/decor-gold-line-01.png" alt="" decoding="async" loading="lazy" />
         </div>
         <div class="task-row">
           <div class="field-sheet">
@@ -2036,15 +2534,21 @@
           <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-6.7-3.8-8.4-7.4C2.2 9.5 4 6.8 7 6.8c2 0 3 1.1 5 3 2-1.9 3-3 5-3 3 0 4.8 2.7 3.4 5.8C18.7 16.2 12 20 12 20Z"/></svg>
           <div>
             <label class="field-label" for="gratitude">За что сегодня благодарна?</label>
-            <textarea id="gratitude" placeholder="Даже за самую маленькую хорошую деталь дня."></textarea>
+            <div class="textarea-decor-wrap">
+              <img class="gratitude-field-glare" src="./images/decor-light-reflection-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+              <img class="gratitude-field-sprig" src="./images/decor-sprig-small-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+              <textarea id="gratitude" placeholder="Даже за самую маленькую хорошую деталь дня."></textarea>
+            </div>
           </div>
         </div>
-        <img class="card-decor gratitude-sprig" src="./images/decor-sprig-small-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
       </article>
 
-      <article class="surface surface--shift surface--quiet">
-        <img class="card-decor victory-pearl" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+      <article class="surface surface--shift surface--quiet journal-card--victory">
+        <img class="card-decor victory-crystal" src="./images/decor-crystal-drop-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
         <h2 class="section-title">Моя маленькая победа дня</h2>
+        <div class="inline-card-goldline victory-gold-line" aria-hidden="true">
+          <img src="./images/decor-gold-line-01.png" alt="" decoding="async" loading="lazy" />
+        </div>
         <div class="field-sheet">
           <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.2 4.4L19 8l-3.6 3.3.8 4.7L12 13.8 7.8 16l.8-4.7L5 8l4.8-.6L12 3Z"/></svg>
           <div>
@@ -2062,6 +2566,9 @@
       <article class="surface surface--quiet surface--history-accent">
         <img class="card-decor history-leaf" src="./images/decor-leaf-branch-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
         <h2 id="historyTitle" class="section-title">История записей</h2>
+        <div class="inline-card-goldline history-card-gold" aria-hidden="true">
+          <img src="./images/decor-gold-line-01.png" alt="" decoding="async" loading="lazy" />
+        </div>
         <div id="historyList"></div>
       </article>
     </section>
@@ -2070,9 +2577,16 @@
       <article class="surface surface--quiet surface--calendar-accent">
         <img class="card-decor calendar-leaf" src="./images/decor-leaf-branch-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
         <h2 class="section-title">Календарь дел</h2>
+        <div class="inline-card-goldline calendar-card-gold" aria-hidden="true">
+          <img src="./images/decor-gold-line-01.png" alt="" decoding="async" loading="lazy" />
+        </div>
         <p class="subtitle">Выбери дату, смотри дела и добавляй новые — как в лёгком планере.</p>
-        <div class="planner-head">
-          <div id="calMonthTitle" class="planner-month"></div>
+        <img class="card-decor calendar-corner-flower" src="./images/decor-flower-small-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+        <div class="planner-head planner-head--decor">
+          <div class="planner-month-row">
+            <div id="calMonthTitle" class="planner-month"></div>
+            <img class="calendar-pearl-nav" src="./images/decor-pearl-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+          </div>
           <div class="cal-nav">
             <button type="button" id="calPrevBtn" aria-label="Предыдущий месяц">‹</button>
             <button type="button" id="calNextBtn" aria-label="Следующий месяц">›</button>
@@ -2101,9 +2615,13 @@
         <div id="plannerHabitPreview" class="habit-preview" hidden></div>
       </article>
 
-      <article class="surface surface--shift surface--quiet">
+      <article class="surface surface--shift surface--quiet habits-card-surface">
+        <img class="card-decor habits-card-sprig" src="./images/decor-sprig-small-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
         <h2 id="futureTitle" class="section-title">Привычки и расписание</h2>
         <p class="subtitle">Повторяющиеся дела подставляются в нужные дни автоматически.</p>
+        <div class="inline-card-goldline habits-card-gold" aria-hidden="true">
+          <img src="./images/decor-gold-line-01.png" alt="" decoding="async" loading="lazy" />
+        </div>
         <form id="habitForm">
           <div class="field-sheet" style="margin-bottom:10px;">
             <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M12 4v16"/></svg>
@@ -2127,7 +2645,10 @@
               <input id="habitTime" type="time" />
             </div>
           </div>
-          <button class="ghost-btn" type="submit">Добавить привычку</button>
+          <div class="habits-submit-wrap">
+            <img class="card-decor habits-petal-btn" src="./images/decor-petal-tiny-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />
+            <button class="ghost-btn" type="submit">Добавить привычку</button>
+          </div>
         </form>
         <div id="habitsList"></div>
       </article>
@@ -2716,7 +3237,11 @@
           .sort()
           .reverse();
         if (!dates.length) {
-          elements.historyList.innerHTML = '<p class="subtitle">Пока нет сохранённых записей.</p>';
+          elements.historyList.innerHTML =
+            '<div class="history-empty-state" role="status">' +
+            '<img class="history-empty-flower" src="./images/decor-flower-open-01.png" alt="" decoding="async" loading="lazy" aria-hidden="true" />' +
+            '<p class="subtitle history-empty-text">Пока нет сохранённых записей.</p>' +
+            "</div>";
           return;
         }
         elements.historyList.innerHTML = "";
