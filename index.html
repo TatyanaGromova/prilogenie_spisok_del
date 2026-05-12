@@ -102,10 +102,6 @@
 
     .decor-layer__light {
       position: absolute;
-      left: -14%;
-      top: -8%;
-      width: min(68vw, 520px);
-      height: min(62vh, 580px);
       pointer-events: none;
       user-select: none;
       opacity: 0.16;
@@ -124,10 +120,8 @@
     .decor-layer {
       position: fixed;
       inset: 0;
-      width: 100%;
-      height: 100%;
-      overflow: visible;
       pointer-events: none;
+      overflow: hidden;
       user-select: none;
       z-index: 0;
     }
@@ -141,10 +135,6 @@
 
     .decor-vein {
       position: absolute;
-      top: -8%;
-      right: -6%;
-      width: 1100px;
-      max-width: min(1100px, 165vw);
       height: auto;
       opacity: 0.42;
       transform: rotate(-18deg);
@@ -158,11 +148,8 @@
 
     .decor-sprig-left,
     .decor-sprig-long-01 {
-      position: fixed;
-      left: -22px;
-      bottom: 195px;
+      position: absolute;
       width: auto;
-      height: min(42vh, 280px);
       object-fit: contain;
       opacity: 0.85;
       z-index: 1;
@@ -174,10 +161,7 @@
     .decor-petal-curved,
     .left-petal,
     .petal-left {
-      position: fixed;
-      left: 162px;
-      bottom: 255px;
-      width: 80px;
+      position: absolute;
       height: auto;
       opacity: 0.88;
       z-index: 1;
@@ -186,9 +170,6 @@
     }
     .decor-pearl-main-left {
       position: absolute;
-      top: 6.5%;
-      left: 2.2%;
-      width: 72px;
       height: auto;
       opacity: 0.96;
       transform: rotate(-8deg);
@@ -197,7 +178,6 @@
     }
     .decor-pearl-medium {
       position: absolute;
-      width: 26px;
       height: auto;
       opacity: 0.92;
       pointer-events: none;
@@ -205,107 +185,68 @@
     }
     .decor-pearl-tiny {
       position: absolute;
-      width: 12px;
       height: auto;
       opacity: 0.88;
       pointer-events: none;
       user-select: none;
     }
     .decor-pearl-scatter--m1 {
-      top: 5%;
-      left: 11.5%;
       transform: rotate(14deg);
     }
     .decor-pearl-scatter--m2 {
-      top: 15%;
-      left: 0.5%;
       transform: rotate(-11deg);
     }
     .decor-pearl-scatter--t1 {
-      top: 4.2%;
-      left: 6.8%;
       transform: rotate(22deg);
     }
     .decor-pearl-scatter--t2 {
-      top: 11.2%;
-      left: 9.2%;
       transform: rotate(-6deg);
     }
     .decor-pearl-scatter--t3 {
-      top: 17.5%;
-      left: 3.6%;
       transform: rotate(9deg);
     }
     .decor-pearl-scatter--ll-accent {
-      top: 22.5%;
-      left: 7%;
-      width: 36px;
       height: auto;
       opacity: 0.94;
       transform: rotate(5deg);
     }
     .decor-pearl-scatter--ll-m1 {
-      top: 30%;
-      left: 2.8%;
-      width: 28px;
       opacity: 0.9;
       transform: rotate(7deg);
     }
     .decor-pearl-scatter--ll-t1 {
-      top: 38%;
-      left: 5.2%;
       opacity: 0.86;
       transform: rotate(-14deg);
     }
     .decor-pearl-scatter--ll-t2 {
-      top: 46%;
-      left: 1.4%;
       opacity: 0.84;
       transform: rotate(18deg);
     }
     .decor-pearl-scatter--rt-m1 {
-      top: 24.5%;
-      right: 4.2%;
       transform: rotate(-10deg);
     }
     .decor-pearl-scatter--rt-t1 {
-      top: 18.5%;
-      right: 16.2%;
       transform: rotate(11deg);
     }
     .decor-pearl-scatter--rt-t2 {
-      top: 27%;
-      right: 12.8%;
       transform: rotate(-7deg);
     }
     .decor-pearl-scatter--bot-t1 {
-      bottom: 11%;
-      left: 18%;
-      width: 10px;
       opacity: 0.78;
       transform: rotate(15deg);
     }
     .decor-pearl-scatter--bot-t2 {
-      bottom: 9.5%;
-      left: 48%;
-      width: 9px;
       opacity: 0.74;
       transform: rotate(-12deg);
     }
     .decor-pearl-scatter--bot-t3 {
-      bottom: 10.2%;
-      right: 22%;
-      width: 10px;
       opacity: 0.76;
       transform: rotate(8deg);
     }
     .flower-left,
     .decor-flower-left,
     .left-flower {
-      position: fixed;
-      left: -10px;
-      bottom: -5px;
-      width: 441px;
+      position: absolute;
       height: auto;
       object-fit: contain;
       object-position: 10px 8px;
@@ -319,12 +260,8 @@
     .decor-petal-right,
     .decor-petal-large-01 {
       position: absolute;
-      top: 20%;
-      bottom: 535px;
-      right: 15%;
+      bottom: auto;
       width: auto;
-      height: 10%;
-      max-height: 72vh;
       object-fit: contain;
       opacity: 0.92;
       pointer-events: none;
@@ -332,12 +269,8 @@
     }
     .crystal-drop-top {
       position: absolute;
-      top: 7%;
-      right: 5%;
-      width: 54px;
       height: auto;
       opacity: 0.96;
-      transform: rotate(-4deg);
       transform-origin: top right;
       pointer-events: none;
       user-select: none;
@@ -345,12 +278,8 @@
     .flower-open-top,
     .decor-flower-open-01 {
       position: absolute;
-      top: 5%;
-      right: 16.5%;
-      width: 78px;
       height: auto;
       opacity: 0.95;
-      transform: rotate(6deg);
       transform-origin: top right;
       z-index: 2;
       pointer-events: none;
@@ -358,15 +287,451 @@
     }
     .flower-right {
       position: absolute;
-      right: -1%;
-      bottom: -10%;
-      width: calc(22vw * 1.15 * 0.9);
-      min-width: 228px;
-      max-width: 446px;
       height: auto;
       opacity: 0.9;
       pointer-events: none;
       user-select: none;
+    }
+
+    @media (max-width: 768px) {
+      .decor-layer__light {
+        left: clamp(-200px, -18vw, -48px);
+        top: clamp(-120px, -12vh, -28px);
+        width: clamp(240px, 78vw, 420px);
+        height: clamp(220px, 52vh, 480px);
+      }
+      .decor-vein {
+        top: clamp(-100px, -10vh, -32px);
+        right: clamp(-120px, -18vw, -40px);
+        width: clamp(420px, 118vw, 920px);
+      }
+      .decor-sprig-left,
+      .decor-sprig-long-01 {
+        left: clamp(-28px, -4vw, -12px);
+        bottom: clamp(120px, 22vh, 200px);
+        height: clamp(140px, 36vh, 260px);
+      }
+      .decor-petal-left,
+      .decor-petal-curved-01,
+      .decor-petal-curved,
+      .left-petal,
+      .petal-left {
+        left: clamp(12px, 14vw, 108px);
+        bottom: clamp(160px, 34vh, 255px);
+        width: clamp(64px, 18vw, 80px);
+      }
+      .flower-left,
+      .decor-flower-left,
+      .left-flower {
+        left: clamp(-18px, -3vw, -4px);
+        bottom: clamp(-12px, -1vh, 4px);
+        width: clamp(240px, 86vw, 400px);
+        clip-path: inset(0 0 2px 3px);
+      }
+      .decor-pearl-main-left {
+        width: clamp(44px, 12vw, 52px);
+        left: clamp(-28px, -4vw, -12px);
+        top: clamp(56px, 11vh, 88px);
+        transform: rotate(-8deg) scale(0.72);
+        margin-left: 0;
+      }
+      .decor-pearl-scatter--m1,
+      .decor-pearl-scatter--m2 {
+        width: clamp(18px, 5vw, 22px);
+      }
+      .decor-pearl-scatter--t1,
+      .decor-pearl-scatter--t2,
+      .decor-pearl-scatter--t3,
+      .decor-pearl-scatter--ll-t1,
+      .decor-pearl-scatter--ll-t2 {
+        width: clamp(8px, 2.4vw, 10px);
+      }
+      .decor-pearl-scatter--m1 {
+        top: clamp(36px, 6vh, 56px);
+        left: clamp(32px, 10vw, 120px);
+        margin-left: clamp(-12px, -2vw, -4px);
+      }
+      .decor-pearl-scatter--m2 {
+        top: clamp(96px, 14vh, 140px);
+        left: clamp(-8px, 1vw, 12px);
+        margin-left: clamp(-12px, -2vw, -4px);
+      }
+      .decor-pearl-scatter--t1 {
+        top: clamp(28px, 5vh, 48px);
+        left: clamp(20px, 6vw, 88px);
+        margin-left: clamp(-12px, -2vw, -4px);
+      }
+      .decor-pearl-scatter--t2 {
+        top: clamp(72px, 10vh, 112px);
+        left: clamp(28px, 8vw, 104px);
+        margin-left: clamp(-12px, -2vw, -4px);
+      }
+      .decor-pearl-scatter--t3 {
+        top: clamp(112px, 16vh, 160px);
+        left: clamp(8px, 3vw, 40px);
+        margin-left: clamp(-12px, -2vw, -4px);
+      }
+      .decor-pearl-scatter--ll-accent {
+        top: clamp(140px, 20vh, 220px);
+        left: clamp(16px, 5vw, 72px);
+        width: clamp(24px, 7vw, 30px);
+        margin-left: clamp(-16px, -3vw, -6px);
+      }
+      .decor-pearl-scatter--ll-m1 {
+        top: clamp(188px, 26vh, 280px);
+        left: clamp(4px, 2vw, 28px);
+        width: clamp(18px, 5.5vw, 24px);
+        margin-left: clamp(-16px, -3vw, -6px);
+      }
+      .decor-pearl-scatter--ll-t1 {
+        top: clamp(236px, 34vh, 340px);
+        left: clamp(12px, 4vw, 56px);
+        margin-left: clamp(-16px, -3vw, -6px);
+      }
+      .decor-pearl-scatter--ll-t2 {
+        top: clamp(284px, 42vh, 400px);
+        left: clamp(-4px, 1vw, 16px);
+        margin-left: clamp(-16px, -3vw, -6px);
+      }
+      .decor-pearl-scatter--rt-m1 {
+        top: clamp(160px, 22vh, 240px);
+        right: clamp(12px, 4vw, 48px);
+      }
+      .decor-pearl-scatter--rt-t1 {
+        top: clamp(120px, 17vh, 200px);
+        right: clamp(72px, 14vw, 160px);
+      }
+      .decor-pearl-scatter--rt-t2 {
+        top: clamp(176px, 24vh, 260px);
+        right: clamp(48px, 11vw, 120px);
+      }
+      .decor-pearl-scatter--bot-t1 {
+        bottom: clamp(56px, 9vh, 100px);
+        left: clamp(48px, 16vw, 200px);
+        width: clamp(8px, 2.2vw, 10px);
+      }
+      .decor-pearl-scatter--bot-t2 {
+        bottom: clamp(48px, 8vh, 88px);
+        left: clamp(120px, 42vw, 520px);
+        width: clamp(7px, 2vw, 9px);
+      }
+      .decor-pearl-scatter--bot-t3 {
+        bottom: clamp(52px, 8.5vh, 92px);
+        right: clamp(48px, 18vw, 200px);
+        width: clamp(8px, 2.2vw, 10px);
+      }
+      .decor-petal-right,
+      .decor-petal-large-01 {
+        top: clamp(96px, 14vh, 160px);
+        right: clamp(40px, 10vw, 120px);
+        height: clamp(56px, 8vh, 96px);
+        max-height: clamp(200px, 62vh, 520px);
+      }
+      .crystal-drop-top {
+        width: clamp(26px, 8vw, 34px);
+        right: clamp(8px, 2.4vw, 16px);
+        top: clamp(40px, 7vh, 56px);
+        transform: rotate(-4deg) scale(0.68);
+      }
+      .flower-open-top,
+      .decor-flower-open-01 {
+        width: clamp(44px, 12vw, 52px);
+        right: clamp(18px, 6vw, 32px);
+        top: clamp(72px, 11vh, 104px);
+        transform: rotate(6deg) scale(0.78);
+      }
+      .flower-right {
+        right: clamp(-32px, -3vw, -4px);
+        bottom: clamp(-120px, -12vh, -48px);
+        width: clamp(200px, 72vw, 360px);
+        min-width: 0;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1023px) {
+      .decor-layer__light {
+        left: clamp(-160px, -14vw, -56px);
+        top: clamp(-96px, -10vh, -32px);
+        width: clamp(300px, 62vw, 480px);
+        height: clamp(260px, 54vh, 520px);
+      }
+      .decor-vein {
+        top: clamp(-88px, -9vh, -36px);
+        right: clamp(-96px, -12vw, -36px);
+        width: clamp(560px, 96vw, 1000px);
+      }
+      .decor-sprig-left,
+      .decor-sprig-long-01 {
+        left: clamp(-26px, -2.5vw, -14px);
+        bottom: clamp(150px, 24vh, 210px);
+        height: clamp(170px, 38vh, 270px);
+      }
+      .decor-petal-left,
+      .decor-petal-curved-01,
+      .decor-petal-curved,
+      .left-petal,
+      .petal-left {
+        left: clamp(96px, 14vw, 168px);
+        bottom: clamp(200px, 30vh, 270px);
+        width: clamp(72px, 8vw, 84px);
+      }
+      .flower-left,
+      .decor-flower-left,
+      .left-flower {
+        left: clamp(-14px, -1.5vw, -6px);
+        bottom: clamp(-8px, -0.8vh, 4px);
+        width: clamp(280px, 42vw, 400px);
+      }
+      .decor-pearl-main-left {
+        width: clamp(58px, 7vw, 68px);
+        left: clamp(-8px, 1vw, 20px);
+        top: clamp(62px, 7vh, 84px);
+        transform: rotate(-8deg);
+      }
+      .decor-pearl-scatter--m1,
+      .decor-pearl-scatter--m2 {
+        width: clamp(22px, 2.6vw, 26px);
+      }
+      .decor-pearl-scatter--t1,
+      .decor-pearl-scatter--t2,
+      .decor-pearl-scatter--t3,
+      .decor-pearl-scatter--ll-t1,
+      .decor-pearl-scatter--ll-t2 {
+        width: clamp(10px, 1.2vw, 12px);
+      }
+      .decor-pearl-scatter--m1 {
+        top: clamp(40px, 5.2vh, 68px);
+        left: clamp(52px, 10vw, 132px);
+      }
+      .decor-pearl-scatter--m2 {
+        top: clamp(108px, 14vh, 152px);
+        left: clamp(0px, 1vw, 14px);
+      }
+      .decor-pearl-scatter--t1 {
+        top: clamp(34px, 4.4vh, 60px);
+        left: clamp(32px, 7vw, 92px);
+      }
+      .decor-pearl-scatter--t2 {
+        top: clamp(88px, 11vh, 124px);
+        left: clamp(44px, 9vw, 112px);
+      }
+      .decor-pearl-scatter--t3 {
+        top: clamp(136px, 17vh, 188px);
+        left: clamp(16px, 4vw, 48px);
+      }
+      .decor-pearl-scatter--ll-accent {
+        top: clamp(168px, 22vh, 228px);
+        left: clamp(40px, 7vw, 88px);
+        width: clamp(30px, 3.4vw, 36px);
+      }
+      .decor-pearl-scatter--ll-m1 {
+        top: clamp(228px, 29vh, 292px);
+        left: clamp(14px, 3vw, 34px);
+        width: clamp(24px, 3vw, 28px);
+      }
+      .decor-pearl-scatter--ll-t1 {
+        top: clamp(292px, 37vh, 360px);
+        left: clamp(28px, 5vw, 64px);
+      }
+      .decor-pearl-scatter--ll-t2 {
+        top: clamp(352px, 45vh, 430px);
+        left: clamp(8px, 1.6vw, 20px);
+      }
+      .decor-pearl-scatter--rt-m1 {
+        top: clamp(184px, 24vh, 248px);
+        right: clamp(28px, 4.2vw, 72px);
+      }
+      .decor-pearl-scatter--rt-t1 {
+        top: clamp(140px, 18vh, 196px);
+        right: clamp(104px, 15vw, 180px);
+      }
+      .decor-pearl-scatter--rt-t2 {
+        top: clamp(200px, 26vh, 268px);
+        right: clamp(80px, 12vw, 140px);
+      }
+      .decor-pearl-scatter--bot-t1 {
+        bottom: clamp(64px, 10vh, 108px);
+        left: clamp(120px, 18vw, 240px);
+        width: clamp(9px, 1vw, 10px);
+      }
+      .decor-pearl-scatter--bot-t2 {
+        bottom: clamp(56px, 9vh, 96px);
+        left: clamp(200px, 46vw, 560px);
+        width: clamp(8px, 0.9vw, 9px);
+      }
+      .decor-pearl-scatter--bot-t3 {
+        bottom: clamp(60px, 9.5vh, 100px);
+        right: clamp(120px, 20vw, 260px);
+        width: clamp(9px, 1vw, 10px);
+      }
+      .decor-petal-right,
+      .decor-petal-large-01 {
+        top: clamp(120px, 17vh, 200px);
+        right: clamp(56px, 12vw, 150px);
+        height: clamp(64px, 9vh, 108px);
+        max-height: clamp(220px, 68vh, 600px);
+      }
+      .crystal-drop-top {
+        width: clamp(32px, 3.2vw, 42px);
+        right: clamp(18px, 2.6vw, 32px);
+        top: clamp(50px, 6.5vh, 68px);
+        transform: rotate(-4deg);
+      }
+      .flower-open-top,
+      .decor-flower-open-01 {
+        width: clamp(56px, 6.2vw, 72px);
+        right: clamp(96px, 12vw, 132px);
+        top: clamp(58px, 7.5vh, 82px);
+        transform: rotate(6deg);
+      }
+      .flower-right {
+        right: clamp(-24px, -1.2vw, -6px);
+        bottom: clamp(-104px, -11vh, -40px);
+        width: clamp(228px, 26vw, 400px);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .decor-layer__light {
+        left: clamp(-140px, -12vw, -48px);
+        top: clamp(-72px, -8vh, -24px);
+        width: clamp(360px, 52vw, 520px);
+        height: clamp(320px, 55vh, 580px);
+      }
+      .decor-vein {
+        top: clamp(-80px, -8vh, -36px);
+        right: clamp(-88px, -8vw, -24px);
+        width: clamp(720px, 88vw, 1100px);
+      }
+      .decor-sprig-left,
+      .decor-sprig-long-01 {
+        left: clamp(-26px, -2vw, -14px);
+        bottom: clamp(170px, 22vh, 220px);
+        height: clamp(200px, 40vh, 280px);
+      }
+      .decor-petal-left,
+      .decor-petal-curved-01,
+      .decor-petal-curved,
+      .left-petal,
+      .petal-left {
+        left: clamp(140px, 12vw, 200px);
+        bottom: clamp(220px, 28vh, 280px);
+        width: clamp(76px, 6.5vw, 88px);
+      }
+      .flower-left,
+      .decor-flower-left,
+      .left-flower {
+        left: clamp(-14px, -1vw, -6px);
+        bottom: clamp(-8px, -0.6vh, 2px);
+        width: clamp(320px, 34vw, 441px);
+      }
+      .decor-pearl-main-left {
+        width: clamp(66px, 5.8vw, 76px);
+        left: clamp(12px, 2.2vw, 32px);
+        top: clamp(48px, 6.5vh, 88px);
+        transform: rotate(-8deg);
+      }
+      .decor-pearl-scatter--m1,
+      .decor-pearl-scatter--m2 {
+        width: clamp(24px, 2.2vw, 28px);
+      }
+      .decor-pearl-scatter--t1,
+      .decor-pearl-scatter--t2,
+      .decor-pearl-scatter--t3,
+      .decor-pearl-scatter--ll-t1,
+      .decor-pearl-scatter--ll-t2 {
+        width: clamp(11px, 1vw, 13px);
+      }
+      .decor-pearl-scatter--m1 {
+        top: clamp(36px, 5vh, 72px);
+        left: clamp(44px, 11vw, 150px);
+      }
+      .decor-pearl-scatter--m2 {
+        top: clamp(108px, 14vh, 160px);
+        left: clamp(0px, 0.8vw, 16px);
+      }
+      .decor-pearl-scatter--t1 {
+        top: clamp(32px, 4.2vh, 68px);
+        left: clamp(24px, 6.8vw, 100px);
+      }
+      .decor-pearl-scatter--t2 {
+        top: clamp(84px, 11vh, 128px);
+        left: clamp(36px, 9.2vw, 120px);
+      }
+      .decor-pearl-scatter--t3 {
+        top: clamp(132px, 17vh, 200px);
+        left: clamp(14px, 3.6vw, 52px);
+      }
+      .decor-pearl-scatter--ll-accent {
+        top: clamp(160px, 22vh, 240px);
+        left: clamp(36px, 7vw, 100px);
+        width: clamp(32px, 3vw, 38px);
+      }
+      .decor-pearl-scatter--ll-m1 {
+        top: clamp(216px, 29vh, 300px);
+        left: clamp(14px, 2.8vw, 38px);
+        width: clamp(26px, 2.4vw, 30px);
+      }
+      .decor-pearl-scatter--ll-t1 {
+        top: clamp(276px, 37vh, 380px);
+        left: clamp(28px, 5.2vw, 72px);
+      }
+      .decor-pearl-scatter--ll-t2 {
+        top: clamp(336px, 45vh, 460px);
+        left: clamp(8px, 1.4vw, 22px);
+      }
+      .decor-pearl-scatter--rt-m1 {
+        top: clamp(176px, 24vh, 260px);
+        right: clamp(36px, 4.2vw, 88px);
+      }
+      .decor-pearl-scatter--rt-t1 {
+        top: clamp(136px, 18vh, 200px);
+        right: clamp(120px, 16vw, 220px);
+      }
+      .decor-pearl-scatter--rt-t2 {
+        top: clamp(196px, 26vh, 280px);
+        right: clamp(96px, 13vw, 180px);
+      }
+      .decor-pearl-scatter--bot-t1 {
+        bottom: clamp(72px, 11vh, 120px);
+        left: clamp(160px, 18vw, 260px);
+        width: clamp(9px, 0.85vw, 11px);
+      }
+      .decor-pearl-scatter--bot-t2 {
+        bottom: clamp(60px, 9.5vh, 100px);
+        left: clamp(200px, 48vw, 700px);
+        width: clamp(8px, 0.8vw, 10px);
+      }
+      .decor-pearl-scatter--bot-t3 {
+        bottom: clamp(64px, 10vh, 110px);
+        right: clamp(160px, 22vw, 300px);
+        width: clamp(9px, 0.85vw, 11px);
+      }
+      .decor-petal-right,
+      .decor-petal-large-01 {
+        top: clamp(140px, 18vh, 220px);
+        right: clamp(72px, 14vw, 180px);
+        height: clamp(72px, 10vh, 140px);
+        max-height: clamp(240px, 70vh, 640px);
+      }
+      .crystal-drop-top {
+        width: 36px;
+        right: clamp(44px, 5.5vw, 96px);
+        top: clamp(52px, 7vh, 96px);
+        transform: rotate(-4deg);
+      }
+      .flower-open-top,
+      .decor-flower-open-01 {
+        width: clamp(68px, 6vw, 86px);
+        right: clamp(110px, 16vw, 210px);
+        top: clamp(44px, 5vh, 84px);
+        transform: rotate(6deg);
+      }
+      .flower-right {
+        right: clamp(-20px, -0.9vw, -4px);
+        bottom: clamp(-96px, -10vh, -32px);
+        width: clamp(248px, 22vw, 446px);
+      }
     }
 
     body.modal-open { overflow: hidden; }
@@ -385,7 +750,9 @@
       color: #4a403c;
     }
     .app,
+    .main,
     .main-content,
+    .content,
     .page-wrapper {
       position: relative;
       z-index: 2;
@@ -450,10 +817,10 @@
     .flower-bottom-new {
       position: fixed;
       left: 50%;
-      bottom: -180px;
+      bottom: clamp(-200px, -11vh, -72px);
       transform: translateX(-50%);
-      width: calc(98vw * 0.765);
-      max-width: calc(1380px * 0.765);
+      width: clamp(420px, 75vw, 1056px);
+      max-width: min(1055px, calc(100vw - 16px));
       height: auto;
       object-fit: contain;
       object-position: center bottom;
@@ -466,77 +833,24 @@
     @media (max-width: 768px) {
       .flower-bottom-bg,
       .flower-bottom-new {
-        width: calc(128vw * 0.765);
-        bottom: -95px;
+        bottom: clamp(-120px, -10vh, -64px);
+        width: clamp(460px, 98vw, 900px);
+        max-width: calc(100vw - 8px);
         opacity: 0.8;
-      }
-      /* hero decor tuning (mobile only) */
-      .decor-pearl-main-left {
-        width: 50px;
-        left: -22px;
-        top: 74px;
-        transform: rotate(-8deg) scale(0.72);
-      }
-      .decor-pearl-scatter--m1,
-      .decor-pearl-scatter--m2 {
-        width: 20px;
-      }
-      .decor-pearl-scatter--t1,
-      .decor-pearl-scatter--t2,
-      .decor-pearl-scatter--t3,
-      .decor-pearl-scatter--ll-t1,
-      .decor-pearl-scatter--ll-t2 {
-        width: 9px;
-      }
-      .decor-pearl-scatter--m1,
-      .decor-pearl-scatter--m2,
-      .decor-pearl-scatter--t1,
-      .decor-pearl-scatter--t2,
-      .decor-pearl-scatter--t3 {
-        margin-left: -8px;
-      }
-      .decor-pearl-scatter--ll-accent {
-        width: 28px;
-        margin-left: -12px;
-      }
-      .decor-pearl-scatter--ll-m1 {
-        width: 22px;
-        margin-left: -12px;
-      }
-      .decor-pearl-scatter--ll-t1,
-      .decor-pearl-scatter--ll-t2 {
-        margin-left: -12px;
-      }
-      .flower-open-top,
-      .decor-flower-open-01 {
-        width: 50px;
-        right: 26px;
-        top: 92px;
-        transform: rotate(6deg) scale(0.78);
-        transform-origin: top right;
-      }
-      .crystal-drop-top {
-        width: 30px;
-        right: 10px;
-        top: 46px;
-        transform: rotate(-4deg) scale(0.68);
-        transform-origin: top right;
       }
     }
     @media (min-width: 769px) and (max-width: 1023px) {
-      .crystal-drop-top {
-        top: 56px;
-        right: 24px;
-      }
-      .flower-open-top,
-      .decor-flower-open-01 {
-        top: 64px;
-        right: 118px;
+      .flower-bottom-bg,
+      .flower-bottom-new {
+        bottom: clamp(-150px, -11vh, -80px);
+        width: clamp(480px, 82vw, 920px);
       }
     }
     @media (min-width: 1024px) {
-      .crystal-drop-top {
-        width: 36px;
+      .flower-bottom-bg,
+      .flower-bottom-new {
+        bottom: clamp(-200px, -12vh, -140px);
+        width: clamp(520px, 75vw, 1056px);
       }
     }
     .hero-section {
@@ -2390,39 +2704,6 @@
     }
 
     @media (max-width: 580px) {
-      .decor-vein {
-        width: min(1100px, 155vw);
-        opacity: 0.42;
-      }
-      .decor-petal-right,
-      .decor-petal-large-01 {
-        top: 20%;
-        bottom: 535px;
-        right: 15%;
-        height: 10%;
-        max-height: 68vh;
-      }
-      .flower-left,
-      .decor-flower-left,
-      .left-flower {
-        left: -10px;
-        bottom: -5px;
-        width: min(441px, 92vw);
-        clip-path: inset(0 0 2px 3px);
-      }
-      .decor-petal-left,
-      .decor-petal-curved-01,
-      .decor-petal-curved,
-      .left-petal,
-      .petal-left {
-        left: max(108px, 24vw);
-        bottom: min(255px, 40vh);
-        width: 80px;
-      }
-      .flower-right {
-        min-width: 0;
-        opacity: 0.9;
-      }
       .mood-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .habit-row { grid-template-columns: 1fr; }
       .task-row { flex-direction: column; }
